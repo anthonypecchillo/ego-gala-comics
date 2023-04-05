@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Comic 1",
+    "description": "This is comic number 1.",
+    "publication_date": "2023-04-04T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://example.com/comic-1/panel-1.jpg",
+        "transcription": "Text for comic 1, panel 1"
+      },
+      {
+        "panel_number": 2,
+        "image_url": "https://example.com/comic-1/panel-2.jpg",
+        "transcription": "Text for comic 1, panel 2"
+      },
+      {
+        "panel_number": 3,
+        "image_url": "https://example.com/comic-1/panel-3.jpg",
+        "transcription": "Text for comic 1, panel 3"
+      },
+      {
+        "panel_number": 4,
+        "image_url": "https://example.com/comic-1/panel-4.jpg",
+        "transcription": "Text for comic 1, panel 4"
+      }
+    ]
+  },
+  {
+    "title": "Comic 2",
+    "description": "This is comic number 2.",
+    "publication_date": "2023-04-05T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://example.com/comic-2/panel-1.jpg",
+        "transcription": "Text for comic 2, panel 1"
+      },
+      {
+        "panel_number": 2,
+        "image_url": "https://example.com/comic-2/panel-2.jpg",
+        "transcription": "Text for comic 2, panel 2"
+      },
+      {
+        "panel_number": 3,
+        "image_url": "https://example.com/comic-2/panel-3.jpg",
+        "transcription": "Text for comic 2, panel 3"
+      },
+      {
+        "panel_number": 4,
+        "image_url": "https://example.com/comic-2/panel-4.jpg",
+        "transcription": "Text for comic 2, panel 4"
+      }
+    ]
+  }
+]
