@@ -1,3 +1,11 @@
+# NOTE: To generate this file, I provided the default .gitignore files from
+# GitHub (the node version) and Create Next App to GPT-4 and gave it the
+# following prompt:
+#
+# "Combine the default Next.js .gitignore file with the default node
+# .gitignore file from GitHub into a single .gitignore file with no duplicates.
+# Here are the files for reference: [Code Sample #1] AND [Code Sameple #2]"
+
 # Logs
 logs
 *.log
@@ -84,9 +92,6 @@ dist
 
 # Gatsby files
 .cache/
-# Comment in the public line in if your project uses Gatsby and *not* Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
 
 # vuepress build output
 .vuepress/dist
@@ -102,3 +107,35 @@ dist
 
 # TernJS port file
 .tern-port
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+next-env.d.ts
