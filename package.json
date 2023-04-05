@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server-start": "ts-node ./server/index.ts",
+    "db-delete-all": "ts-node ./db/deleteAll.ts",
+    "db-seed": "ts-node ./db/seed.ts"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -36,6 +39,7 @@
     "react-dom": "18.2.0",
     "react-router-dom": "^6.10.0",
     "styled-components": "^5.3.9",
+    "ts-node": "^10.9.1",
     "typescript": "5.0.3"
   }
 }
