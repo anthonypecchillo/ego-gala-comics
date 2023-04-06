@@ -1,6 +1,7 @@
 [
   {
     "title": "Comic 1",
+    "category": "diary",
     "description": "This is comic number 1.",
     "publication_date": "2023-04-04T00:00:00.000Z",
     "panels": [
@@ -28,6 +29,7 @@
   },
   {
     "title": "Comic 2",
+    "category": "diary",
     "description": "This is comic number 2.",
     "publication_date": "2023-04-05T00:00:00.000Z",
     "panels": [

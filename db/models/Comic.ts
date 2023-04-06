@@ -9,6 +9,7 @@ export interface IComic extends Document {
 
 const ComicSchema: Schema = new Schema({
   title: { type: String, required: true },
+  category: { type: String, enum: ['diary', 'fantology', 'compendium'], required: true },
   description: { type: String, required: true },
   publication_date: { type: Date, required: true },
   panels: [{ type: Schema.Types.ObjectId, ref: 'Panel' }],
