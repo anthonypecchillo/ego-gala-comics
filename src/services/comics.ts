@@ -12,7 +12,6 @@ export async function fetchComic(comicId: string) {
   }
 }
 
-
 export async function fetchComics(comicCollection: string, page: number) {
   try {
     const response = await axios.get(`${API_URL}/comics`, {
@@ -21,6 +20,22 @@ export async function fetchComics(comicCollection: string, page: number) {
     return response.data;
   } catch (error) {
     console.error('Error fetching comics:', error);
+    throw error;
+  }
+}
+
+export async function fetchComicsByCategory(category: string, page: number = 1, limit: number = 10) {
+  try {
+    const response = await axios.get(`${API_URL}/comics`, {
+      params: {
+        category,
+        page,
+        limit
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching comics by category:', error);
     throw error;
   }
 }
