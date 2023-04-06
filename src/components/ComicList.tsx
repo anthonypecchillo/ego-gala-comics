@@ -4,6 +4,7 @@ import { fetchComic } from '../services/comics';
 import { IComic } from 'db/models/Comic';
 
 const List = styled.ul`
+  grid-area: comic-list;
   list-style-type: none;
   padding: 0;
   margin: 0;

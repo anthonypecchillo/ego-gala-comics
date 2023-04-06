@@ -16,9 +16,12 @@ import data from '../../db/seedData.json';
 
 const ComicPageGrid = styled.div`
   display: grid;
+  grid-gap: 5vw;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 2fr;
-  grid-gap: 5vw;
+  grid-template-areas:
+    "comic-list ."
+    "comic-list .";
   padding: 5vw;
 
   @media (max-width: 768px) {
@@ -28,6 +31,10 @@ const ComicPageGrid = styled.div`
   @media (max-width: 480px) {
     // Add your styles for mobile view
   }
+`;
+
+const StyledComicList = styled.div`
+  grid-area: comic-list;
 `;
 
 // TODO: Add other styled components for Title, Paragraph, Button, and Image
@@ -74,23 +81,24 @@ const ComicPage: React.FC = () => {
       <Navbar />
       <ComicTabBar activeTab={activeTab} onTabClick={handleTabClick} />
       <ComicPageGrid>
-        <div>
+        <StyledComicList>
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageClick={setCurrentPage} />
           <ComicList comics={comics} />
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageClick={setCurrentPage} />
-        </div>
+        </StyledComicList>
         {/* Add other components for Title, Paragraph, Button, and Image */}
         <div>
           <Title>Ego Gala's Archive</Title>
           <Paragraph>
-            Join in on the adventurous characters of Ego Gala&apos;s universe as they navigate the chaotic world of superheroes and villains. These characters are not your average sidekicks, they have stories to tell and quests to embark upon. Watch as they stumble through time trying to maintain their sanity and the balance of the force. That&apos;s right, and you might even get a chance to meet Douglas Funny himself. (You might even see...THE BEATS!)
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum ligula felis, eget lobortis nisi egestas at. Pellentesque suscipit convallis enim at suscipit. Proin nec sem sit amet arcu consequat viverra.
           </Paragraph>
           <Paragraph>
-            I&apos;m too high to be witty right now, but this paragraph should provide the user with some guidance on how to actually do something with the site they&apos;d otherwise overlook. For instance, to take a page out of Tavern Wenches&apos; book, you could prompt the user to set their [Accessibility Settings](https://www.tavern-wenches.com/settings/).
+            Ut consectetur diam ac augue venenatis sagittis. Quisque mauris diam, laoreet a quam ac, tincidunt feugiat mi. Fusce maximus non mi pretium vulputate.<a href="https://www.tavern-wenches.com/settings/">Accessibility Settings</a>.
           </Paragraph>
           <FirstComicButton>FIRST COMIC</FirstComicButton>
           {/* Add Image component */}
         </div>
+        <div>Fun Image</div>
       </ComicPageGrid>
       <NewsletterForm />
       <Footer />
