@@ -2,9 +2,11 @@
 import Koa from 'koa';
 import Router from 'koa-router';
 import bodyParser from 'koa-bodyparser';
-import db from '../db';
+import '../db';
 import Comic, { IComic } from '../db/models/Comic';
 import Panel, { IPanel } from '../db/models/Panel';
+
+console.log(Panel);
 
 const app = new Koa();
 const router = new Router();

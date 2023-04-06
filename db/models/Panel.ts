@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IPanel extends Document {
-  comic_id: string;
+  comic_id: Schema.Types.ObjectId;
   panel_number: number;
   image_url: string;
   transcription: string;
