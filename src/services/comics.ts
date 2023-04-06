@@ -1,7 +1,17 @@
-// src/services/comics.ts
 import axios from 'axios';
 
 const API_URL = 'http://localhost:3001';
+
+export async function fetchComic(comicId: string) {
+  try {
+    const response = await axios.get(`${API_URL}/comics/${comicId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching comic:', error);
+    throw error;
+  }
+}
+
 
 export async function fetchComics(comicCollection: string, page: number) {
   try {
