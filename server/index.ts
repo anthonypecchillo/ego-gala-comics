@@ -6,6 +6,9 @@ import '../db';
 import Comic, { IComic } from '../db/models/Comic';
 import Panel, { IPanel } from '../db/models/Panel';
 
+// NOTE: Need to use Panel at least once to ensure that the model is registered
+// otherwise we get the following error:
+// "MissingSchemaError: Schema hasn't been registered for model "Panel"."
 console.log(Panel);
 
 const app = new Koa();
