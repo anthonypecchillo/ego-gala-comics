@@ -16,6 +16,7 @@ async function seedComics() {
   for (const comicData of seedData) {
     const comic: IComic = new Comic({
       title: comicData.title,
+      category: comicData.category,
       description: comicData.description,
       publication_date: new Date(comicData.publication_date),
       panels: [] as IPanel[],

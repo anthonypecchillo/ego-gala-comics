@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IComic extends Document {
   title: string;
+  category: string;
   description: string;
   publication_date: Date;
   panels: Array<string>;
