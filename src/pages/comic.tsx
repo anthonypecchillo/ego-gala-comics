@@ -9,7 +9,8 @@ import Pagination from '../components/Pagination';
 import GlobalStyle from '../styles/GlobalStyle';
 import theme from '../styles/theme';
 import { ThemeProvider } from 'styled-components';
-import { fetchComics } from '../services/comics';
+import { fetchComicsByCategory } from '../services/comics';
+import { IComic } from '../../db/models/Comic';
 
 import data from '../../db/seedData.json';
 
@@ -44,29 +45,34 @@ const FirstComicButton = styled.button`
 
 const ComicPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('diary');
+  const [comics, setComics] = useState<IComic[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => {
-    async function fetchAndSetComics() {
-      try {
-        const { comics, totalPages } = await fetchComics(activeTab, currentPage);
-        setComics(comics);
-        setTotalPages(totalPages);
-      } catch (error) {
-        console.error('Error fetching comics:', error);
-      }
-    }
 
-    fetchAndSetComics();
-  }, [activeTab, currentPage]);
+  useEffect(() => {
+    const fetchCategoryComics = async () => {
+      try {
+        const categoryComics = await fetchComicsByCategory(activeTab);
+        setComics(categoryComics);
+      } catch (error) {
+        console.error('Error fetching category-specific comics:', error);
+      }
+    };
+
+    fetchCategoryComics();
+  }, [activeTab]);
+
+  const handleTabClick = (category: string) => {
+    setActiveTab(category);
+  };
 
   return (
     <ThemeProvider theme={theme}>
       {/* <Router> */}
       <GlobalStyle />
       <Navbar />
-      <ComicTabBar activeTab={activeTab} onTabClick={setActiveTab} />
+      <ComicTabBar activeTab={activeTab} onTabClick={handleTabClick} />
       <ComicPageGrid>
         <div>
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageClick={setCurrentPage} />
