@@ -12,7 +12,7 @@ import { ThemeProvider } from 'styled-components';
 import { fetchComicsByCategory } from '../services/comics';
 import { IComic } from '../../db/models/Comic';
 
-import data from '../../db/seedData.json';
+
 
 const ComicPageGrid = styled.div`
   display: grid;
