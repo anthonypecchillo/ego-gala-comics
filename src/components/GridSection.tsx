@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 // import { useHistory } from 'react-router-dom';
 
 const Grid = styled.div`
@@ -12,7 +13,7 @@ const Grid = styled.div`
   margin: 20px 20px;
 `;
 
-const GridItem = styled.div < { bgColor: string, index: number }>`
+const GridItem = styled(Link) < { bgColor: string, index: number }>`
   background-color: ${({ bgColor }) => bgColor};
   display: flex;
   justify-content: center;
@@ -20,6 +21,13 @@ const GridItem = styled.div < { bgColor: string, index: number }>`
   justify-self: ${({ index }) => index % 2 ? 'end' : 'start'}; /* Push left column to the right and right column to the left */
   height: 26vw;
   width: 26vw;
+
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    // Add fade animation here
+  }
 
   @media screen and (max-width: 768px) {
     height: 45vw;
@@ -36,10 +44,14 @@ const GridSection: React.FC = () => {
 
   return (
     <Grid>
-      <GridItem index={1} bgColor="#a0a">About 1</GridItem>
-      <GridItem index={2} bgColor="#0aa">Comic 1</GridItem>
-      <GridItem index={3} bgColor="#aa0">About 2</GridItem>
-      <GridItem index={4} bgColor="#a00">Comic 2</GridItem>
+        {/* <GridItem as={Link} href="/comic" index={1} bgColor="#a0a">Comic 1</GridItem>
+        <GridItem as={Link} href="/about" index={2} bgColor="#0aa">About 1</GridItem>
+        <GridItem as={Link} href="/comic" index={3} bgColor="#aa0">Comic 2</GridItem>
+        <GridItem as={Link} href="/about" index={4} bgColor="#a00">About 2</GridItem> */}
+        <GridItem href="/comic" index={1} bgColor="#a0a">Comic 1</GridItem>
+        <GridItem href="/about" index={2} bgColor="#0aa">About 1</GridItem>
+        <GridItem href="/comic" index={3} bgColor="#aa0">Comic 2</GridItem>
+        <GridItem href="/about" index={4} bgColor="#a00">About 2</GridItem>
     </Grid>
   );
 };
