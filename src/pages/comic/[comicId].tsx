@@ -1,5 +1,5 @@
-// src/pages/comic.tsx
 import React from 'react';
+import styled from 'styled-components';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image'; // Import the Image component
 import { IComic } from 'db/models/Comic';
@@ -10,6 +10,29 @@ import GlobalStyle from '../../styles/GlobalStyle';
 import theme from '../../styles/theme';
 import { ThemeProvider } from 'styled-components';
 
+const ComicPanel = styled.div`
+  display: grid;
+  grid-template-columns: minmax(90vw, 600px);
+  justify-content: center;
+  padding-top: 40px;
+`;
+
+const ComicImage = styled.div`
+  position: relative;
+  width: 100%;
+  padding-bottom: 66.67%; // 66.67% for sspect ratio 3:2
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    object-fit: contain;
+  }
+`;
+
 interface ComicViewerProps {
   comic: IComic;
 }
@@ -17,25 +40,20 @@ interface ComicViewerProps {
 const ComicViewer: React.FC<ComicViewerProps> = ({ comic }) => {
   return (
     <ThemeProvider theme={theme}>
-      {/* <Router> */}
       <GlobalStyle />
       <Navbar />
-      <div>
-        {comic.panels.map((panel) => {
-          return (
+      <ComicPanel>
+        {comic.panels.map((panel) => (
+          <ComicImage key={panel._id}>
             <Image
-              key={panel._id}
               src={panel.image_url}
               alt={`Panel ${panel.panel_number}`}
-              width={panel.width || 600} // Provide the width (use panel.width if available or a default value)
-              height={panel.height || 400} // Provide the height (use panel.height if available or a default value)
-              // layout="fill"
+              fill
             />
-          )
-          })}
-      </div>
+          </ComicImage>
+        ))}
+      </ComicPanel>
       <Footer />
-      {/* </Router> */}
     </ThemeProvider>
   );
 };

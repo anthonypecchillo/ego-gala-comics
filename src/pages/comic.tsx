@@ -12,20 +12,24 @@ import { ThemeProvider } from 'styled-components';
 import { fetchComicsByCategory } from '../services/comics';
 import { IComic } from '../../db/models/Comic';
 
-
-
 const ComicPageGrid = styled.div`
   display: grid;
   grid-gap: 5vw;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 2fr;
   grid-template-areas:
-    "comic-list ."
+    "comic-list content"
     "comic-list .";
   padding: 5vw;
 
   @media (max-width: 768px) {
-    // Add your styles for tablet view
+    grid-gap: 5vw;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+      "content"
+      "comic-list";
+    padding: 5vw;
   }
 
   @media (max-width: 480px) {
@@ -35,6 +39,10 @@ const ComicPageGrid = styled.div`
 
 const StyledComicList = styled.div`
   grid-area: comic-list;
+`;
+
+const StyledContent = styled.div`
+  grid-area: content;
 `;
 
 // TODO: Add other styled components for Title, Paragraph, Button, and Image
@@ -88,7 +96,7 @@ const ComicPage: React.FC = () => {
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageClick={setCurrentPage} />
         </StyledComicList>
         {/* Add other components for Title, Paragraph, Button, and Image */}
-        <div>
+        <StyledContent>
           <Title>Ego Gala's Archive</Title>
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum ligula felis, eget lobortis nisi egestas at. Pellentesque suscipit convallis enim at suscipit. Proin nec sem sit amet arcu consequat viverra.
@@ -98,7 +106,7 @@ const ComicPage: React.FC = () => {
           </Paragraph>
           <FirstComicButton>FIRST COMIC</FirstComicButton>
           {/* Add Image component */}
-        </div>
+        </StyledContent>
         <div>Fun Image</div>
       </ComicPageGrid>
       <NewsletterForm />
