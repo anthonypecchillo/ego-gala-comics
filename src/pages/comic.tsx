@@ -60,15 +60,16 @@ const ComicPage: React.FC = () => {
   useEffect(() => {
     const fetchCategoryComics = async () => {
       try {
-        const categoryComics = await fetchComicsByCategory(activeTab);
+        const { comics: categoryComics, totalPages } = await fetchComicsByCategory(activeTab, currentPage);
         setComics(categoryComics);
+        setTotalPages(totalPages); // Update the totalPages state here
       } catch (error) {
         console.error('Error fetching category-specific comics:', error);
       }
     };
 
     fetchCategoryComics();
-  }, [activeTab]);
+  }, [activeTab, currentPage]);
 
   const handleTabClick = (category: string) => {
     setActiveTab(category);

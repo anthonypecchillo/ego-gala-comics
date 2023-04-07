@@ -31,21 +31,24 @@ router.get('/comics', async (ctx) => {
     const { category, page, limit } = ctx.query;
     const query = category ? { category } : {};
 
-    console.log(category, page, limit, JSON.stringify(query))
-
     let comics: IComic[];
+    let totalPages = 1;
     if (page && limit) {
       const skip = (Number(page) - 1) * Number(limit);
       comics = await Comic.find(query)
         .populate('panels')
         .skip(skip)
         .limit(Number(limit));
-      } else {
-        comics = await Comic.find(query)
-        .populate('panels');
-      }
 
-    ctx.body = comics;
+      // Calculate total number of pages
+      const count = await Comic.countDocuments(query);
+      totalPages = Math.ceil(count / Number(limit));
+    } else {
+      comics = await Comic.find(query).populate('panels');
+    }
+
+    // Return both comics and totalPages
+    ctx.body = { comics, totalPages };
   } catch (err) {
     console.error(err);
     ctx.status = 500;

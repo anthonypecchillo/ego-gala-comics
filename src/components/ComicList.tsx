@@ -16,15 +16,13 @@ const ListItem = styled.li`
 `;
 
 interface ComicListProps {
-  comics: Array<{
-    _id: string;
-    title: string;
-    publication_date: string;
-  }>;
+  comics: IComic[];
 }
 
 const ComicList: React.FC<ComicListProps> = ({ comics }) => {
   const [selectedComic, setSelectedComic] = useState<IComic | null>(null);
+
+  console.log('whattup', comics)
 
   const handleComicClick = async (comicId: string) => {
     try {
