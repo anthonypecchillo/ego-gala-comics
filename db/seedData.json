@@ -3,27 +3,12 @@
     "title": "Comic 1",
     "category": "diary",
     "description": "This is comic number 1.",
-    "publication_date": "2023-04-04T00:00:00.000Z",
+    "publication_date": "2023-01-01T00:00:00.000Z",
     "panels": [
       {
         "panel_number": 1,
-        "image_url": "https://example.com/comic-1/panel-1.jpg",
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January01.jpg?resize=1024%2C876&ssl=1",
         "transcription": "Text for comic 1, panel 1"
-      },
-      {
-        "panel_number": 2,
-        "image_url": "https://example.com/comic-1/panel-2.jpg",
-        "transcription": "Text for comic 1, panel 2"
-      },
-      {
-        "panel_number": 3,
-        "image_url": "https://example.com/comic-1/panel-3.jpg",
-        "transcription": "Text for comic 1, panel 3"
-      },
-      {
-        "panel_number": 4,
-        "image_url": "https://example.com/comic-1/panel-4.jpg",
-        "transcription": "Text for comic 1, panel 4"
       }
     ]
   },
@@ -31,27 +16,480 @@
     "title": "Comic 2",
     "category": "diary",
     "description": "This is comic number 2.",
-    "publication_date": "2023-04-05T00:00:00.000Z",
+    "publication_date": "2023-01-02T00:00:00.000Z",
     "panels": [
       {
         "panel_number": 1,
-        "image_url": "https://example.com/comic-2/panel-1.jpg",
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January02.jpg?resize=1024%2C876&ssl=1",
         "transcription": "Text for comic 2, panel 1"
-      },
+      }
+    ]
+  },
+  {
+    "title": "Comic 3",
+    "category": "diary",
+    "description": "This is comic number 3.",
+    "publication_date": "2023-01-03T00:00:00.000Z",
+    "panels": [
       {
-        "panel_number": 2,
-        "image_url": "https://example.com/comic-2/panel-2.jpg",
-        "transcription": "Text for comic 2, panel 2"
-      },
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January03.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 3, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 4",
+    "category": "diary",
+    "description": "This is comic number 4.",
+    "publication_date": "2023-01-04T00:00:00.000Z",
+    "panels": [
       {
-        "panel_number": 3,
-        "image_url": "https://example.com/comic-2/panel-3.jpg",
-        "transcription": "Text for comic 2, panel 3"
-      },
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January04.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 4, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 5",
+    "category": "diary",
+    "description": "This is comic number 5.",
+    "publication_date": "2023-01-05T00:00:00.000Z",
+    "panels": [
       {
-        "panel_number": 4,
-        "image_url": "https://example.com/comic-2/panel-4.jpg",
-        "transcription": "Text for comic 2, panel 4"
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January05.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 5, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 6",
+    "category": "diary",
+    "description": "This is comic number 6.",
+    "publication_date": "2023-01-06T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January06.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 6, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 7",
+    "category": "diary",
+    "description": "This is comic number 7.",
+    "publication_date": "2023-01-07T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January07.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 7, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 8",
+    "category": "diary",
+    "description": "This is comic number 8.",
+    "publication_date": "2023-01-08T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January08.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 8, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 9",
+    "category": "diary",
+    "description": "This is comic number 9.",
+    "publication_date": "2023-01-09T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January09.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 9, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 10",
+    "category": "diary",
+    "description": "This is comic number 10.",
+    "publication_date": "2023-01-10T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January10.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 10, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 11",
+    "category": "diary",
+    "description": "This is comic number 11.",
+    "publication_date": "2023-01-11T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January11.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 11, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 12",
+    "category": "diary",
+    "description": "This is comic number 12.",
+    "publication_date": "2023-01-12T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January12.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 12, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 13",
+    "category": "diary",
+    "description": "This is comic number 13.",
+    "publication_date": "2023-01-13T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January13.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 13, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 14",
+    "category": "diary",
+    "description": "This is comic number 14.",
+    "publication_date": "2023-01-14T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January14.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 14, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 15",
+    "category": "diary",
+    "description": "This is comic number 15.",
+    "publication_date": "2023-01-15T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January15.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 15, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 16",
+    "category": "diary",
+    "description": "This is comic number 16.",
+    "publication_date": "2023-01-16T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January16.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 16, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 17",
+    "category": "diary",
+    "description": "This is comic number 17.",
+    "publication_date": "2023-01-17T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January17.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 17, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 18",
+    "category": "diary",
+    "description": "This is comic number 18.",
+    "publication_date": "2023-01-18T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January18.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 18, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 19",
+    "category": "diary",
+    "description": "This is comic number 19.",
+    "publication_date": "2023-01-19T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January19.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 19, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 20",
+    "category": "diary",
+    "description": "This is comic number 20.",
+    "publication_date": "2023-01-20T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January20.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 20, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 21",
+    "category": "diary",
+    "description": "This is comic number 21.",
+    "publication_date": "2023-01-21T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January21.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 21, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 22",
+    "category": "diary",
+    "description": "This is comic number 22.",
+    "publication_date": "2023-01-22T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January22.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 22, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 23",
+    "category": "diary",
+    "description": "This is comic number 23.",
+    "publication_date": "2023-01-23T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/January23.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 23, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 24",
+    "category": "diary",
+    "description": "This is comic number 24.",
+    "publication_date": "2023-01-24T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/February24.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 24, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 25",
+    "category": "diary",
+    "description": "This is comic number 25.",
+    "publication_date": "2023-01-25T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/February25.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 25, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 26",
+    "category": "diary",
+    "description": "This is comic number 26.",
+    "publication_date": "2023-01-26T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/February26.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 26, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 27",
+    "category": "diary",
+    "description": "This is comic number 27.",
+    "publication_date": "2023-01-27T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/February27.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 27, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 28",
+    "category": "diary",
+    "description": "This is comic number 28.",
+    "publication_date": "2023-01-28T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/February28.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 28, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 29",
+    "category": "diary",
+    "description": "This is comic number 29.",
+    "publication_date": "2023-01-29T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March01.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 29, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 30",
+    "category": "diary",
+    "description": "This is comic number 30.",
+    "publication_date": "2023-01-30T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March02.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 30, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 31",
+    "category": "diary",
+    "description": "This is comic number 31.",
+    "publication_date": "2023-01-31T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March03.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 31, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 32",
+    "category": "diary",
+    "description": "This is comic number 32.",
+    "publication_date": "2023-02-01T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March04.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 32, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 33",
+    "category": "diary",
+    "description": "This is comic number 33.",
+    "publication_date": "2023-02-02T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March05.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 33, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 34",
+    "category": "fantology",
+    "description": "This is comic number 34.",
+    "publication_date": "2023-02-03T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March06.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 34, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 35",
+    "category": "fantology",
+    "description": "This is comic number 35.",
+    "publication_date": "2023-02-04T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March07.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 35, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 36",
+    "category": "compendium",
+    "description": "This is comic number 36.",
+    "publication_date": "2023-02-05T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March08.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 36, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 37",
+    "category": "compendium",
+    "description": "This is comic number 37.",
+    "publication_date": "2023-02-06T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March09.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 37, panel 1"
+      }
+    ]
+  },
+  {
+    "title": "Comic 38",
+    "category": "compendium",
+    "description": "This is comic number 38.",
+    "publication_date": "2023-02-07T00:00:00.000Z",
+    "panels": [
+      {
+        "panel_number": 1,
+        "image_url": "https://i0.wp.com/kristenshull.com/wp-content/uploads/2022/03/March10.jpg?resize=1024%2C876&ssl=1",
+        "transcription": "Text for comic 38, panel 1"
       }
     ]
   }
