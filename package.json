@@ -38,6 +38,7 @@
     "mongoose": "^7.0.3",
     "next": "13.2.4",
     "react": "^18.2.0",
+    "react-calendar": "^4.2.1",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.10.0",
     "styled-components": "^5.3.9",
