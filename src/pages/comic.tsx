@@ -97,7 +97,7 @@ const ComicPage: React.FC = () => {
         </StyledComicList>
         {/* Add other components for Title, Paragraph, Button, and Image */}
         <StyledContent>
-          <Title>Ego Gala's Archive</Title>
+          <Title>Ego Gala Archive</Title>
           <Paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum ligula felis, eget lobortis nisi egestas at. Pellentesque suscipit convallis enim at suscipit. Proin nec sem sit amet arcu consequat viverra.
           </Paragraph>
