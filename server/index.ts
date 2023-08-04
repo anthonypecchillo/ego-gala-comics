@@ -58,11 +58,11 @@ router.get('/comics', async (ctx) => {
   }
 });
 
-
-
 router.get('/comics/:id', async (ctx) => {
   try {
-    const comic: IComic | null = await Comic.findById(ctx.params.id).populate('panels');
+    const comic: IComic | null = await Comic.findById(ctx.params.id).populate(
+      'panels',
+    );
     if (comic) {
       ctx.body = comic;
     } else {
@@ -78,8 +78,13 @@ router.get('/comics/:id', async (ctx) => {
 
 // TODO: Handle errors
 router.get('/api/comics/dates', async (ctx) => {
-  const comics = await Comic.find({ category: 'diary' }, 'publication_date _id');
-  const dateIdMapping = comics.reduce<{ [date: string]: mongoose.Types.ObjectId }>((acc, comic) => {
+  const comics = await Comic.find(
+    { category: 'diary' },
+    'publication_date _id',
+  );
+  const dateIdMapping = comics.reduce<{
+    [date: string]: mongoose.Types.ObjectId;
+  }>((acc, comic) => {
     const date = new Date(comic.publication_date).toISOString().split('T')[0]; // Transform the date into 'yyyy-mm-dd' format
     acc[date] = comic._id;
     return acc;

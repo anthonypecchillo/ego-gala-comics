@@ -20,11 +20,11 @@ const PageButton = styled.button`
   text-align: center;
 
   &:hover {
-  background-color: #e0e0e0;
+    background-color: #e0e0e0;
   }
 
   &.active {
-  background-color: #d0d0d0;
+    background-color: #d0d0d0;
   }
 `;
 
@@ -34,7 +34,11 @@ interface PaginationProps {
   onPageClick: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageClick }) => {
+const Pagination: React.FC<PaginationProps> = ({
+  currentPage,
+  totalPages,
+  onPageClick,
+}) => {
   return (
     <PaginationWrapper>
       {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (

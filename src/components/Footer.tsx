@@ -21,7 +21,7 @@ const FooterLink = styled.a`
   text-decoration: none;
   &:hover {
     color: #ccc;
-    color: #73E10A;
+    color: #73e10a;
   }
 `;
 

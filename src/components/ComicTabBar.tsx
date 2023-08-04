@@ -56,12 +56,14 @@ const TabBar = styled.div`
 const Tab = styled.div<{ isActive: boolean }>`
   padding: 10px 20px;
   cursor: pointer;
-  background-color: ${({ isActive, theme }) => (isActive ? theme.colors.darkGrey : 'transparent')};
+  background-color: ${({ isActive, theme }) =>
+    isActive ? theme.colors.darkGrey : 'transparent'};
   color: ${({ theme }) => theme.colors.text};
   transition: background-color 0.2s ease-in-out;
 
   &:hover {
-    background-color: ${({ isActive, theme }) => (isActive ? theme.colors.darkGrey : theme.colors.hoverGrey)};
+    background-color: ${({ isActive, theme }) =>
+      isActive ? theme.colors.darkGrey : theme.colors.hoverGrey};
   }
 
   // Updated styles for the Tab

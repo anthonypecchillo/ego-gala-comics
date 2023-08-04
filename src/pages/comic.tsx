@@ -18,8 +18,8 @@ const ComicPageGrid = styled.div`
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 2fr;
   grid-template-areas:
-    "comic-list content"
-    "comic-list .";
+    'comic-list content'
+    'comic-list .';
   padding: 5vw;
 
   @media (max-width: 768px) {
@@ -27,8 +27,8 @@ const ComicPageGrid = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, auto);
     grid-template-areas:
-      "content"
-      "comic-list";
+      'content'
+      'comic-list';
     padding: 5vw;
   }
 
@@ -64,11 +64,11 @@ const ComicPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-
   useEffect(() => {
     const fetchCategoryComics = async () => {
       try {
-        const { comics: categoryComics, totalPages } = await fetchComicsByCategory(activeTab, currentPage);
+        const { comics: categoryComics, totalPages } =
+          await fetchComicsByCategory(activeTab, currentPage);
         setComics(categoryComics);
         setTotalPages(totalPages); // Update the totalPages state here
       } catch (error) {
@@ -91,18 +91,35 @@ const ComicPage: React.FC = () => {
       <ComicTabBar activeTab={activeTab} onTabClick={handleTabClick} />
       <ComicPageGrid>
         <StyledComicList>
-          <Pagination currentPage={currentPage} totalPages={totalPages} onPageClick={setCurrentPage} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageClick={setCurrentPage}
+          />
           <ComicList comics={comics} />
-          <Pagination currentPage={currentPage} totalPages={totalPages} onPageClick={setCurrentPage} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageClick={setCurrentPage}
+          />
         </StyledComicList>
         {/* Add other components for Title, Paragraph, Button, and Image */}
         <StyledContent>
           <Title>Ego Gala Archive</Title>
           <Paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum ligula felis, eget lobortis nisi egestas at. Pellentesque suscipit convallis enim at suscipit. Proin nec sem sit amet arcu consequat viverra.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            rutrum ligula felis, eget lobortis nisi egestas at. Pellentesque
+            suscipit convallis enim at suscipit. Proin nec sem sit amet arcu
+            consequat viverra.
           </Paragraph>
           <Paragraph>
-            Ut consectetur diam ac augue venenatis sagittis. Quisque mauris diam, laoreet a quam ac, tincidunt feugiat mi. Fusce maximus non mi pretium vulputate.<a href="https://www.tavern-wenches.com/settings/">Accessibility Settings</a>.
+            Ut consectetur diam ac augue venenatis sagittis. Quisque mauris
+            diam, laoreet a quam ac, tincidunt feugiat mi. Fusce maximus non mi
+            pretium vulputate.
+            <a href="https://www.tavern-wenches.com/settings/">
+              Accessibility Settings
+            </a>
+            .
           </Paragraph>
           <FirstComicButton>FIRST COMIC</FirstComicButton>
           {/* Add Image component */}

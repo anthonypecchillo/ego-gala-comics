@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Link from "next/link";
-import { fetchComic } from "../services/comics";
-import { IComic } from "db/models/Comic";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Link from 'next/link';
+import { fetchComic } from '../services/comics';
+import { IComic } from 'db/models/Comic';
 
 const List = styled.ul`
   grid-area: comic-list;

@@ -46,10 +46,14 @@ const NewsletterForm: React.FC = () => {
       if (response.status === 201) {
         setStatusMessage("You've signed up for our weekly newsletter!");
       } else {
-        setStatusMessage('There was a problem signing up for our weekly newsletter. Please try again later, or contact us for support via email.');
+        setStatusMessage(
+          'There was a problem signing up for our weekly newsletter. Please try again later, or contact us for support via email.',
+        );
       }
     } catch (error) {
-      setStatusMessage('There was a problem signing up for our weekly newsletter. Please try again later, or contact us for support via email.');
+      setStatusMessage(
+        'There was a problem signing up for our weekly newsletter. Please try again later, or contact us for support via email.',
+      );
     } finally {
       setLoading(false);
     }

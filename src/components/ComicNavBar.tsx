@@ -38,26 +38,46 @@ interface ComicNavBarProps {
   maxPanelNumber: number;
 }
 
-const ComicNavBar: React.FC<ComicNavBarProps> = ({ comicId, panelNumber, maxPanelNumber }) => {
+const ComicNavBar: React.FC<ComicNavBarProps> = ({
+  comicId,
+  panelNumber,
+  maxPanelNumber,
+}) => {
   const isFirstPanel = panelNumber === 1;
   const isLastPanel = panelNumber === maxPanelNumber;
 
-  console.log('isFirstPanel', isFirstPanel)
-  console.log('isLastPanel', isLastPanel)
+  console.log('isFirstPanel', isFirstPanel);
+  console.log('isLastPanel', isLastPanel);
 
   return (
     <NavWrapper>
-      <StyledLink href={`/comic/${comicId}/001`} aria-label="First panel" tabIndex={isFirstPanel ? -1 : 0}>
+      <StyledLink
+        href={`/comic/${comicId}/001`}
+        aria-label="First panel"
+        tabIndex={isFirstPanel ? -1 : 0}
+      >
         {isFirstPanel ? '<< First' : '<<'}
       </StyledLink>
-      <StyledLink href={`/comic/${comicId}/${String(panelNumber - 1).padStart(3, '0')}`} aria-label="Previous panel" tabIndex={isFirstPanel ? -1 : 0}>
+      <StyledLink
+        href={`/comic/${comicId}/${String(panelNumber - 1).padStart(3, '0')}`}
+        aria-label="Previous panel"
+        tabIndex={isFirstPanel ? -1 : 0}
+      >
         {isFirstPanel ? '< Prev' : '<'}
       </StyledLink>
       <PageNumber>Page {panelNumber}</PageNumber>
-      <StyledLink href={`/comic/${comicId}/${String(panelNumber + 1).padStart(3, '0')}`} aria-label="Next panel" tabIndex={isLastPanel ? -1 : 0}>
+      <StyledLink
+        href={`/comic/${comicId}/${String(panelNumber + 1).padStart(3, '0')}`}
+        aria-label="Next panel"
+        tabIndex={isLastPanel ? -1 : 0}
+      >
         {isLastPanel ? 'Next >' : '>'}
       </StyledLink>
-      <StyledLink href={`/comic/${comicId}/${String(maxPanelNumber).padStart(3, '0')}`} aria-label="Last panel" tabIndex={isLastPanel ? -1 : 0}>
+      <StyledLink
+        href={`/comic/${comicId}/${String(maxPanelNumber).padStart(3, '0')}`}
+        aria-label="Last panel"
+        tabIndex={isLastPanel ? -1 : 0}
+      >
         {isLastPanel ? 'Last >>' : '>>'}
       </StyledLink>
     </NavWrapper>

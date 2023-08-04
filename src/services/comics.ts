@@ -24,14 +24,18 @@ export async function fetchComics(comicCollection: string, page: number) {
   }
 }
 
-export async function fetchComicsByCategory(category: string, page: number = 1, limit: number = 10) {
+export async function fetchComicsByCategory(
+  category: string,
+  page: number = 1,
+  limit: number = 10,
+) {
   try {
     const response = await axios.get(`${API_URL}/comics`, {
       params: {
         category,
         page,
-        limit
-      }
+        limit,
+      },
     });
     return response.data;
   } catch (error) {

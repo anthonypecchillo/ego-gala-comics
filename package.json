@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "prettier": "prettier --write .",
     "server-start": "ts-node ./server/index.ts",
     "db-delete-all": "ts-node ./db/deleteAll.ts",
     "db-seed": "ts-node ./db/seed.ts"
@@ -44,5 +45,8 @@
     "styled-components": "^5.3.9",
     "ts-node": "^10.9.1",
     "typescript": "5.0.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.1"
   }
 }

@@ -42,7 +42,7 @@ interface ComicViewerProps {
 
 const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
   const currentPanel = comic.panels.find(
-    (panel) => panel.panel_number === panelNumber
+    (panel) => panel.panel_number === panelNumber,
   );
 
   return (
@@ -56,7 +56,11 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
       />
       <ComicPanel>
         <ComicImage key={currentPanel._id}>
-          <Image src={currentPanel.image_url} alt={`Panel ${currentPanel?.panel_number}`} fill />
+          <Image
+            src={currentPanel.image_url}
+            alt={`Panel ${currentPanel?.panel_number}`}
+            fill
+          />
         </ComicImage>
       </ComicPanel>
       <Footer />

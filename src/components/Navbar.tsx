@@ -1,13 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTwitter, faInstagram, faFacebookF, faRedditAlien } from '@fortawesome/free-brands-svg-icons';
-
+import {
+  faTwitter,
+  faInstagram,
+  faFacebookF,
+  faRedditAlien,
+} from '@fortawesome/free-brands-svg-icons';
 
 const NavbarContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: #A5C565;
+  background-color: #a5c565;
   background-color: rebeccapurple;
   background-color: #574177;
   background-color: #333;
@@ -36,9 +40,9 @@ const NavLink = styled.a`
   text-decoration: none;
   &:hover {
     color: #ccc;
-    color: #A5C565;
-    color: #73DC0A;
-    color: #73E10A;
+    color: #a5c565;
+    color: #73dc0a;
+    color: #73e10a;
   }
 `;
 
@@ -56,28 +60,28 @@ const Navbar: React.FC = () => {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <FontAwesomeIcon icon={faTwitter} /*size="lg" color="#123456"*//>
+          <FontAwesomeIcon icon={faTwitter} /*size="lg" color="#123456"*/ />
         </NavLink>
         <NavLink
           href="https://www.instagram.com/ego_gala/"
           rel="noopener noreferrer"
           target="_blank"
-          >
-          <FontAwesomeIcon icon={faInstagram} /*size="lg" color="#123456"*//>
+        >
+          <FontAwesomeIcon icon={faInstagram} /*size="lg" color="#123456"*/ />
         </NavLink>
         <NavLink
           href="https://www.facebook.com/k10.shull"
           rel="noopener noreferrer"
           target="_blank"
         >
-          <FontAwesomeIcon icon={faFacebookF} /*size="lg" color="#123456"*//>
+          <FontAwesomeIcon icon={faFacebookF} /*size="lg" color="#123456"*/ />
         </NavLink>
         <NavLink
           href="https://www.reddit.com/user/ego_gala/"
           rel="noopener noreferrer"
           target="_blank"
-          >
-          <FontAwesomeIcon icon={faRedditAlien} /*size="lg" color="#123456"*//>
+        >
+          <FontAwesomeIcon icon={faRedditAlien} /*size="lg" color="#123456"*/ />
         </NavLink>
       </NavRight>
     </NavbarContainer>

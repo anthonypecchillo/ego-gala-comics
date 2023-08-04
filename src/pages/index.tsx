@@ -13,12 +13,12 @@ const Index: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       {/* <Router> */}
-        <GlobalStyle />
-        <Navbar />
-        <Hero />
-        <GridSection />
-        <NewsletterForm />
-        <Footer />
+      <GlobalStyle />
+      <Navbar />
+      <Hero />
+      <GridSection />
+      <NewsletterForm />
+      <Footer />
       {/* </Router> */}
     </ThemeProvider>
   );

@@ -2,7 +2,8 @@ import mongoose from 'mongoose';
 import Comic from './models/Comic';
 import Panel from './models/Panel';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/ego_gala_comics';
+const MONGODB_URI =
+  process.env.MONGODB_URI || 'mongodb://localhost/ego_gala_comics';
 
 mongoose.connect(MONGODB_URI);
 
