@@ -16,7 +16,7 @@ const PageButton = styled.button`
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
-  line-height: 2rem;
+  line-height: 1rem;
   text-align: center;
 
   &:hover {
