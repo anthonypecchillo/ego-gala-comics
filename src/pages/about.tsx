@@ -16,7 +16,7 @@ const About: React.FC = () => {
       <GlobalStyle />
       <Navbar />
       <div>About page</div>
-      <NewsletterForm />
+      {/* <NewsletterForm /> */}
       <Footer />
       {/* </Router> */}
     </ThemeProvider>

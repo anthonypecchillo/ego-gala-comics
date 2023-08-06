@@ -17,7 +17,7 @@ const Index: React.FC = () => {
       <Navbar />
       <Hero />
       <GridSection />
-      <NewsletterForm />
+      {/* <NewsletterForm /> */}
       <Footer />
       {/* </Router> */}
     </ThemeProvider>

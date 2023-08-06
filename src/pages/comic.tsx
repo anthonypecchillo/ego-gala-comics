@@ -126,7 +126,7 @@ const ComicPage: React.FC = () => {
         </StyledContent>
         <div>Fun Image</div>
       </ComicPageGrid>
-      <NewsletterForm />
+      {/* <NewsletterForm /> */}
       <Footer />
       {/* </Router> */}
     </ThemeProvider>
