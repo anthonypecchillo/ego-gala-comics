@@ -45,7 +45,6 @@ const StyledContent = styled.div`
   grid-area: content;
 `;
 
-// TODO: Add other styled components for Title, Paragraph, Button, and Image
 const Title = styled.h2`
   // Add your styles for Title
 `;
@@ -70,7 +69,7 @@ const ComicPage: React.FC = () => {
         const { comics: categoryComics, totalPages } =
           await fetchComicsByCategory(activeTab, currentPage);
         setComics(categoryComics);
-        setTotalPages(totalPages); // Update the totalPages state here
+        setTotalPages(totalPages);
       } catch (error) {
         console.error('Error fetching category-specific comics:', error);
       }
@@ -85,7 +84,6 @@ const ComicPage: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <Router> */}
       <GlobalStyle />
       <Navbar />
       <ComicTabBar activeTab={activeTab} onTabClick={handleTabClick} />
@@ -103,7 +101,6 @@ const ComicPage: React.FC = () => {
             onPageClick={setCurrentPage}
           />
         </StyledComicList>
-        {/* Add other components for Title, Paragraph, Button, and Image */}
         <StyledContent>
           <Title>Ego Gala Archive</Title>
           <Paragraph>
@@ -126,9 +123,7 @@ const ComicPage: React.FC = () => {
         </StyledContent>
         <div>Fun Image</div>
       </ComicPageGrid>
-      {/* <NewsletterForm /> */}
       <Footer />
-      {/* </Router> */}
     </ThemeProvider>
   );
 };
