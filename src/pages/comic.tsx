@@ -5,12 +5,13 @@ import Footer from '../components/Footer';
 import NewsletterForm from '../components/NewsletterForm';
 import ComicTabBar from '../components/ComicTabBar';
 import ComicList from '../components/ComicList';
-import Pagination from '../components/Pagination';
+// import Pagination from '../components/Pagination';
 import GlobalStyle from '../styles/GlobalStyle';
 import theme from '../styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { fetchComicsByCategory } from '../services/comics';
 import { IComic } from '../../db/models/Comic';
+import { Pagination } from '@mui/material';
 
 const ComicPageGrid = styled.div`
   display: grid;
@@ -39,6 +40,12 @@ const ComicPageGrid = styled.div`
 
 const StyledComicList = styled.div`
   grid-area: comic-list;
+`;
+
+const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
 `;
 
 const StyledContent = styled.div`
@@ -82,6 +89,13 @@ const ComicPage: React.FC = () => {
     setActiveTab(category);
   };
 
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    page: number,
+  ) => {
+    setCurrentPage(page);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -89,18 +103,27 @@ const ComicPage: React.FC = () => {
       <ComicTabBar activeTab={activeTab} onTabClick={handleTabClick} />
       <ComicPageGrid>
         <StyledComicList>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageClick={setCurrentPage}
-          />
+          <PaginationWrapper>
+            <Pagination
+              count={totalPages}
+              page={currentPage}
+              onChange={handlePageChange}
+              color="primary"
+            />
+          </PaginationWrapper>
+
           <ComicList comics={comics} />
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageClick={setCurrentPage}
-          />
+
+          <PaginationWrapper>
+            <Pagination
+              count={totalPages}
+              page={currentPage}
+              onChange={handlePageChange}
+              color="primary"
+            />
+          </PaginationWrapper>
         </StyledComicList>
+
         <StyledContent>
           <Title>Ego Gala Archive</Title>
           <Paragraph>
@@ -121,6 +144,7 @@ const ComicPage: React.FC = () => {
           <FirstComicButton>FIRST COMIC</FirstComicButton>
           {/* Add Image component */}
         </StyledContent>
+
         <div>Fun Image</div>
       </ComicPageGrid>
       <Footer />
