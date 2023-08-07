@@ -25,6 +25,20 @@ const ComicNavBar: React.FC<ComicNavBarProps> = ({
 }) => {
   const router = useRouter();
 
+  // Prefetch the neighboring pages
+  useEffect(() => {
+    if (panelNumber > 1) {
+      router.prefetch(
+        `/comic/${comicId}/${String(panelNumber - 1).padStart(3, '0')}`,
+      );
+    }
+    if (panelNumber < maxPanelNumber) {
+      router.prefetch(
+        `/comic/${comicId}/${String(panelNumber + 1).padStart(3, '0')}`,
+      );
+    }
+  }, [comicId, panelNumber, maxPanelNumber, router]);
+
   const handlePageChange = (
     _event: React.ChangeEvent<unknown>,
     page: number,
