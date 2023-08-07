@@ -109,6 +109,8 @@ const ComicPage: React.FC = () => {
               page={currentPage}
               onChange={handlePageChange}
               color="primary"
+              showFirstButton
+              showLastButton
             />
           </PaginationWrapper>
 
@@ -120,6 +122,8 @@ const ComicPage: React.FC = () => {
               page={currentPage}
               onChange={handlePageChange}
               color="primary"
+              showFirstButton
+              showLastButton
             />
           </PaginationWrapper>
         </StyledComicList>
