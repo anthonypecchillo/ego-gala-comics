@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GetServerSideProps } from 'next';
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image';
 import { IComic } from 'db/models/Comic';
 import Navbar from '../../../components/Navbar';
 import Footer from '../../../components/Footer';
@@ -80,7 +80,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         redirect: {
           destination: `/comic/${comicId}/001`,
-          permanent: false, // Set to false for temporary redirect
+          permanent: false,
         },
       };
     }
@@ -89,7 +89,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return {
         redirect: {
           destination: `/comic/${comicId}`,
-          permanent: false, // Set to false for temporary redirect
+          permanent: false,
         },
       };
     }
@@ -99,7 +99,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return { notFound: true };
     }
 
-    return { props: { comic, panelNumber: Number(panelNumber) } }; // Pass panelNumber as a prop
+    return { props: { comic, panelNumber: Number(panelNumber) } };
   } catch (error) {
     console.error('Error fetching comic:', error);
     return { notFound: true };
