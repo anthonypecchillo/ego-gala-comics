@@ -12,13 +12,9 @@ import theme from '../styles/theme';
 const About: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      {/* <Router> */}
       <GlobalStyle />
       <Navbar />
       <div>About page</div>
-      {/* <NewsletterForm /> */}
-      <Footer />
-      {/* </Router> */}
     </ThemeProvider>
   );
 };

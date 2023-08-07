@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GetServerSideProps } from 'next';
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image';
 import { IComic } from 'db/models/Comic';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
@@ -63,8 +63,6 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic }) => {
         )}
       </ComicPanel>
       <DiaryCalendar />
-      <Footer />
-      {/* ... */}
     </ThemeProvider>
   );
 };

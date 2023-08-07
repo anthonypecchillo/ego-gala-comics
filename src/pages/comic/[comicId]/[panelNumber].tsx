@@ -63,7 +63,6 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
           />
         </ComicImage>
       </ComicPanel>
-      <Footer />
     </ThemeProvider>
   );
 };

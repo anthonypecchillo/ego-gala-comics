@@ -17,7 +17,7 @@ const ComicPageGrid = styled.div`
   display: grid;
   grid-gap: 5vw;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 2fr;
+  grid-template-rows: 1fr auto;
   grid-template-areas:
     'comic-list content'
     'comic-list .';
@@ -151,7 +151,6 @@ const ComicPage: React.FC = () => {
 
         <div>Fun Image</div>
       </ComicPageGrid>
-      <Footer />
     </ThemeProvider>
   );
 };
