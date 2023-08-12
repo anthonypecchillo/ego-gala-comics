@@ -4,39 +4,17 @@ import {
   Grid,
   Typography,
   Avatar,
+  Card,
+  CardContent,
+  CardActionArea,
   useMediaQuery,
   useTheme,
 } from '@mui/material';
 import { Facebook, Twitter, Instagram, Reddit } from '@mui/icons-material';
-import styled from 'styled-components';
-
-const SocialBox = styled.a`
-  display: grid;
-  grid-template-columns: 60px 1fr;
-  align-items: center;
-  justify-items: center;
-  background-color: #f0f0f0;
-  padding: 8px;
-  border-radius: 5px;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #d0d0d0;
-  }
-`;
-
-const SocialAvatar = styled(Avatar)`
-  width: 55px;
-  height: 55px;
-  margin-right: 10px;
-`;
 
 const Footer: React.FC = () => {
   const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
 
   const socialLinks = [
     {
@@ -66,6 +44,7 @@ const Footer: React.FC = () => {
       component="footer"
       disableGutters
       style={{ backgroundColor: '#222' }}
+      maxWidth={false}
     >
       <Grid
         container
@@ -88,10 +67,36 @@ const Footer: React.FC = () => {
         >
           {socialLinks.map((social, index) => (
             <Grid item xs={isTablet ? 6 : 3} key={index}>
-              <SocialBox href={social.url}>
-                <SocialAvatar>{social.icon}</SocialAvatar>
-                <Typography variant="h5">{social.name}</Typography>
-              </SocialBox>
+              <Card
+                style={{
+                  display: 'flex',
+                  // alignItems: 'center',
+                  backgroundColor: '#f0f0f0',
+                  width: 200,
+                }}
+              >
+                <CardActionArea
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'start',
+                    color: '#222',
+                    '&:hover': {
+                      backgroundColor: '#e0e0e0',
+                    },
+                  }}
+                >
+                  <Avatar style={{ width: 55, height: 55, margin: 10 }}>
+                    {social.icon}
+                  </Avatar>
+                  <CardContent style={{ paddingLeft: 8 }}>
+                    <Typography variant="h6">{social.name}</Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
             </Grid>
           ))}
         </Grid>
