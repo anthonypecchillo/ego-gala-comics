@@ -62,9 +62,11 @@ const ComicList: React.FC<ComicListProps> = ({ comics }) => {
             >
               <ListItemText primary={comic.title} />
               <ListItemText
-                secondary={new Date(
-                  comic.publication_date,
-                ).toLocaleDateString()}
+                secondary={new Intl.DateTimeFormat('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                }).format(new Date(comic.publication_date))}
                 align="right"
                 style={{ paddingRight: '10px' }}
               />
