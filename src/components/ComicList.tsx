@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
-import { fetchComic } from '../services/comics';
-import { IComic } from 'db/models/Comic';
-
-const List = styled.ul`
-  grid-area: comic-list;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-`;
-
-const ListItem = styled.li`
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #e0e0e0;
-`;
+import React from 'react';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Avatar,
+  Link,
+  Box,
+  useTheme,
+} from '@mui/material';
+import { IComic } from '../../db/models/Comic';
 
 interface ComicListProps {
   comics: IComic[];
 }
 
 const ComicList: React.FC<ComicListProps> = ({ comics }) => {
+  const theme = useTheme();
+
   return (
     <List>
       {comics.map((comic) => (
@@ -31,10 +28,47 @@ const ComicList: React.FC<ComicListProps> = ({ comics }) => {
               : `/comic/${comic._id}`
           }
           key={comic._id}
+          underline="none"
         >
-          <ListItem>
-            {/* {comic.title} - {new Date(comic.publication_date).toLocaleDateString()} */}
-            {comic.title}
+          <ListItem
+            button
+            disableGutters
+            sx={{
+              padding: 0,
+              backgroundColor: '#e8e8e8',
+              borderBottom: `1px solid ${theme.palette.primary.main}`,
+              borderTop:
+                comics.indexOf(comic) === 0
+                  ? `1px solid ${theme.palette.primary.main}`
+                  : 'none',
+              '&:hover': {
+                backgroundColor: theme.palette.action.hover,
+              },
+            }}
+          >
+            <ListItemAvatar>
+              <Avatar
+                variant="square"
+                src={comic.panels[0].image_url}
+                alt={comic.title}
+                style={{ width: '80px', height: '80px', marginRight: '16px' }}
+              />
+            </ListItemAvatar>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+            >
+              <ListItemText primary={comic.title} />
+              <ListItemText
+                secondary={new Date(
+                  comic.publication_date,
+                ).toLocaleDateString()}
+                align="right"
+                style={{ paddingRight: '10px' }}
+              />
+            </Box>
           </ListItem>
         </Link>
       ))}
