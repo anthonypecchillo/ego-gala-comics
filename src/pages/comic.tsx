@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import NewsletterForm from '../components/NewsletterForm';
@@ -12,7 +13,8 @@ import theme from '../styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { fetchComicsByCategory } from '../services/comics';
 import { IComic } from '../../db/models/Comic';
-import { Pagination, Paper } from '@mui/material';
+import { Button, Hidden, Pagination, Paper, Typography } from '@mui/material';
+import { fetchEarliestDiaryComicId } from '../services/comics';
 
 const ComicPageGrid = styled.div`
   display: grid;
@@ -66,6 +68,7 @@ const FirstComicButton = styled.button`
 `;
 
 const ComicPage: React.FC = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState('diary');
   const [comics, setComics] = useState<IComic[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -95,6 +98,15 @@ const ComicPage: React.FC = () => {
     page: number,
   ) => {
     setCurrentPage(page);
+  };
+
+  const goToEarliestDiaryComic = async () => {
+    try {
+      const id = await fetchEarliestDiaryComicId();
+      router.push(`/comic/${id}`);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -140,43 +152,47 @@ const ComicPage: React.FC = () => {
         </StyledComicList>
 
         <StyledContent>
-          <Title>Ego Gala Archive</Title>
-          <Paragraph>
+          <Typography variant="h4" gutterBottom>
+            Ego Gala Archive
+          </Typography>
+          <Typography variant="body1" paragraph>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
             rutrum ligula felis, eget lobortis nisi egestas at. Pellentesque
             suscipit convallis enim at suscipit. Proin nec sem sit amet arcu
             consequat viverra.
-          </Paragraph>
-          <Paragraph>
+          </Typography>
+          <Typography variant="body1" paragraph>
             Ut consectetur diam ac augue venenatis sagittis. Quisque mauris
             diam, laoreet a quam ac, tincidunt feugiat mi. Fusce maximus non mi
-            pretium vulputate.
-            <a href="https://www.tavern-wenches.com/settings/">
-              Accessibility Settings
-            </a>
-            .
-          </Paragraph>
-          <FirstComicButton>FIRST COMIC</FirstComicButton>
-          {/* Add Image component */}
+            pretium vulputate.{' '}
+            <a href="https://example.com">Accessibility Settings</a>.
+          </Typography>
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            onClick={goToEarliestDiaryComic}
+          >
+            FIRST COMIC
+          </Button>
         </StyledContent>
 
-        {/* <Image src="/fun_image.png" width={284} height={393} /> */}
-        {/* repeat the line above this one, but add padding to the bottom of the Image component */}
-
-        <Image
-          alt="Fun image"
-          src="/fun_image.png"
-          width={284}
-          height={393}
-          layout="responsive"
-          style={{
-            margin: '0 auto',
-            paddingBottom: 70,
-            width: '100%',
-            maxWidth: 375,
-            position: 'relative',
-          }}
-        />
+        <Hidden smDown>
+          <Image
+            alt="Fun image"
+            src="/fun_image.png"
+            width={284}
+            height={393}
+            layout="responsive"
+            style={{
+              margin: '0 auto',
+              paddingBottom: 70,
+              width: '100%',
+              maxWidth: 325,
+              position: 'relative',
+            }}
+          />
+        </Hidden>
       </ComicPageGrid>
     </ThemeProvider>
   );
