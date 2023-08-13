@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import NewsletterForm from '../components/NewsletterForm';
@@ -149,7 +150,23 @@ const ComicPage: React.FC = () => {
           {/* Add Image component */}
         </StyledContent>
 
-        <div>Fun Image</div>
+        {/* <Image src="/fun_image.png" width={284} height={393} /> */}
+        {/* repeat the line above this one, but add padding to the bottom of the Image component */}
+
+        <Image
+          alt="Fun image"
+          src="/fun_image.png"
+          width={284}
+          height={393}
+          layout="responsive"
+          style={{
+            margin: '0 auto',
+            paddingBottom: 70,
+            width: '100%',
+            maxWidth: 375,
+            position: 'relative',
+          }}
+        />
       </ComicPageGrid>
     </ThemeProvider>
   );
