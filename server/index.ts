@@ -91,6 +91,26 @@ router.get('/api/comics/dates', async (ctx) => {
   ctx.body = dateIdMapping;
 });
 
+router.get('/api/comics/earliest-diary-id', async (ctx) => {
+  try {
+    const diaryComic: IComic[] = await Comic.find({ category: 'diary' })
+      .sort({ publication_date: 1 })
+      .limit(1);
+    if (diaryComic && diaryComic.length > 0) {
+      ctx.body = { id: diaryComic[0]._id };
+    } else {
+      ctx.status = 404;
+      ctx.body = { error: 'Diary comic not found.' };
+    }
+  } catch (err) {
+    console.error(err);
+    ctx.status = 500;
+    ctx.body = {
+      error: 'An error occurred while fetching the earliest diary comic ID.',
+    };
+  }
+});
+
 app
   .use(cors())
   .use(bodyParser())
