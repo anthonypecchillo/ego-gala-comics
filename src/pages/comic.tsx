@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import NewsletterForm from '../components/NewsletterForm';
 import ComicTabBar from '../components/ComicTabBar';
 import ComicList from '../components/ComicList';
 import GlobalStyle from '../styles/GlobalStyle';
@@ -50,18 +48,6 @@ const PaginationWrapper = styled.div`
 
 const StyledContent = styled.div`
   grid-area: content;
-`;
-
-const Title = styled.h2`
-  // Add your styles for Title
-`;
-
-const Paragraph = styled.p`
-  // Add your styles for Paragraph
-`;
-
-const FirstComicButton = styled.button`
-  // Add your styles for Button
 `;
 
 const ComicPage: React.FC = () => {

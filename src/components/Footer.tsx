@@ -40,17 +40,16 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <Container
-      component="footer"
-      disableGutters
-      style={{ backgroundColor: '#222' }}
-      maxWidth={false}
-    >
+    <Container component="footer" disableGutters maxWidth={false}>
       <Grid
         container
         spacing={5}
         direction="column"
-        style={{ padding: '45px', backgroundColor: '#555', color: '#fff' }}
+        style={{
+          padding: '45px',
+          backgroundColor: theme.palette.primary.main,
+          color: '#fff',
+        }}
       >
         <Grid item container justifyContent="center">
           <Typography variant="h5" gutterBottom style={{ textAlign: 'center' }}>
@@ -70,7 +69,6 @@ const Footer: React.FC = () => {
               <Card
                 style={{
                   display: 'flex',
-                  // alignItems: 'center',
                   backgroundColor: '#f0f0f0',
                   width: 200,
                 }}
@@ -106,7 +104,7 @@ const Footer: React.FC = () => {
         item
         style={{
           padding: '24px',
-          backgroundColor: '#111',
+          backgroundColor: theme.palette.secondary.main,
           color: '#fff',
           alignItems: 'center',
         }}

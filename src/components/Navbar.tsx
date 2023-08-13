@@ -220,16 +220,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-//   background-color: #a5c565;
-//   background-color: rebeccapurple;
-//   background-color: #574177;
-//   background-color: #333;
-//   background-color: #fff;
-//   &:hover {
-//     color: #ccc;
-//     color: #a5c565;
-//     color: #73dc0a;
-//     color: #73e10a;
-//   }
-// `;
