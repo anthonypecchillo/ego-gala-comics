@@ -43,3 +43,13 @@ export async function fetchComicsByCategory(
     throw error;
   }
 }
+
+export async function fetchEarliestDiaryComicId() {
+  try {
+    const response = await axios.get(`${API_URL}/api/comics/earliest-diary-id`);
+    return response.data.id;
+  } catch (error) {
+    console.error('Error fetching earliest diary comic ID:', error);
+    throw error;
+  }
+}
