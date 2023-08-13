@@ -7,7 +7,7 @@ interface ComicTabBarProps {
 }
 
 const StyledTabs = styled(Tabs)(({ theme }) => ({
-  backgroundColor: '#e8e8e8',
+  backgroundColor: '#fff',
 
   '& .MuiTabs-indicator': {
     backgroundColor: theme.palette.primary.main,

@@ -12,7 +12,7 @@ import theme from '../styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { fetchComicsByCategory } from '../services/comics';
 import { IComic } from '../../db/models/Comic';
-import { Pagination } from '@mui/material';
+import { Pagination, Paper } from '@mui/material';
 
 const ComicPageGrid = styled.div`
   display: grid;
@@ -101,7 +101,17 @@ const ComicPage: React.FC = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Navbar />
-      <ComicTabBar activeTab={activeTab} onTabClick={handleTabClick} />
+      <Paper
+        elevation={2}
+        sx={{
+          position: '-webkit-sticky' /* for Safari */,
+          position: 'sticky',
+          top: 64,
+          zIndex: 10,
+        }}
+      >
+        <ComicTabBar activeTab={activeTab} onTabClick={handleTabClick} />
+      </Paper>
       <ComicPageGrid>
         <StyledComicList>
           <PaginationWrapper>
