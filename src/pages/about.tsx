@@ -1,9 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import { ThemeProvider } from 'styled-components';
 import Navbar from '../components/Navbar';
 import GlobalStyle from '../styles/GlobalStyle';
-import theme from '../styles/theme';
 
 import {
   Container,
@@ -16,7 +14,7 @@ import {
 
 const About: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyle />
       <Navbar />
       <Paper elevation={3} sx={{ p: 2, my: 2, mx: 'auto', maxWidth: 'md' }}>
@@ -102,7 +100,7 @@ const About: React.FC = () => {
           </Box>
         </Container>
       </Paper>
-    </ThemeProvider>
+    </>
   );
 };
 

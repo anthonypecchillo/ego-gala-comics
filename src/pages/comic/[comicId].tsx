@@ -4,13 +4,9 @@ import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { IComic } from 'db/models/Comic';
 import Navbar from '../../components/Navbar';
-import Footer from '../../components/Footer';
 import { fetchComic } from '../../services/comics';
 import GlobalStyle from '../../styles/GlobalStyle';
-import theme from '../../styles/theme';
-import { ThemeProvider } from 'styled-components';
 import { useRouter } from 'next/router';
-import ComicNavbar from '../../components/ComicNavBar';
 import DiaryCalendar from '../../components/DiaryCalendar';
 
 const ComicPanel = styled.div`
@@ -48,7 +44,7 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic }) => {
   );
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyle />
       <Navbar />
       <ComicPanel>
@@ -63,7 +59,7 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic }) => {
         )}
       </ComicPanel>
       <DiaryCalendar />
-    </ThemeProvider>
+    </>
   );
 };
 

@@ -7,10 +7,7 @@ import Footer from '../components/Footer';
 import NewsletterForm from '../components/NewsletterForm';
 import ComicTabBar from '../components/ComicTabBar';
 import ComicList from '../components/ComicList';
-// import Pagination from '../components/Pagination';
 import GlobalStyle from '../styles/GlobalStyle';
-import theme from '../styles/theme';
-import { ThemeProvider } from 'styled-components';
 import { fetchComicsByCategory } from '../services/comics';
 import { IComic } from '../../db/models/Comic';
 import { Button, Hidden, Pagination, Paper, Typography } from '@mui/material';
@@ -110,7 +107,7 @@ const ComicPage: React.FC = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyle />
       <Navbar />
       <Paper
@@ -194,7 +191,7 @@ const ComicPage: React.FC = () => {
           />
         </Hidden>
       </ComicPageGrid>
-    </ThemeProvider>
+    </>
   );
 };
 

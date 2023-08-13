@@ -4,12 +4,8 @@ import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { IComic } from 'db/models/Comic';
 import Navbar from '../../../components/Navbar';
-import Footer from '../../../components/Footer';
 import { fetchComic } from '../../../services/comics';
 import GlobalStyle from '../../../styles/GlobalStyle';
-import theme from '../../../styles/theme';
-import { ThemeProvider } from 'styled-components';
-import { useRouter } from 'next/router';
 import ComicNavbar from '../../../components/ComicNavBar';
 
 const ComicPanel = styled.div`
@@ -46,7 +42,7 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
   );
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyle />
       <Navbar />
       <ComicNavbar
@@ -63,7 +59,7 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
           />
         </ComicImage>
       </ComicPanel>
-    </ThemeProvider>
+    </>
   );
 };
 
