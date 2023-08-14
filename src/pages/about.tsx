@@ -77,7 +77,7 @@ const About: React.FC = () => {
             Connect with Kristen
           </Typography>
           <Typography variant="body1">
-            Follow Kristen's comics on{' '}
+            Follow Kristen&apos;s comics on{' '}
             <Link
               href="https://instagram.com/ego_gala"
               target="_blank"
