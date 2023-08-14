@@ -16,16 +16,10 @@ console.log(Panel);
 const app = new Koa();
 const router = new Router();
 
-// router.get('/comics', async (ctx) => {
-//   try {
-//     const comics: IComic[] = await Comic.find().populate('panels');
-//     ctx.body = comics;
-//   } catch (err) {
-//     console.error(err);
-//     ctx.status = 500;
-//     ctx.body = { error: 'An error occurred while fetching comics.' };
-//   }
-// });
+router.get('/health', async (ctx) => {
+  ctx.status = 200;
+  ctx.body = 'OK';
+});
 
 router.get('/comics', async (ctx) => {
   try {
@@ -112,7 +106,11 @@ router.get('/api/comics/earliest-diary-id', async (ctx) => {
 });
 
 app
-  .use(cors())
+  .use(
+    cors({
+      origin: process.env.ALLOWED_ORIGIN || 'http://localhost:3000',
+    }),
+  )
   .use(bodyParser())
   .use(router.routes())
   .use(router.allowedMethods());
