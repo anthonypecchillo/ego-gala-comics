@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import GlobalStyle from '../styles/GlobalStyle';
-import theme from '../styles/theme';
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
