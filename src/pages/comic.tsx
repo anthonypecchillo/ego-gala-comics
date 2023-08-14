@@ -99,7 +99,6 @@ const ComicPage: React.FC = () => {
       <Paper
         elevation={2}
         sx={{
-          position: '-webkit-sticky' /* for Safari */,
           position: 'sticky',
           top: 64,
           zIndex: 10,
