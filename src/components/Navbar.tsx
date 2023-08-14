@@ -21,10 +21,10 @@ import ListSubheader from '@mui/material/ListSubheader';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-const StyledAppBar = styled(AppBar)`
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(1, 1, 1, 0.4);
-`;
+// const StyledAppBar = styled(AppBar)`
+//   background-color: #fff;
+//   box-shadow: 0 2px 4px rgba(1, 1, 1, 0.4);
+// `;
 
 const NavLink = styled.a`
   color: #333;
@@ -159,7 +159,13 @@ const Navbar: React.FC = () => {
   );
 
   return (
-    <StyledAppBar position="sticky">
+    <AppBar
+      position="sticky"
+      sx={{
+        backgroundColor: '#fff',
+        boxShadow: '0 2px 4px rgba(1, 1, 1, 0.4)',
+      }}
+    >
       <Toolbar>
         <Hidden mdUp>
           <StyledMenuIcon
@@ -219,7 +225,7 @@ const Navbar: React.FC = () => {
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         {list}
       </Drawer>
-    </StyledAppBar>
+    </AppBar>
   );
 };
 
