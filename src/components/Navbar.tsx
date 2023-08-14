@@ -18,6 +18,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
+import Link from 'next/link';
 import styled from 'styled-components';
 
 const StyledAppBar = styled(AppBar)`
@@ -177,38 +178,42 @@ const Navbar: React.FC = () => {
             <NavLink href="/comic">Comic</NavLink>
             <NavLink href="/about">About</NavLink>
           </div>
-          <StyledIcon
-            edge="end"
+          <NavLink
             href="https://twitter.com/ego_gala"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TwitterIcon sx={{ marginRight: '10px' }} />
-          </StyledIcon>
-          <StyledIcon
-            edge="end"
+            <StyledIcon edge="end">
+              <TwitterIcon sx={{ marginRight: '10px' }} />
+            </StyledIcon>
+          </NavLink>
+          <NavLink
             href="https://www.instagram.com/ego_gala/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <InstagramIcon sx={{ marginRight: '10px' }} />
-          </StyledIcon>
-          <StyledIcon
-            edge="end"
+            <StyledIcon edge="end">
+              <InstagramIcon sx={{ marginRight: '10px' }} />
+            </StyledIcon>
+          </NavLink>
+          <NavLink
             href="https://www.facebook.com/k10.shull"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FacebookIcon sx={{ marginRight: '10px' }} />
-          </StyledIcon>
-          <StyledIcon
-            edge="end"
+            <StyledIcon edge="end">
+              <FacebookIcon sx={{ marginRight: '10px' }} />
+            </StyledIcon>
+          </NavLink>
+          <NavLink
             href="https://www.reddit.com/user/ego_gala/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <RedditIcon sx={{ marginRight: '10px' }} />
-          </StyledIcon>
+            <StyledIcon edge="end">
+              <RedditIcon sx={{ marginRight: '10px' }} />
+            </StyledIcon>
+          </NavLink>
         </Hidden>
       </Toolbar>
       <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
