@@ -1,4 +1,3 @@
-import '@/styles/globals.css';
 import { Grid, Container } from '@mui/material';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
