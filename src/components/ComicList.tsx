@@ -35,7 +35,7 @@ const ComicList: React.FC<ComicListProps> = ({ comics }) => {
             disableGutters
             sx={{
               padding: 0,
-              backgroundColor: '#e8e8e8',
+              backgroundColor: '#fff',
               borderBottom: `1px solid ${theme.palette.primary.main}`,
               borderTop:
                 comics.indexOf(comic) === 0
@@ -67,8 +67,7 @@ const ComicList: React.FC<ComicListProps> = ({ comics }) => {
                   month: 'long',
                   day: 'numeric',
                 }).format(new Date(comic.publication_date))}
-                align="right"
-                style={{ paddingRight: '10px' }}
+                sx={{ paddingRight: '16px', textAlign: 'right' }}
               />
             </Box>
           </ListItem>
