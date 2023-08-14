@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Navbar from '../components/Navbar';
 import ComicTabBar from '../components/ComicTabBar';
 import ComicList from '../components/ComicList';
-import GlobalStyle from '../styles/GlobalStyle';
 import { fetchComicsByCategory } from '../services/comics';
 import { IComic } from '../../db/models/Comic';
 import { Button, Hidden, Pagination, Paper, Typography } from '@mui/material';
@@ -94,14 +92,12 @@ const ComicPage: React.FC = () => {
 
   return (
     <>
-      <GlobalStyle />
-      <Navbar />
       <Paper
         elevation={2}
         sx={{
           position: 'sticky',
           top: 64,
-          zIndex: 10,
+          zIndex: 1100,
         }}
       >
         <ComicTabBar activeTab={activeTab} onTabClick={handleTabClick} />

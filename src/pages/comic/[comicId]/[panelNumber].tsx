@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { IComic } from 'db/models/Comic';
-import Navbar from '../../../components/Navbar';
 import { fetchComic } from '../../../services/comics';
-import GlobalStyle from '../../../styles/GlobalStyle';
 import ComicNavbar from '../../../components/ComicNavBar';
 
 const ComicPanel = styled.div`
@@ -43,8 +41,6 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
 
   return (
     <>
-      <GlobalStyle />
-      <Navbar />
       <ComicNavbar
         comicId={comic._id}
         panelNumber={panelNumber}
