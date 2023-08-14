@@ -39,6 +39,10 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
     (panel) => panel.panel_number === panelNumber,
   );
 
+  if (!currentPanel) {
+    return <div>TODO: Fallback UI</div>;
+  }
+
   return (
     <>
       <ComicNavbar
