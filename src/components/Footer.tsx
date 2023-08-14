@@ -19,22 +19,39 @@ const Footer: React.FC = () => {
   const socialLinks = [
     {
       name: 'Twitter',
-      icon: <Twitter style={{ fontSize: 32 }} />,
+      icon: (
+        <Twitter
+          style={{
+            fontSize: 32,
+            color: theme.palette.secondary.main,
+          }}
+        />
+      ),
       url: 'https://twitter.com/ego_gala',
     },
     {
       name: 'Instagram',
-      icon: <Instagram style={{ fontSize: 32 }} />,
+      icon: (
+        <Instagram
+          style={{ fontSize: 32, color: theme.palette.secondary.main }}
+        />
+      ),
       url: 'https://www.instagram.com/ego_gala/',
     },
     {
       name: 'Facebook',
-      icon: <Facebook style={{ fontSize: 32 }} />,
+      icon: (
+        <Facebook
+          style={{ fontSize: 32, color: theme.palette.secondary.main }}
+        />
+      ),
       url: 'https://www.facebook.com/k10.shull',
     },
     {
       name: 'Reddit',
-      icon: <Reddit style={{ fontSize: 32 }} />,
+      icon: (
+        <Reddit style={{ fontSize: 32, color: theme.palette.secondary.main }} />
+      ),
       url: 'https://www.reddit.com/user/ego_gala/',
     },
   ];
@@ -43,16 +60,20 @@ const Footer: React.FC = () => {
     <Container component="footer" disableGutters maxWidth={false}>
       <Grid
         container
-        spacing={5}
+        spacing={2}
         direction="column"
         style={{
           padding: '45px',
           backgroundColor: theme.palette.primary.main,
-          color: '#fff',
+          color: theme.palette.secondary.main,
         }}
       >
         <Grid item container justifyContent="center">
-          <Typography variant="h5" gutterBottom style={{ textAlign: 'center' }}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            style={{ textAlign: 'center', marginBottom: 35 }}
+          >
             Follow Ego Gala
             <hr style={{ width: '75%', margin: '10px auto' }} />
           </Typography>
@@ -69,7 +90,9 @@ const Footer: React.FC = () => {
               <Card
                 style={{
                   display: 'flex',
-                  backgroundColor: '#f0f0f0',
+                  // backgroundColor: theme.palette.secondary.main,
+                  // backgroundColor: '#f7f6fa',
+                  backgroundColor: '#e8e6f1',
                   width: 200,
                 }}
               >
@@ -83,11 +106,18 @@ const Footer: React.FC = () => {
                     justifyContent: 'start',
                     color: '#222',
                     '&:hover': {
-                      backgroundColor: '#e0e0e0',
+                      backgroundColor: theme.palette.action.hover,
                     },
                   }}
                 >
-                  <Avatar style={{ width: 55, height: 55, margin: 10 }}>
+                  <Avatar
+                    style={{
+                      width: 55,
+                      height: 55,
+                      margin: 10,
+                      backgroundColor: theme.palette.primary.dark,
+                    }}
+                  >
                     {social.icon}
                   </Avatar>
                   <CardContent style={{ paddingLeft: 8 }}>
@@ -104,8 +134,8 @@ const Footer: React.FC = () => {
         item
         style={{
           padding: '24px',
-          backgroundColor: theme.palette.secondary.main,
-          color: '#fff',
+          backgroundColor: theme.palette.primary.dark,
+          color: theme.palette.secondary.main,
           alignItems: 'center',
         }}
       >

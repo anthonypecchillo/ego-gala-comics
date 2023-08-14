@@ -16,18 +16,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <CssBaseline />
       <GlobalStyle />
       <Navbar />
-      <Container disableGutters maxWidth={false}>
-        <Grid container direction="column" style={{ minHeight: '100vh' }}>
-          <Grid item xs style={{ flex: 1 }}>
-            <Component {...pageProps} />
-          </Grid>
-          <br />
-          <br />
-          <Grid item>
-            <Footer />
-          </Grid>
-        </Grid>
-      </Container>
+      <Component {...pageProps} />
+      <Footer />
     </ThemeProvider>
   );
 }

@@ -26,7 +26,7 @@ const ComicPageGrid = styled.div`
     grid-template-areas:
       'content'
       'comic-list';
-    padding: 5vw;
+    // padding: 5vw;
   }
 
   @media (max-width: 480px) {
