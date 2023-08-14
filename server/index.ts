@@ -108,11 +108,10 @@ router.get('/api/comics/earliest-diary-id', async (ctx) => {
 });
 
 app
-  .use(
-    cors({
-      origin: process.env.ALLOWED_ORIGIN || 'http://localhost:3000',
-    }),
-  )
+  .use(cors())
+  // cors({
+  //   origin: process.env.ALLOWED_ORIGIN || 'http://localhost:3002',
+  // }),
   .use(bodyParser())
   .use(router.routes())
   .use(router.allowedMethods());
