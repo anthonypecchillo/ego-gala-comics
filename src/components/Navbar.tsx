@@ -56,7 +56,6 @@ const StyledMenuIcon = styled(StyledIcon)`
 `;
 
 const CompanyName = styled(Typography)`
-  font-family: 'Your Font', sans-serif;
   font-size: 24px;
   font-weight: bold;
   color: #333;
