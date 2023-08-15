@@ -101,7 +101,7 @@ const theme = createTheme({
     divider: `rgba(${rgbBlack}, 0.12)`,
     background: {
       paper: customColors.white,
-      default: customColors.white,
+      default: '#f7f6fa',
     },
     action: {
       active: `rgba(${rgbBlack}, 0.54)`,
