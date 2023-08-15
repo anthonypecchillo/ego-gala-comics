@@ -9,6 +9,11 @@ import Comic, { IComic } from '../db/models/Comic';
 import Panel, { IPanel } from '../db/models/Panel';
 
 import mongoose from 'mongoose';
+import Next from 'next';
+
+const dev = process.env.NODE_ENV !== 'production';
+const nextApp = Next({ dev });
+const handle = nextApp.getRequestHandler();
 
 // NOTE: Need to use Panel at least once to ensure that the model is registered
 // otherwise we get the following error:
