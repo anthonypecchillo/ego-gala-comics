@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
-import { IComic } from 'db/models/Comic';
+import { IComic } from '../../../db/models/Comic';
 import { fetchComic } from '../../../services/comics';
 import ComicNavbar from '../../../components/ComicNavBar';
 

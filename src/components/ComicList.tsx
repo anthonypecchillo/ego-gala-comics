@@ -9,7 +9,7 @@ import {
   Box,
   useTheme,
 } from '@mui/material';
-import { IComic } from '../../db/models/Comic';
+import { IComic } from '../db/models/Comic';
 
 interface ComicListProps {
   comics: IComic[];

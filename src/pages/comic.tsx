@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import ComicTabBar from '../components/ComicTabBar';
 import ComicList from '../components/ComicList';
 import { fetchComicsByCategory } from '../services/comics';
-import { IComic } from '../../db/models/Comic';
+import { IComic } from '../db/models/Comic';
 import { Button, Hidden, Pagination, Paper, Typography } from '@mui/material';
 import { fetchEarliestDiaryComicId } from '../services/comics';
 

@@ -1,15 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '../../../../db';
-import Comic, { IComic } from '../../../../db/models/Comic';
+import dbConnect from '../../../db';
+import Comic, { IComic } from '../../../db/models/Comic';
 
 const getComicById = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     await dbConnect();
 
     const { comicId } = req.query;
-    const comic: IComic | null = await Comic.findById(comicId).populate(
+    const comic = (await Comic.findById(comicId).populate(
       'panels',
-    );
+    )) as IComic | null;
 
     if (comic) {
       res.json(comic);

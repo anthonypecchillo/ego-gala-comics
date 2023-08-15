@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '../../../../db';
-import Comic from '../../../../db/models/Comic';
+import dbConnect from '../../../db';
+import Comic from '../../../db/models/Comic';
 import mongoose from 'mongoose';
 
 const getComicDates = async (req: NextApiRequest, res: NextApiResponse) => {

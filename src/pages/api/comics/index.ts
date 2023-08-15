@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '../../../../db';
-import Comic, { IComic } from '../../../../db/models/Comic';
+import dbConnect from '../../../db';
+import Comic, { IComic } from '../../../db/models/Comic';
 
 const getComics = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -14,10 +14,10 @@ const getComics = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (page && limit) {
       const skip = (Number(page) - 1) * Number(limit);
-      comics = await Comic.find(query)
+      comics = (await Comic.find(query)
         .populate('panels')
         .skip(skip)
-        .limit(Number(limit));
+        .limit(Number(limit))) as IComic[];
 
       const count = await Comic.countDocuments(query);
       totalPages = Math.ceil(count / Number(limit));

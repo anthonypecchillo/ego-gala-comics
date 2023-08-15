@@ -1,8 +1,12 @@
-declare namespace NodeJS {
-  interface Global {
-    mongoose: {
-      conn: any | null;
-      promise: Promise<any> | null;
-    };
+import type { Mongoose } from 'mongoose';
+
+declare global {
+  namespace NodeJS {
+    interface Global {
+      mongoose: {
+        conn: Mongoose | null;
+        promise: Promise<Mongoose | null> | null;
+      };
+    }
   }
 }

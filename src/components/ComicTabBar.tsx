@@ -45,7 +45,9 @@ const ComicTabBar: React.FC<ComicTabBarProps> = ({ activeTab, onTabClick }) => {
   return (
     <StyledTabs
       value={activeTabIndex}
-      onChange={(event, newValue) => onTabClick(tabs[newValue])}
+      onChange={(event: React.ChangeEvent<{}>, newValue: number) => {
+        onTabClick(tabs[newValue]);
+      }}
       variant={isSmallScreen ? 'fullWidth' : undefined}
       centered={!isSmallScreen}
     >
