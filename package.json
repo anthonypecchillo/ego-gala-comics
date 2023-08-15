@@ -12,7 +12,7 @@
     "db-seed": "ts-node ./src/db/seed.ts"
   },
   "engine": {
-    "node": "16.18.0"
+    "node": "16.x"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

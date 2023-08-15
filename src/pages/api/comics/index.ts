@@ -4,6 +4,7 @@ import Comic, { IComic } from '../../../db/models/Comic';
 
 const getComics = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    console.log(MONGODB_URI);
     await dbConnect();
 
     const { category, page, limit } = req.query;
