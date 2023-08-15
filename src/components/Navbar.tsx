@@ -20,6 +20,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Link from 'next/link';
 import styled from 'styled-components';
+import theme from '../styles/theme';
 
 // const StyledAppBar = styled(AppBar)`
 //   background-color: #fff;
@@ -33,7 +34,7 @@ const NavLink = styled.a`
   align-items: center;
   @media (min-width: 900px) {
     &:hover {
-      color: #73e10a;
+      color: ${theme.palette.info.main};
     }
   }
   @media (max-width: 899px) {
@@ -46,7 +47,7 @@ const StyledIcon = styled(IconButton)`
   color: #333;
   @media (min-width: 900px) {
     &:hover {
-      color: #73e10a;
+      color: ${theme.palette.info.main};
       background-color: #fff;
     }
   }
