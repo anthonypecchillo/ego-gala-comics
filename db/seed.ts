@@ -1,10 +1,11 @@
 import dotenv from 'dotenv';
-dotenv.config();
 import mongoose from 'mongoose';
 import fs from 'fs';
 import path from 'path';
 import Comic, { IComic } from './models/Comic';
 import Panel, { IPanel } from './models/Panel';
+
+dotenv.config();
 
 const MONGODB_URI =
   process.env.MONGODB_URI || 'mongodb://localhost/ego_gala_comics';
