@@ -2,9 +2,8 @@ import axios from 'axios';
 
 export async function fetchComic(comicId: string) {
   try {
-    const response = await axios.get(
-      `http://localhost:3001/api/comics/${comicId}`,
-    );
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const response = await axios.get(`${apiUrl}/api/comics/${comicId}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching comic:', error);
