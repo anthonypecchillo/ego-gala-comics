@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run build-server && next build",
+    "build": "next build && npm run build-server",
     "build-server": "tsc -p tsconfig.server.json",
     "start": "node dist/server/index.js && next start",
     "lint": "next lint",

@@ -1,9 +1,9 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../dist/",
-    "rootDir": "../"
+    "outDir": "./dist",
+    "rootDir": "./",
+    "noEmit": false
   },
-  "include": ["server/**/*.ts", "db/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["server/**/*.ts", "db/**/*.ts"]
 }
