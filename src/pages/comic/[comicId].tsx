@@ -62,6 +62,7 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const comicId = context.params?.comicId as string;
   const panelNumber = context.query.panelNumber as string;
+
   try {
     const comic = await fetchComic(comicId);
 

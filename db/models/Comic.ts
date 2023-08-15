@@ -1,5 +1,9 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IPanel } from './Panel';
+import Panel, { IPanel } from './Panel';
+
+// Don't delete this!
+// We must reference Panel so that it is registered with Mongoose
+console.log(Panel);
 
 export interface IComic extends Document {
   title: string;
@@ -21,4 +25,5 @@ const ComicSchema: Schema = new Schema({
   panels: [{ type: Schema.Types.ObjectId, ref: 'Panel' }],
 });
 
-export default mongoose.model<IComic>('Comic', ComicSchema);
+export default mongoose.models.Comic ||
+  mongoose.model<IComic>('Comic', ComicSchema);

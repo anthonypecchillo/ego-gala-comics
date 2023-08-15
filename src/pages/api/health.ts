@@ -2,10 +2,11 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import mongoose from 'mongoose';
-import db from '../../../db';
+import dbConnect from '../../../db';
 
 const healthCheck = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    await dbConnect();
     // Here we try to use the Mongoose connection to access the 'admin' database
     // and run the 'ping' command, a no-op that should always succeed if the
     // database is up and we can connect to it.

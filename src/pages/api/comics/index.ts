@@ -1,9 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import db from '../../../../db';
+import dbConnect from '../../../../db';
 import Comic, { IComic } from '../../../../db/models/Comic';
 
 const getComics = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    await dbConnect();
+
     const { category, page, limit } = req.query;
     const query = category ? { category } : {};
 

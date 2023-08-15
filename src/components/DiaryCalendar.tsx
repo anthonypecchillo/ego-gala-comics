@@ -58,7 +58,7 @@ const DiaryCalendar: React.FC = () => {
 
   // TODO: Switch to async/await if possible - gave me some trouble
   useEffect(() => {
-    axios.get('http://localhost:3001/api/comics/dates').then((response) => {
+    axios.get('/api/comics/dates').then((response) => {
       setDatesToIds(response.data);
     });
   }, []);

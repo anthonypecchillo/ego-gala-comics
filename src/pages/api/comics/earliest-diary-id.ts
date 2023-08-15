@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import db from '../../../../db';
+import dbConnect from '../../../../db';
 import Comic, { IComic } from '../../../../db/models/Comic';
 
 const getEarliestDiaryId = async (
@@ -7,6 +7,8 @@ const getEarliestDiaryId = async (
   res: NextApiResponse,
 ) => {
   try {
+    await dbConnect();
+
     const diaryComic: IComic[] = await Comic.find({ category: 'diary' })
       .sort({ publication_date: 1 })
       .limit(1);

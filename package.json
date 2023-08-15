@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --write .",
-    "server-start": "ts-node ./server/index.ts",
     "db-delete-all": "ts-node ./db/deleteAll.ts",
     "db-seed": "ts-node ./db/seed.ts"
   },

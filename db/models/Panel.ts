@@ -14,4 +14,5 @@ const PanelSchema: Schema = new Schema({
   transcription: { type: String, required: true },
 });
 
-export default mongoose.model<IPanel>('Panel', PanelSchema);
+export default mongoose.models.Panel ||
+  mongoose.model<IPanel>('Panel', PanelSchema);

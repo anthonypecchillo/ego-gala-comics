@@ -1,10 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import db from '../../../../db';
+import dbConnect from '../../../../db';
 import Comic from '../../../../db/models/Comic';
 import mongoose from 'mongoose';
 
 const getComicDates = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    await dbConnect();
+
     const comics = await Comic.find(
       { category: 'diary' },
       'publication_date _id',

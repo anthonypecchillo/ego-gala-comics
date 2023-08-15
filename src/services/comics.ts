@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-
 export async function fetchComic(comicId: string) {
   try {
-    const response = await axios.get(`${API_URL}/comics/${comicId}`);
+    const response = await axios.get(
+      `http://localhost:3001/api/comics/${comicId}`,
+    );
     return response.data;
   } catch (error) {
     console.error('Error fetching comic:', error);
@@ -12,17 +12,17 @@ export async function fetchComic(comicId: string) {
   }
 }
 
-export async function fetchComics(comicCollection: string, page: number) {
-  try {
-    const response = await axios.get(`${API_URL}/comics`, {
-      params: { comicCollection, page },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching comics:', error);
-    throw error;
-  }
-}
+// export async function fetchComics(comicCollection: string, page: number) {
+//   try {
+//     const response = await axios.get(`/api/comics`, {
+//       params: { comicCollection, page },
+//     });
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error fetching comics:', error);
+//     throw error;
+//   }
+// }
 
 export async function fetchComicsByCategory(
   category: string,
@@ -30,7 +30,7 @@ export async function fetchComicsByCategory(
   limit: number = 10,
 ) {
   try {
-    const response = await axios.get(`${API_URL}/comics`, {
+    const response = await axios.get(`/api/comics`, {
       params: {
         category,
         page,
@@ -46,7 +46,7 @@ export async function fetchComicsByCategory(
 
 export async function fetchEarliestDiaryComicId() {
   try {
-    const response = await axios.get(`${API_URL}/api/comics/earliest-diary-id`);
+    const response = await axios.get(`/api/comics/earliest-diary-id`);
     return response.data.id;
   } catch (error) {
     console.error('Error fetching earliest diary comic ID:', error);
