@@ -3,6 +3,8 @@ import axios from 'axios';
 export async function fetchComic(comicId: string) {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    console.log('apiUrl', apiUrl)
+    console.log('comicId', comicId)
     const response = await axios.get(`${apiUrl}/api/comics/${comicId}`);
     return response.data;
   } catch (error) {
@@ -10,18 +12,6 @@ export async function fetchComic(comicId: string) {
     throw error;
   }
 }
-
-// export async function fetchComics(comicCollection: string, page: number) {
-//   try {
-//     const response = await axios.get(`/api/comics`, {
-//       params: { comicCollection, page },
-//     });
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error fetching comics:', error);
-//     throw error;
-//   }
-// }
 
 export async function fetchComicsByCategory(
   category: string,
