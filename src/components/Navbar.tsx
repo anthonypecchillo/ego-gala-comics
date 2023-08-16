@@ -37,20 +37,6 @@ const NavLink = styled.a`
   }
 `;
 
-const StyledIcon = styled(IconButton)`
-  color: #333;
-  @media (min-width: 900px) {
-    &:hover {
-      color: ${theme.palette.info.main};
-      background-color: #fff;
-    }
-  }
-`;
-
-const StyledMenuIcon = styled(StyledIcon)`
-  color: #333;
-`;
-
 const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -151,14 +137,20 @@ const Navbar: React.FC = () => {
     >
       <Toolbar>
         <Hidden mdUp>
-          <StyledMenuIcon
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={toggleDrawer(true)}
-          >
+          <IconButton
+              sx={{
+                color: '#333',
+                '&:hover': {
+                  color: theme.palette.info.main,
+                  backgroundColor: '#fff',
+                },
+              }}
+              aria-label="open drawer"
+              edge="start"
+              onClick={toggleDrawer(true)}
+            >
             <MenuIcon />
-          </StyledMenuIcon>
+          </IconButton>
         </Hidden>
 
         <Typography variant="h6" sx={{
