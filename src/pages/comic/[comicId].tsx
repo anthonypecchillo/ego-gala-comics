@@ -64,6 +64,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const panelNumber = context.query.panelNumber as string;
 
   try {
+    console.log('getSSP: ', comicId, panelNumber);
     const comic = await fetchComic(comicId);
 
     if (comic.panels.length === 1 && panelNumber) {
@@ -86,7 +87,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     return { props: { comic } };
   } catch (error) {
-    console.error('Error fetching comic:', error);
+    // console.error('Error fetching comic:', error);
     return { notFound: true };
   }
 };

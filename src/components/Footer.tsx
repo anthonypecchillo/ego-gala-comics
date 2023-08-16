@@ -1,16 +1,16 @@
 import React from 'react';
-import {
-  Container,
-  Grid,
-  Typography,
-  Avatar,
-  Card,
-  CardContent,
-  CardActionArea,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
-import { Facebook, Twitter, Instagram, Reddit } from '@mui/icons-material';
+import { useMediaQuery, useTheme } from '@mui/material';
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import Avatar from '@mui/material/Avatar'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardActionArea from '@mui/material/CardActionArea'
+import FacebookIcon from '@mui/icons-material/Facebook'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import InstagramIcon from '@mui/icons-material/Instagram'
+import RedditIcon from '@mui/icons-material/Reddit'
 
 const Footer: React.FC = () => {
   const theme = useTheme();
@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
     {
       name: 'Twitter',
       icon: (
-        <Twitter
+        <TwitterIcon
           style={{
             fontSize: 32,
             color: theme.palette.secondary.main,
@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
     {
       name: 'Instagram',
       icon: (
-        <Instagram
+        <InstagramIcon
           style={{ fontSize: 32, color: theme.palette.secondary.main }}
         />
       ),
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
     {
       name: 'Facebook',
       icon: (
-        <Facebook
+        <FacebookIcon
           style={{ fontSize: 32, color: theme.palette.secondary.main }}
         />
       ),
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
     {
       name: 'Reddit',
       icon: (
-        <Reddit style={{ fontSize: 32, color: theme.palette.secondary.main }} />
+        <RedditIcon style={{ fontSize: 32, color: theme.palette.secondary.main }} />
       ),
       url: 'https://www.reddit.com/user/ego_gala/',
     },

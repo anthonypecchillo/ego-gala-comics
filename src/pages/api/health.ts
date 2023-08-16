@@ -1,5 +1,3 @@
-// pages/api/health.ts
-
 import { NextApiRequest, NextApiResponse } from 'next';
 import mongoose from 'mongoose';
 import dbConnect from '../../db';

@@ -6,7 +6,12 @@ import ComicTabBar from '../components/ComicTabBar';
 import ComicList from '../components/ComicList';
 import { fetchComicsByCategory } from '../services/comics';
 import { IComic } from '../db/models/Comic';
-import { Button, Hidden, Pagination, Paper, Typography } from '@mui/material';
+
+import Button from '@mui/material/Button';
+import Pagination from '@mui/material/Pagination';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Hidden from '@mui/material/Hidden';
 import { fetchEarliestDiaryComicId } from '../services/comics';
 
 const ComicPageGrid = styled.div`

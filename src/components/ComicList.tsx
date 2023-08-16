@@ -1,14 +1,13 @@
 import React from 'react';
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemAvatar,
-  Avatar,
-  Link,
-  Box,
-  useTheme,
-} from '@mui/material';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import Link from '@mui/material/Link';
+import Box from '@mui/material/Box';
+import { useTheme } from '@mui/material/styles';
+
 import { IComic } from '../db/models/Comic';
 
 interface ComicListProps {

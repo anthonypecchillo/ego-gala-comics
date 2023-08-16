@@ -95,7 +95,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     return { props: { comic, panelNumber: Number(panelNumber) } };
   } catch (error) {
-    console.error('Error fetching comic:', error);
+    // console.error('Error fetching comic:', error);
     return { notFound: true };
   }
 };

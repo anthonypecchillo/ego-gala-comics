@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Pagination } from '@mui/material';
+import Pagination from '@mui/material/Pagination';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 

@@ -1,14 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-
-import {
-  Container,
-  Typography,
-  Box,
-  Link,
-  Divider,
-  Paper,
-} from '@mui/material';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
+import Divider from '@mui/material/Divider';
+import Paper from '@mui/material/Paper';
 
 const About: React.FC = () => {
   return (
