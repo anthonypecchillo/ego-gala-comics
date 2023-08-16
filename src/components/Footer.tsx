@@ -1,20 +1,21 @@
 import React from 'react';
 import { useMediaQuery, useTheme } from '@mui/material';
-import Container from '@mui/material/Container'
-import Grid from '@mui/material/Grid'
-import Typography from '@mui/material/Typography'
-import Avatar from '@mui/material/Avatar'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import CardActionArea from '@mui/material/CardActionArea'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import TwitterIcon from '@mui/icons-material/Twitter'
-import InstagramIcon from '@mui/icons-material/Instagram'
-import RedditIcon from '@mui/icons-material/Reddit'
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActionArea from '@mui/material/CardActionArea';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import RedditIcon from '@mui/icons-material/Reddit';
 
 const Footer: React.FC = () => {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const socialLinks = [
     {
@@ -63,16 +64,16 @@ const Footer: React.FC = () => {
         spacing={2}
         direction="column"
         style={{
-          padding: '45px',
+          padding: '30px',
           backgroundColor: theme.palette.primary.main,
           color: theme.palette.secondary.main,
         }}
       >
         <Grid item container justifyContent="center">
           <Typography
-            variant="h5"
+            variant="h4"
             gutterBottom
-            style={{ textAlign: 'center', marginBottom: 35 }}
+            style={{ textAlign: 'center', marginBottom: 25 }}
           >
             Follow Ego Gala
             <hr style={{ width: '75%', margin: '10px auto' }} />
@@ -83,17 +84,17 @@ const Footer: React.FC = () => {
           container
           spacing={2}
           justifyContent="center"
-          style={{ margin: '0 10px' }}
+          sx={{ marginBottom: 3 }}
         >
           {socialLinks.map((social, index) => (
-            <Grid item xs={isTablet ? 6 : 3} key={index}>
+            <Grid item container xs={isMobile ? 12 : isTablet ? 6 : 3} key={index} justifyContent="center">
               <Card
                 style={{
                   display: 'flex',
                   // backgroundColor: theme.palette.secondary.main,
                   // backgroundColor: '#f7f6fa',
                   backgroundColor: '#e8e6f1',
-                  width: 200,
+                  width: 215,
                 }}
               >
                 <CardActionArea
