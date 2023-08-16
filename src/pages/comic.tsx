@@ -6,13 +6,14 @@ import ComicTabBar from '../components/ComicTabBar';
 import ComicList from '../components/ComicList';
 import { fetchComicsByCategory } from '../services/comics';
 import { IComic } from '../db/models/Comic';
-
 import Button from '@mui/material/Button';
 import Pagination from '@mui/material/Pagination';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Hidden from '@mui/material/Hidden';
 import { fetchEarliestDiaryComicId } from '../services/comics';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import theme from '../styles/theme';
 
 const ComicPageGrid = styled.div`
   display: grid;
@@ -59,6 +60,7 @@ const ComicPage: React.FC = () => {
   const [comics, setComics] = useState<IComic[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     const fetchCategoryComics = async () => {
@@ -101,7 +103,7 @@ const ComicPage: React.FC = () => {
         elevation={2}
         sx={{
           position: 'sticky',
-          top: 64,
+          top: isMobile ? 56 : 64,
           zIndex: 1100,
         }}
       >

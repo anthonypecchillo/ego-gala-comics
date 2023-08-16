@@ -6,6 +6,11 @@ import { IComic } from '../../../db/models/Comic';
 import { fetchComic } from '../../../services/comics';
 import ComicNavbar from '../../../components/ComicNavBar';
 
+const ComicViewerContainer = styled.div`
+  min-height: 65vh;
+  margin-bottom: 60px;
+`;
+
 const ComicPanel = styled.div`
   display: grid;
   grid-template-columns: minmax(90vw, 600px);
@@ -44,7 +49,7 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
   }
 
   return (
-    <>
+    <ComicViewerContainer>
       <ComicNavbar
         comicId={comic._id}
         panelNumber={panelNumber}
@@ -59,7 +64,7 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
           />
         </ComicImage>
       </ComicPanel>
-    </>
+    </ComicViewerContainer>
   );
 };
 
