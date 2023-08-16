@@ -9,7 +9,7 @@ const Grid = styled.div`
   gap: 4vw;
   place-items: space-evenly;
   justify-content: center; /* Center Grid Items in the middle of the page */
-  margin: 20px 20px;
+  margin: 40px 20px 55px 20px;
 `;
 
 const GridItem = styled(Link)<{ bgColor: string; index: number }>`
