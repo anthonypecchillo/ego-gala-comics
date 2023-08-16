@@ -6,8 +6,10 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
+import { useMediaQuery } from '@mui/material';
 
 const About: React.FC = () => {
+  const isMobile = useMediaQuery('(max-width: 600px)');
   return (
     <Paper elevation={3} sx={{ p: 2, my: 2, mx: 'auto', maxWidth: 'md' }}>
       <Container maxWidth="md">
@@ -21,8 +23,8 @@ const About: React.FC = () => {
           <Image
             src="/kristen_shull.png"
             alt="Kristen Shull's Artwork"
-            width={480}
-            height={234}
+            width={isMobile ? 300 : 480}
+            height={isMobile ? 146.25 : 234}
           />
           <br />
           <br />
