@@ -8,8 +8,12 @@ const NavWrapper = styled.nav`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-top: 2rem;
+  padding-top: 64px;
   // background-color: ${({ theme }) => theme.colors.background};
+
+  @media (max-width: 600px) {
+    padding-top: 56px;
+  }
 `;
 
 interface ComicNavBarProps {
