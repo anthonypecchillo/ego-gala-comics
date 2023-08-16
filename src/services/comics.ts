@@ -5,11 +5,10 @@ export async function fetchComic(comicId: string) {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
     console.log('apiUrl', apiUrl)
     console.log('comicId', comicId)
-    // const response = await axios.get(`${apiUrl}/api/comics/${comicId}`);
+    const response = await axios.get(`${apiUrl}/api/comics/${comicId}`);
     // const response = await axios.get(`http://localhost:3001/api/comics/${comicId}`);
 
-    // return response.data;
-    return 'hellllooooo';
+    return response.data;
   } catch (error) {
     console.error('Error fetching comic:', error);
     throw error;
