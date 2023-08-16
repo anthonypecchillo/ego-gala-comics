@@ -22,14 +22,8 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 
-// const StyledAppBar = styled(AppBar)`
-//   background-color: #fff;
-//   box-shadow: 0 2px 4px rgba(1, 1, 1, 0.4);
-// `;
-
 const NavLink = styled.a`
   color: #333;
-  margin-right: 10px;
   text-decoration: none;
   align-items: center;
   @media (min-width: 900px) {
@@ -55,18 +49,6 @@ const StyledIcon = styled(IconButton)`
 
 const StyledMenuIcon = styled(StyledIcon)`
   color: #333;
-`;
-
-const CompanyName = styled(Typography)`
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin-right: 20px;
-  @media (max-width: 899px) {
-    margin-right: 0;
-    text-align: center;
-    flex-grow: 1;
-  }
 `;
 
 const Navbar: React.FC = () => {
@@ -178,11 +160,30 @@ const Navbar: React.FC = () => {
             <MenuIcon />
           </StyledMenuIcon>
         </Hidden>
-        <CompanyName variant="h6">Ego Gala</CompanyName>
+
+        <Typography variant="h6" sx={{
+          fontSize: '24px',
+          fontWeight: 'bold',
+          color: '#333',
+          marginRight: {
+            md: '20px',
+            sm: '0',
+          },
+          textAlign: {
+            md: 'left',
+            sm: 'center',
+          },
+          flexGrow: {
+            md: '0',
+            sm: '1',
+          },
+        }}>
+          Ego Gala
+        </Typography>
         <Hidden mdDown>
           <div style={{ flexGrow: 1 }}>
-            <NavLink href="/">Home</NavLink>
-            <NavLink href="/comic">Comic</NavLink>
+            <NavLink href="/" style={{ marginRight: 10}}>Home</NavLink>
+            <NavLink href="/comic" style={{ marginRight: 10}}>Comic</NavLink>
             <NavLink href="/about">About</NavLink>
           </div>
           <NavLink
@@ -190,36 +191,76 @@ const Navbar: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <StyledIcon edge="end">
+            <IconButton
+              sx={{
+                color: '#333',
+                '@media (min-width: 900px)': {
+                  '&:hover': {
+                    color: theme.palette.info.main,
+                    backgroundColor: '#fff',
+                  },
+                },
+              }}
+            >
               <TwitterIcon sx={{ marginRight: '10px' }} />
-            </StyledIcon>
+            </IconButton>
           </NavLink>
           <NavLink
             href="https://www.instagram.com/ego_gala/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <StyledIcon edge="end">
+            <IconButton
+              sx={{
+                color: '#333',
+                '@media (min-width: 900px)': {
+                  '&:hover': {
+                    color: theme.palette.info.main,
+                    backgroundColor: '#fff',
+                  },
+                },
+              }}
+            >
               <InstagramIcon sx={{ marginRight: '10px' }} />
-            </StyledIcon>
+            </IconButton>
           </NavLink>
           <NavLink
             href="https://www.facebook.com/k10.shull"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <StyledIcon edge="end">
+            <IconButton
+              sx={{
+                color: '#333',
+                '@media (min-width: 900px)': {
+                  '&:hover': {
+                    color: theme.palette.info.main,
+                    backgroundColor: '#fff',
+                  },
+                },
+              }}
+            >
               <FacebookIcon sx={{ marginRight: '10px' }} />
-            </StyledIcon>
+            </IconButton>
           </NavLink>
           <NavLink
             href="https://www.reddit.com/user/ego_gala/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <StyledIcon edge="end">
+            <IconButton
+              sx={{
+                color: '#333',
+                '@media (min-width: 900px)': {
+                  '&:hover': {
+                    color: theme.palette.info.main,
+                    backgroundColor: '#fff',
+                  },
+                },
+              }}
+            >
               <RedditIcon sx={{ marginRight: '10px' }} />
-            </StyledIcon>
+            </IconButton>
           </NavLink>
         </Hidden>
       </Toolbar>
