@@ -159,15 +159,15 @@ const Navbar: React.FC = () => {
           color: '#333',
           marginRight: {
             md: '20px',
-            sm: '0',
+            xs: '0',
           },
           textAlign: {
             md: 'left',
-            sm: 'center',
+            xs: 'center',
           },
           flexGrow: {
             md: '0',
-            sm: '1',
+            xs: '1',
           },
         }}>
           Ego Gala
