@@ -91,37 +91,38 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
 
   return (
     <Grid container spacing={3} direction="column" alignItems="stretch">
-      <Grid item xs={12}>
-        <FormControl fullWidth style={{ maxWidth: '50%' }}>
-          <InputLabel htmlFor="comic-category">Category</InputLabel>
-          <Select
-            value={comic.category}
-            onChange={handleCategoryChange}
-            label="Category"
-            inputProps={{
-              name: 'category',
-              id: 'comic-category',
-            }}
-          >
-            <MenuItem value="diary">Diary</MenuItem>
-            <MenuItem value="fantology">Fantology</MenuItem>
-            <MenuItem value="compendium">Compendium</MenuItem>
-          </Select>
-        </FormControl>
-      </Grid>
+      <Grid container item spacing={3}>
+        <Grid item xs={7}>
+          <FormControl fullWidth>
+            <InputLabel htmlFor="comic-category">Category</InputLabel>
+            <Select
+              value={comic.category}
+              onChange={handleCategoryChange}
+              label="Category"
+              inputProps={{
+                name: 'category',
+                id: 'comic-category',
+              }}
+            >
+              <MenuItem value="diary">Diary</MenuItem>
+              <MenuItem value="fantology">Fantology</MenuItem>
+              <MenuItem value="compendium">Compendium</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
 
-      <Grid item xs={12}>
-        <DatePicker
-          label="Publication Date"
-          value={comic.publication_date}
-          onChange={handleDateChange}
-        />
+        <Grid item xs={5} container justifyContent="flex-end">
+          <DatePicker
+            label="Publication Date"
+            value={comic.publication_date}
+            onChange={handleDateChange}
+          />
+        </Grid>
       </Grid>
 
       <Grid item xs={12}>
         <TextField
           fullWidth
-          style={{ maxWidth: '50%' }}
           label="Title"
           name="title"
           value={comic.title}
@@ -133,7 +134,6 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
       <Grid item xs={12}>
         <TextField
           fullWidth
-          style={{ maxWidth: '50%' }}
           label="Description"
           name="description"
           value={comic.description}

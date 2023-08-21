@@ -59,6 +59,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             <ListItemText
               primary={`Panel ${idx + 1}`}
               secondary={panel.image_url}
+              secondaryTypographyProps={{ style: { wordBreak: 'break-all' } }}
             />
           </ListItem>
         ))}
