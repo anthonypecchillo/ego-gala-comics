@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { TextFieldProps } from '@mui/material/TextField';
 import Select from '@mui/material/Select';
@@ -27,6 +27,11 @@ interface ComicFormState {
   publication_date: Date;
   panels: PanelState[];
 }
+
+const formatDate = (date: Date): string => {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return date.toLocaleDateString(undefined, options);
+};
 
 const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
   const [comic, setComic] = useState<ComicFormState>({
@@ -75,19 +80,17 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
     onSubmit(comic);
   };
 
+  useEffect(() => {
+    if (comic.category === 'diary') {
+      const formattedDate = formatDate(comic.publication_date);
+      setComic((prev) => ({ ...prev, title: formattedDate, description: '' }));
+    } else {
+      setComic((prev) => ({ ...prev, title: '', description: '' }));
+    }
+  }, [comic.category, comic.publication_date]);
+
   return (
     <Grid container spacing={3} direction="column" alignItems="stretch">
-      <Grid item xs={12}>
-        <TextField
-          fullWidth
-          style={{ maxWidth: '50%' }}
-          label="Title"
-          name="title"
-          value={comic.title}
-          onChange={handleInputChange}
-        />
-      </Grid>
-
       <Grid item xs={12}>
         <FormControl fullWidth style={{ maxWidth: '50%' }}>
           <InputLabel htmlFor="comic-category">Category</InputLabel>
@@ -108,6 +111,26 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
       </Grid>
 
       <Grid item xs={12}>
+        <DatePicker
+          label="Publication Date"
+          value={comic.publication_date}
+          onChange={handleDateChange}
+        />
+      </Grid>
+
+      <Grid item xs={12}>
+        <TextField
+          fullWidth
+          style={{ maxWidth: '50%' }}
+          label="Title"
+          name="title"
+          value={comic.title}
+          onChange={handleInputChange}
+          disabled={comic.category === 'diary'}
+        />
+      </Grid>
+
+      <Grid item xs={12}>
         <TextField
           fullWidth
           style={{ maxWidth: '50%' }}
@@ -117,14 +140,7 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
           onChange={handleInputChange}
           multiline
           rows={4}
-        />
-      </Grid>
-
-      <Grid item xs={12}>
-        <DatePicker
-          label="Publication Date"
-          value={comic.publication_date}
-          onChange={handleDateChange}
+          disabled={comic.category === 'diary'}
         />
       </Grid>
 
