@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { IComic } from '../db/models/Comic';
-import { IPanel } from '../db/models/Panel';
+import Paper from '@mui/material/Paper';
+import ComicForm from '../components/cms/ComicForm';
 
 const CMS: React.FC = () => {
   return (
-    <div>
+    <Paper elevation={3} sx={{ p: 2, my: 2, mx: 'auto', maxWidth: 'md' }}>
       <h1>CMS</h1>
-    </div>
+      <ComicForm onSubmit={(comic) => console.log(comic)} />
+    </Paper>
   );
-}
+};
 
 export default CMS;

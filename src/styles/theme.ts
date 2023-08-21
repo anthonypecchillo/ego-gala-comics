@@ -1,5 +1,8 @@
 import { createTheme } from '@mui/material/styles';
 
+//mui.com/x/react-date-pickers/base-concepts/#typescript
+// import type {} from '@mui/x-date-pickers/themeAugmentation';
+
 function hexToRgb(hex: string) {
   const bigint = parseInt(hex.slice(1), 16);
   const r = (bigint >> 16) & 255;

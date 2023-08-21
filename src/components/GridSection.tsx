@@ -12,8 +12,8 @@ const Grid = styled.div`
   margin: 40px 20px 55px 20px;
 `;
 
-const GridItem = styled(Link)<{ bgColor: string; index: number }>`
-  background-color: ${({ bgColor }) => bgColor};
+const GridItem = styled(Link)<{ bgcolor: string; index: number }>`
+  background-color: ${({ bgcolor }) => bgcolor};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,16 +40,16 @@ const GridItem = styled(Link)<{ bgColor: string; index: number }>`
 const GridSection: React.FC = () => {
   return (
     <Grid>
-      <GridItem href="/comic" index={1} bgColor="#a0a">
+      <GridItem href="/comic" index={1} bgcolor="#a0a">
         Comic 1
       </GridItem>
-      <GridItem href="/about" index={2} bgColor="#0aa">
+      <GridItem href="/about" index={2} bgcolor="#0aa">
         About 1
       </GridItem>
-      <GridItem href="/comic" index={3} bgColor="#aa0">
+      <GridItem href="/comic" index={3} bgcolor="#aa0">
         Comic 2
       </GridItem>
-      <GridItem href="/about" index={4} bgColor="#a00">
+      <GridItem href="/about" index={4} bgcolor="#a00">
         About 2
       </GridItem>
     </Grid>
