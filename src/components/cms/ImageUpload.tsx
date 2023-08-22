@@ -6,7 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import { uploadToS3 } from '../../services/s3';
+import { uploadFileToS3 } from '../../services/s3';
 
 interface PanelState {
   image_url: string;
@@ -15,11 +15,15 @@ interface PanelState {
 interface ImageUploadProps {
   onImageUploaded: (imageUrl: string) => void;
   panels: PanelState[];
+  category: 'diary' | 'fantology' | 'compendium';
+  title: string;
 }
 
 const ImageUpload: React.FC<ImageUploadProps> = ({
   onImageUploaded,
   panels,
+  category,
+  title,
 }) => {
   const handleImageUpload = async (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -27,7 +31,12 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const imageUrl = await uploadToS3(file);
+    const imageUrl = await uploadFileToS3(
+      file,
+      category,
+      title,
+      panels.length + 1,
+    );
     onImageUploaded(imageUrl);
   };
 

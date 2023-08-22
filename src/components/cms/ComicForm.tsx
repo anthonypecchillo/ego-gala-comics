@@ -148,6 +148,8 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
         <ImageUpload
           onImageUploaded={handleImageUploaded}
           panels={comic.panels}
+          category={comic.category}
+          title={comic.title}
         />
       </Grid>
 
