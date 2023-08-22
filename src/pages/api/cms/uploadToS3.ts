@@ -1,6 +1,7 @@
 import AWS from 'aws-sdk';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Buffer } from 'buffer';
+import getRawBody from 'raw-body';
 
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -66,6 +67,12 @@ const uploadToS3 = async (
   return `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${s3Key}`;
 };
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -75,7 +82,15 @@ export default async function handler(
   }
 
   try {
-    const { fileData, category, title, panelNumber } = req.body;
+    const requestBody = await getRawBody(req, {
+      length: req.headers['content-length'],
+      limit: '4mb',
+      encoding: 'utf8',
+    });
+
+    const bodyParsed = JSON.parse(requestBody);
+
+    const { fileData, category, title, panelNumber } = bodyParsed;
 
     // Extracting the base64 data from the Data URL (format: "data:<MIME>;base64,<data>")
     const base64ContentArray = fileData.split(',');
@@ -96,14 +111,15 @@ export default async function handler(
     );
     res.status(200).json({ fileURL });
   } catch (error: unknown) {
-    // Use unknown for safest type-checking
-    if (error instanceof Error) {
+    if ((error as any).type === 'entity.too.large') {
+      console.error('Request body too large:', error);
+      return res.status(413).json({ error: 'Payload too large' });
+    } else if (error instanceof Error) {
       console.error('Error uploading to S3:', error);
-      res.status(500).json({ error: error.message });
+      return res.status(500).json({ error: error.message });
     } else {
-      // If error is not an instance of Error (very rare), handle gracefully
       console.error('Unexpected error:', error);
-      res.status(500).json({ error: 'An unexpected error occurred' });
+      return res.status(500).json({ error: 'An unexpected error occurred' });
     }
   }
 }

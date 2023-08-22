@@ -6,7 +6,7 @@ import ComicForm from '../components/cms/ComicForm';
 const CMS: React.FC = () => {
   return (
     <Paper elevation={3} sx={{ p: 2, my: 5, mx: 'auto', maxWidth: 'md' }}>
-      <h1>CMS</h1>
+      <h1>Create a Comic</h1>
       <Box width="60%">
         <ComicForm onSubmit={(comic) => console.log(comic)} />
       </Box>

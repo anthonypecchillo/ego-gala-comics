@@ -100,7 +100,7 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
     <Grid container spacing={3} direction="column" alignItems="stretch">
       <Grid container item spacing={3}>
         <Grid item xs={7}>
-          <FormControl fullWidth>
+          <FormControl fullWidth required>
             <InputLabel htmlFor="comic-category">Category</InputLabel>
             <Select
               value={comic.category}
@@ -130,6 +130,7 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
       <Grid item xs={12}>
         <TextField
           fullWidth
+          required
           label="Title"
           name="title"
           value={comic.title}
