@@ -37,3 +37,13 @@ export async function uploadFileToS3(
   const data = await response.json();
   return data.fileURL;
 }
+
+export async function deleteFileFromS3(imageUrl: string): Promise<void> {
+  await fetch('/api/cms/deleteFromS3', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ imageUrl }),
+  });
+}

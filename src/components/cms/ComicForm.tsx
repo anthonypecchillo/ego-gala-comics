@@ -60,6 +60,13 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
     }));
   };
 
+  const handlePanelDeleted = (imageUrl: string) => {
+    setComic((prev) => ({
+      ...prev,
+      panels: prev.panels.filter((panel) => panel.image_url !== imageUrl),
+    }));
+  };
+
   const handleCategoryChange = (
     event: SelectChangeEvent<'diary' | 'fantology' | 'compendium'>,
   ) => {
@@ -147,6 +154,7 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
       <Grid item xs={12}>
         <ImageUpload
           onImageUploaded={handleImageUploaded}
+          onPanelDeleted={handlePanelDeleted}
           panels={comic.panels}
           category={comic.category}
           title={comic.title}

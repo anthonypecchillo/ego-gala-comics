@@ -6,7 +6,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import { uploadFileToS3 } from '../../services/s3';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { uploadFileToS3, deleteFileFromS3 } from '../../services/s3';
 
 interface PanelState {
   image_url: string;
@@ -14,6 +15,7 @@ interface PanelState {
 
 interface ImageUploadProps {
   onImageUploaded: (imageUrl: string) => void;
+  onPanelDeleted: (imageUrl: string) => void;
   panels: PanelState[];
   category: 'diary' | 'fantology' | 'compendium';
   title: string;
@@ -21,6 +23,7 @@ interface ImageUploadProps {
 
 const ImageUpload: React.FC<ImageUploadProps> = ({
   onImageUploaded,
+  onPanelDeleted,
   panels,
   category,
   title,
@@ -38,6 +41,21 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       panels.length + 1,
     );
     onImageUploaded(imageUrl);
+  };
+
+  function extractS3KeyFromUrl(url: string): string {
+    const match = url.match(/amazonaws\.com\/(.+)$/);
+    return match ? match[1] : '';
+  }
+
+  const handleDeleteClick = async (imageUrl: string) => {
+    try {
+      await deleteFileFromS3(imageUrl);
+
+      onPanelDeleted(imageUrl);
+    } catch (error) {
+      console.error('Failed to delete image:', error);
+    }
   };
 
   return (
@@ -70,6 +88,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               secondary={panel.image_url}
               secondaryTypographyProps={{ style: { wordBreak: 'break-all' } }}
             />
+            <Button onClick={() => handleDeleteClick(panel.image_url)}>
+              <DeleteIcon />
+            </Button>
           </ListItem>
         ))}
       </List>
