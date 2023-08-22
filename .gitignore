@@ -139,3 +139,6 @@ dist
 
 # typescript
 next-env.d.ts
+
+# vs code
+.vscode

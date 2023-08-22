@@ -3,8 +3,8 @@ import axios from 'axios';
 export async function fetchComic(comicId: string) {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-    console.log('apiUrl', apiUrl)
-    console.log('comicId', comicId)
+    console.log('apiUrl', apiUrl);
+    console.log('comicId', comicId);
     const response = await axios.get(`${apiUrl}/api/comics/${comicId}`);
     // const response = await axios.get(`http://localhost:3001/api/comics/${comicId}`);
 
@@ -42,5 +42,34 @@ export async function fetchEarliestDiaryComicId() {
   } catch (error) {
     console.error('Error fetching earliest diary comic ID:', error);
     throw error;
+  }
+}
+
+// Matches ComicFormState + PanelState in ComicForm.tsx - how can we simplify?
+interface ComicPayload {
+  title: string;
+  category: 'diary' | 'fantology' | 'compendium';
+  description: string;
+  publication_date: Date;
+  panels: Array<{
+    image_url: string;
+    panel_number: number;
+  }>;
+}
+
+export async function createComic(payload: ComicPayload) {
+  try {
+    const response = await axios.post('/api/cms/submitComic', payload);
+
+    if (response.status === 200) {
+      return { success: true, data: response.data };
+    } else {
+      return { success: false, error: response.data };
+    }
+  } catch (error: any) {
+    return {
+      success: false,
+      error: error.response?.data || 'An error occurred',
+    };
   }
 }

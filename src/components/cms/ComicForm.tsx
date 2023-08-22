@@ -10,14 +10,16 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import ImageUpload from './ImageUpload';
 import Grid from '@mui/material/Grid';
+import { createComic } from '../../services/comics';
 
 interface ComicFormProps {
   initialComic?: ComicFormState;
-  onSubmit: (comic: ComicFormState) => void;
+  // onSubmit: (comic: ComicFormState) => void;
 }
 
 interface PanelState {
   image_url: string;
+  panel_number: number;
 }
 
 interface ComicFormState {
@@ -33,7 +35,7 @@ const formatDate = (date: Date): string => {
   return date.toLocaleDateString(undefined, options);
 };
 
-const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
+const ComicForm: React.FC<ComicFormProps> = () => {
   const [comic, setComic] = useState<ComicFormState>({
     title: '',
     category: 'diary',
@@ -41,31 +43,6 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
     publication_date: new Date(),
     panels: [],
   });
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setComic((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleDateChange = (date: Date | null) => {
-    if (date) {
-      setComic((prev) => ({ ...prev, publication_date: date }));
-    }
-  };
-
-  const handleImageUploaded = (imageUrl: string) => {
-    setComic((prev) => ({
-      ...prev,
-      panels: [...prev.panels, { image_url: imageUrl }],
-    }));
-  };
-
-  const handlePanelDeleted = (imageUrl: string) => {
-    setComic((prev) => ({
-      ...prev,
-      panels: prev.panels.filter((panel) => panel.image_url !== imageUrl),
-    }));
-  };
 
   const handleCategoryChange = (
     event: SelectChangeEvent<'diary' | 'fantology' | 'compendium'>,
@@ -82,9 +59,92 @@ const ComicForm: React.FC<ComicFormProps> = ({ onSubmit }) => {
     }
   };
 
-  const handleSubmit = () => {
-    // Add some validation here?
-    onSubmit(comic);
+  const handleDateChange = (date: Date | null) => {
+    if (date) {
+      setComic((prev) => ({ ...prev, publication_date: date }));
+    }
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setComic((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageUploaded = (imageUrl: string) => {
+    // Find the max panel number (or 0 if no panels exist)
+    const maxPanelNumber = Math.max(
+      0,
+      ...comic.panels.map((panel) => panel.panel_number),
+    );
+    setComic((prev) => ({
+      ...prev,
+      panels: [
+        ...prev.panels,
+        {
+          image_url: imageUrl,
+          panel_number: maxPanelNumber + 1,
+        },
+      ],
+    }));
+  };
+
+  const handlePanelDeleted = (imageUrl: string) => {
+    setComic((prev) => ({
+      ...prev,
+      panels: prev.panels
+        .filter((panel) => panel.image_url !== imageUrl)
+        .map((panel, idx) => ({
+          ...panel,
+          panel_number: idx + 1,
+        })),
+    }));
+  };
+
+  const validateSubmission = (): boolean => {
+    // Validation
+    if (!comic.title) {
+      console.error('Title is required.');
+      // TODO: set an error state variable here to show an error message in the UI.
+      return false;
+    }
+
+    if (!comic.category) {
+      console.error('Category is required.');
+      // TODO: set an error state variable here to show an error message in the UI.
+      return false;
+    }
+
+    if (!comic.publication_date) {
+      console.error('Publication date is required.');
+      // TODO: set an error state variable here to show an error message in the UI.
+      return false;
+    }
+
+    if (
+      !comic.panels ||
+      comic.panels.length === 0 ||
+      !comic.panels[0].image_url
+    ) {
+      console.error('At least one panel with an image URL is required.');
+      // TODO: set an error state variable here to show an error message in the UI.
+      return false;
+    }
+
+    // All validations have passed
+    return true;
+  };
+
+  const handleSubmit = async () => {
+    const isValidSubmission = validateSubmission();
+
+    if (isValidSubmission) {
+      const response = await createComic(comic);
+      if (response.success) {
+        console.log('SUCCESS!');
+      } else {
+        console.error('Error submitting comic:', response.error);
+      }
+    }
   };
 
   useEffect(() => {

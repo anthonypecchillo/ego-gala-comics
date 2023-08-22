@@ -88,7 +88,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               secondary={panel.image_url}
               secondaryTypographyProps={{ style: { wordBreak: 'break-all' } }}
             />
-            <Button onClick={() => handleDeleteClick(panel.image_url)}>
+            <Button
+              onClick={() => handleDeleteClick(panel.image_url)}
+              disabled={idx !== panels.length - 1} // Disable the button unless it's the last one
+            >
               <DeleteIcon />
             </Button>
           </ListItem>

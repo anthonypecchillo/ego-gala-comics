@@ -11,7 +11,7 @@ const PanelSchema: Schema = new Schema({
   comic_id: { type: Schema.Types.ObjectId, ref: 'Comic', required: true },
   panel_number: { type: Number, required: true },
   image_url: { type: String, required: true },
-  transcription: { type: String, required: true },
+  transcription: { type: String, required: false },
 });
 
 export default mongoose.models.Panel ||

@@ -20,7 +20,7 @@ const ComicSchema: Schema = new Schema({
     enum: ['diary', 'fantology', 'compendium'],
     required: true,
   },
-  description: { type: String, required: true },
+  description: { type: String, required: false },
   publication_date: { type: Date, required: true },
   panels: [{ type: Schema.Types.ObjectId, ref: 'Panel' }],
 });

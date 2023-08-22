@@ -15,6 +15,13 @@ export default async function handler(
 
   const { title, category, description, publication_date, panels } = req.body;
 
+  console.log(JSON.stringify(req.body, null, 2));
+  console.log(title);
+  console.log(category);
+  console.log(description);
+  console.log(publication_date);
+  console.log(JSON.stringify(panels, null, 2));
+
   try {
     // Create and save comic document
     const comic = new Comic({
