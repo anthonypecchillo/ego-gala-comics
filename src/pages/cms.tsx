@@ -29,20 +29,42 @@ const CMS: React.FC = () => {
   };
 
   return (
+<<<<<<< HEAD
     <Paper elevation={3} sx={{ p: 2, my: 5, mx: 'auto', maxWidth: 'md' }}>
+=======
+    <Paper elevation={3} sx={{ p: 2, my: 5, mx: 'auto', maxWidth: 'sm' }}>
+>>>>>>> dbf2f38 (Complete Comic deletion CMS feature)
       <Tabs value={activeCMSTab} onChange={handleCMSTabClick}>
         <Tab label="Create" />
         <Tab label="Delete" />
       </Tabs>
       {activeCMSTab === 0 && (
+<<<<<<< HEAD
         <Box width="60%">
           <h1>Create a Comic</h1>
+=======
+        <Box width="98%" mx="auto">
+          {/* <center>
+            <h1>✍️ Create a Comic ✨</h1>
+          </center> */}
+          <br />
+          <br />
+>>>>>>> dbf2f38 (Complete Comic deletion CMS feature)
           <ComicForm />
         </Box>
       )}
       {activeCMSTab === 1 && (
+<<<<<<< HEAD
         <Box width="60%">
           <h1>Delete a Comic</h1>
+=======
+        <Box width="100%">
+          {/* <center>
+            <h1>🤦‍♀️ Delete a Comic 🗑️</h1>
+          </center> */}
+          <br />
+          <br />
+>>>>>>> dbf2f38 (Complete Comic deletion CMS feature)
           <ComicTabBar
             activeTab={activeCategoryTab}
             onTabClick={handleCategoryTabClick}
