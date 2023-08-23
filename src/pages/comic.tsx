@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import ComicTabBar from '../components/ComicTabBar';
 import ComicList from '../components/ComicList';
-import { fetchComicsByCategory } from '../services/comics';
-import { IComic } from '../db/models/Comic';
 import Button from '@mui/material/Button';
-import Pagination from '@mui/material/Pagination';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Hidden from '@mui/material/Hidden';
@@ -40,45 +37,19 @@ const ComicPageGrid = styled.div`
   }
 `;
 
-const StyledComicList = styled.div`
-  grid-area: comic-list;
-`;
-
-const PaginationWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-`;
-
 const StyledContent = styled.div`
   grid-area: content;
 `;
 
 const ComicPage: React.FC = () => {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState('diary');
-  const [comics, setComics] = useState<IComic[]>([]);
+  const [activeCategoryTab, setActiveCategoryTab] = useState('diary');
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  useEffect(() => {
-    const fetchCategoryComics = async () => {
-      try {
-        const { comics: categoryComics, totalPages } =
-          await fetchComicsByCategory(activeTab, currentPage);
-        setComics(categoryComics);
-        setTotalPages(totalPages);
-      } catch (error) {
-        console.error('Error fetching category-specific comics:', error);
-      }
-    };
-
-    fetchCategoryComics();
-  }, [activeTab, currentPage]);
-
   const handleTabClick = (category: string) => {
-    setActiveTab(category);
+    setActiveCategoryTab(category);
+    setCurrentPage(1);
   };
 
   const handlePageChange = (
@@ -107,35 +78,17 @@ const ComicPage: React.FC = () => {
           zIndex: 1100,
         }}
       >
-        <ComicTabBar activeTab={activeTab} onTabClick={handleTabClick} />
+        <ComicTabBar
+          activeTab={activeCategoryTab}
+          onTabClick={handleTabClick}
+        />
       </Paper>
       <ComicPageGrid>
-        <StyledComicList>
-          <PaginationWrapper>
-            <Pagination
-              count={totalPages}
-              page={currentPage}
-              onChange={handlePageChange}
-              color="primary"
-              showFirstButton
-              showLastButton
-            />
-          </PaginationWrapper>
-
-          <ComicList comics={comics} />
-
-          <PaginationWrapper>
-            <Pagination
-              count={totalPages}
-              page={currentPage}
-              onChange={handlePageChange}
-              color="primary"
-              showFirstButton
-              showLastButton
-            />
-          </PaginationWrapper>
-        </StyledComicList>
-
+        <ComicList
+          category={activeCategoryTab}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
         <StyledContent>
           <Typography variant="h4" gutterBottom>
             Ego Gala Archive

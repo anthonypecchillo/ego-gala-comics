@@ -73,3 +73,17 @@ export async function createComic(payload: ComicPayload) {
     };
   }
 }
+
+export async function deleteComic(comicId: string) {
+  try {
+    const response = await axios.delete(`/api/cms/deleteComic`, {
+      data: {
+        comicId: comicId,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error deleting comic:', error);
+    throw error;
+  }
+}
