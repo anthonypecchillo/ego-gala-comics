@@ -11,6 +11,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import BookIcon from '@mui/icons-material/Book';
 import InfoIcon from '@mui/icons-material/Info';
+import ImportContactsIcon from '@mui/icons-material/ImportContacts';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import BrushIcon from '@mui/icons-material/Brush';
+import PaletteIcon from '@mui/icons-material/Palette';
+import ImageIcon from '@mui/icons-material/Image';
+import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import Hidden from '@mui/material/Hidden';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -74,7 +81,10 @@ const Navbar: React.FC = () => {
         <ListItem button>
           <NavLink href="/comic">
             <ListItemIcon sx={{ minWidth: '40px' }}>
-              <BookIcon />
+              {/* <BookIcon /> */}
+              <ImportContactsIcon />
+              {/* <MenuBookIcon /> */}
+              {/* <LocalLibraryIcon /> */}
             </ListItemIcon>
             <ListItemText primary="Comic" />
           </NavLink>
@@ -82,7 +92,10 @@ const Navbar: React.FC = () => {
         <ListItem button>
           <NavLink href="/illustrations">
             <ListItemIcon sx={{ minWidth: '40px' }}>
-              <InfoIcon />
+              {/* <BrushIcon /> */}
+              <PaletteIcon />
+              {/* <ImageIcon /> */}
+              {/* <WallpaperIcon /> */}
             </ListItemIcon>
             <ListItemText primary="Illustrations" />
           </NavLink>
