@@ -4,12 +4,18 @@ import Link from 'next/link';
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   gap: 4vw;
   place-items: space-evenly;
   justify-content: center; /* Center Grid Items in the middle of the page */
   margin: 40px 20px 55px 20px;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 5vw;
+  }
 `;
 
 const GridItem = styled(Link)<{ bgcolor: string; index: number }>`
@@ -17,12 +23,9 @@ const GridItem = styled(Link)<{ bgcolor: string; index: number }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-self: ${({ index }) =>
-    index % 2
-      ? 'end'
-      : 'start'}; /* Push left column to the right and right column to the left */
-  height: 26vw;
-  width: 26vw;
+  justify-self: center;
+  height: 28vw;
+  width: 28vw;
 
   color: inherit;
   text-decoration: none;
@@ -31,9 +34,9 @@ const GridItem = styled(Link)<{ bgcolor: string; index: number }>`
     // Add fade animation here
   }
 
-  @media screen and (max-width: 768px) {
-    height: 45vw;
-    width: 45vw;
+  @media screen and (max-width: 600px) {
+    height: 90vw;
+    width: 90vw;
   }
 `;
 
@@ -41,16 +44,13 @@ const GridSection: React.FC = () => {
   return (
     <Grid>
       <GridItem href="/comic" index={1} bgcolor="#a0a">
-        Comic 1
+        Comics
       </GridItem>
-      <GridItem href="/about" index={2} bgcolor="#0aa">
-        About 1
-      </GridItem>
-      <GridItem href="/comic" index={3} bgcolor="#aa0">
-        Comic 2
+      <GridItem href="/illustrations" index={2} bgcolor="#0aa">
+        Illustrations
       </GridItem>
       <GridItem href="/about" index={4} bgcolor="#a00">
-        About 2
+        About
       </GridItem>
     </Grid>
   );
