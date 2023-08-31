@@ -18,6 +18,8 @@ import BrushIcon from '@mui/icons-material/Brush';
 import PaletteIcon from '@mui/icons-material/Palette';
 import ImageIcon from '@mui/icons-material/Image';
 import WallpaperIcon from '@mui/icons-material/Wallpaper';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import Hidden from '@mui/material/Hidden';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -86,7 +88,7 @@ const Navbar: React.FC = () => {
               {/* <MenuBookIcon /> */}
               {/* <LocalLibraryIcon /> */}
             </ListItemIcon>
-            <ListItemText primary="Comic" />
+            <ListItemText primary="Comics" />
           </NavLink>
         </ListItem>
         <ListItem button>
@@ -109,11 +111,16 @@ const Navbar: React.FC = () => {
           </NavLink>
         </ListItem>
       </List>
+
       <List
         subheader={<ListSubheader component="div">Social Media</ListSubheader>}
       >
         <ListItem button>
-          <NavLink href="https://twitter.com/ego_gala">
+          <NavLink
+            href="https://twitter.com/ego_gala"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <TwitterIcon />
             </ListItemIcon>
@@ -121,7 +128,11 @@ const Navbar: React.FC = () => {
           </NavLink>
         </ListItem>
         <ListItem button>
-          <NavLink href="https://www.instagram.com/ego_gala/">
+          <NavLink
+            href="https://www.instagram.com/ego_gala/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <InstagramIcon />
             </ListItemIcon>
@@ -129,7 +140,11 @@ const Navbar: React.FC = () => {
           </NavLink>
         </ListItem>
         <ListItem button>
-          <NavLink href="https://www.facebook.com/k10.shull">
+          <NavLink
+            href="https://www.facebook.com/k10.shull"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <FacebookIcon />
             </ListItemIcon>
@@ -137,11 +152,27 @@ const Navbar: React.FC = () => {
           </NavLink>
         </ListItem>
         <ListItem button>
-          <NavLink href="https://www.reddit.com/user/ego_gala/">
+          <NavLink
+            href="https://www.reddit.com/user/ego_gala/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <RedditIcon />
             </ListItemIcon>
             <ListItemText primary="Reddit" />
+          </NavLink>
+        </ListItem>
+      </List>
+
+      <List subheader={<ListSubheader component="div">Store</ListSubheader>}>
+        <ListItem button>
+          <NavLink href="https://egogala.storenvy.com/">
+            <ListItemIcon sx={{ minWidth: '40px' }}>
+              <ShoppingCartIcon />
+              {/* <ShoppingBasketIcon /> */}
+            </ListItemIcon>
+            <ListItemText primary="Shop" />
           </NavLink>
         </ListItem>
       </List>
@@ -206,6 +237,14 @@ const Navbar: React.FC = () => {
             </NavLink>
             <NavLink href="/illustrations" style={{ marginRight: 12 }}>
               Illustrations
+            </NavLink>
+            <NavLink
+              href="https://egogala.storenvy.com/"
+              style={{ marginRight: 12 }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Shop
             </NavLink>
             <NavLink href="/about">About</NavLink>
           </div>
