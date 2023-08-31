@@ -188,6 +188,29 @@ const Navbar: React.FC = () => {
       }}
     >
       <Toolbar>
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: '24px',
+            fontWeight: 'bold',
+            color: '#333',
+            marginRight: {
+              md: '20px',
+              xs: '0',
+            },
+            textAlign: {
+              md: 'left',
+              xs: 'left',
+            },
+            flexGrow: {
+              md: '0',
+              xs: '1',
+            },
+          }}
+        >
+          Ego Gala
+        </Typography>
+
         <Hidden mdUp>
           <IconButton
             sx={{
@@ -205,28 +228,6 @@ const Navbar: React.FC = () => {
           </IconButton>
         </Hidden>
 
-        <Typography
-          variant="h6"
-          sx={{
-            fontSize: '24px',
-            fontWeight: 'bold',
-            color: '#333',
-            marginRight: {
-              md: '20px',
-              xs: '0',
-            },
-            textAlign: {
-              md: 'left',
-              xs: 'center',
-            },
-            flexGrow: {
-              md: '0',
-              xs: '1',
-            },
-          }}
-        >
-          Ego Gala
-        </Typography>
         <Hidden mdDown>
           <div style={{ flexGrow: 1 }}>
             <NavLink href="/" style={{ marginRight: 12 }}>
@@ -326,7 +327,7 @@ const Navbar: React.FC = () => {
           </NavLink>
         </Hidden>
       </Toolbar>
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
         {list}
       </Drawer>
     </AppBar>
