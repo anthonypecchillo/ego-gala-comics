@@ -200,6 +200,7 @@ const Navbar: React.FC = () => {
             },
             textAlign: {
               md: 'left',
+              // xs: 'center',
               xs: 'left',
             },
             flexGrow: {
@@ -327,7 +328,7 @@ const Navbar: React.FC = () => {
           </NavLink>
         </Hidden>
       </Toolbar>
-      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
         {list}
       </Drawer>
     </AppBar>
