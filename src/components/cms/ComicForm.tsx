@@ -31,7 +31,12 @@ interface ComicFormState {
 }
 
 const formatDate = (date: Date): string => {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
   return date.toLocaleDateString(undefined, options);
 };
 

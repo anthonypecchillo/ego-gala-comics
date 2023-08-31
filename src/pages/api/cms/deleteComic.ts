@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import AWS from 'aws-sdk';
 import dbConnect from '../../../db';
 import Comic from '../../../db/models/Comic';
-import Panel from '../../../db/models/Panel';
+import Panel, { IPanel } from '../../../db/models/Panel';
 
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -31,7 +31,7 @@ export default async function handler(
   }
 
   // Step 2: Delete Images from S3 Bucket
-  const panelImageUrls = comic.panels.map((panel) => panel.image_url);
+  const panelImageUrls = comic.panels.map((panel: IPanel) => panel.image_url);
   for (let imageUrl of panelImageUrls) {
     const fileKey = imageUrl.split(
       `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/`,
@@ -41,6 +41,12 @@ export default async function handler(
       return res.status(400).json({
         error: 'Failed to extract the file key from the provided image URL.',
       });
+    }
+
+    if (!process.env.S3_BUCKET_NAME) {
+      return res
+        .status(500)
+        .json({ error: 'S3_BUCKET_NAME not set in environment.' });
     }
 
     const deleteParams = {
