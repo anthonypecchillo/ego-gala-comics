@@ -80,6 +80,14 @@ const Navbar: React.FC = () => {
           </NavLink>
         </ListItem>
         <ListItem button>
+          <NavLink href="/illustrations">
+            <ListItemIcon sx={{ minWidth: '40px' }}>
+              <InfoIcon />
+            </ListItemIcon>
+            <ListItemText primary="Illustrations" />
+          </NavLink>
+        </ListItem>
+        <ListItem button>
           <NavLink href="/about">
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <InfoIcon />
@@ -138,44 +146,54 @@ const Navbar: React.FC = () => {
       <Toolbar>
         <Hidden mdUp>
           <IconButton
-              sx={{
-                color: '#333',
-                '&:hover': {
-                  color: theme.palette.info.main,
-                  backgroundColor: '#fff',
-                },
-              }}
-              aria-label="open drawer"
-              edge="start"
-              onClick={toggleDrawer(true)}
-            >
+            sx={{
+              color: '#333',
+              '&:hover': {
+                color: theme.palette.info.main,
+                backgroundColor: '#fff',
+              },
+            }}
+            aria-label="open drawer"
+            edge="start"
+            onClick={toggleDrawer(true)}
+          >
             <MenuIcon />
           </IconButton>
         </Hidden>
 
-        <Typography variant="h6" sx={{
-          fontSize: '24px',
-          fontWeight: 'bold',
-          color: '#333',
-          marginRight: {
-            md: '20px',
-            xs: '0',
-          },
-          textAlign: {
-            md: 'left',
-            xs: 'center',
-          },
-          flexGrow: {
-            md: '0',
-            xs: '1',
-          },
-        }}>
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: '24px',
+            fontWeight: 'bold',
+            color: '#333',
+            marginRight: {
+              md: '20px',
+              xs: '0',
+            },
+            textAlign: {
+              md: 'left',
+              xs: 'center',
+            },
+            flexGrow: {
+              md: '0',
+              xs: '1',
+            },
+          }}
+        >
           Ego Gala
         </Typography>
         <Hidden mdDown>
           <div style={{ flexGrow: 1 }}>
-            <NavLink href="/" style={{ marginRight: 10}}>Home</NavLink>
-            <NavLink href="/comic" style={{ marginRight: 10}}>Comic</NavLink>
+            <NavLink href="/" style={{ marginRight: 12 }}>
+              Home
+            </NavLink>
+            <NavLink href="/comic" style={{ marginRight: 12 }}>
+              Comics
+            </NavLink>
+            <NavLink href="/illustrations" style={{ marginRight: 12 }}>
+              Illustrations
+            </NavLink>
             <NavLink href="/about">About</NavLink>
           </div>
           <NavLink
