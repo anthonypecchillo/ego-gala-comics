@@ -188,6 +188,30 @@ const Navbar: React.FC = () => {
       }}
     >
       <Toolbar>
+        <Typography
+          variant="h6"
+          sx={{
+            fontSize: '24px',
+            fontWeight: 'bold',
+            color: '#333',
+            marginRight: {
+              md: '20px',
+              xs: '0',
+            },
+            textAlign: {
+              md: 'left',
+              // xs: 'center',
+              xs: 'left',
+            },
+            flexGrow: {
+              md: '0',
+              xs: '1',
+            },
+          }}
+        >
+          Ego Gala
+        </Typography>
+
         <Hidden mdUp>
           <IconButton
             sx={{
@@ -205,28 +229,6 @@ const Navbar: React.FC = () => {
           </IconButton>
         </Hidden>
 
-        <Typography
-          variant="h6"
-          sx={{
-            fontSize: '24px',
-            fontWeight: 'bold',
-            color: '#333',
-            marginRight: {
-              md: '20px',
-              xs: '0',
-            },
-            textAlign: {
-              md: 'left',
-              xs: 'center',
-            },
-            flexGrow: {
-              md: '0',
-              xs: '1',
-            },
-          }}
-        >
-          Ego Gala
-        </Typography>
         <Hidden mdDown>
           <div style={{ flexGrow: 1 }}>
             <NavLink href="/" style={{ marginRight: 12 }}>
