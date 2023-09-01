@@ -43,13 +43,13 @@ const GridItem = styled(Link)<{ bgcolor: string; index: number }>`
 const GridSection: React.FC = () => {
   return (
     <Grid>
-      <GridItem href="/comic" index={1} bgcolor="#a0a">
+      <GridItem href="/comic" index={1} bgcolor="#B4ABD0">
         Comics
       </GridItem>
-      <GridItem href="/illustrations" index={2} bgcolor="#0aa">
+      <GridItem href="/illustrations" index={2} bgcolor="#B4ABD0">
         Illustrations
       </GridItem>
-      <GridItem href="/about" index={4} bgcolor="#a00">
+      <GridItem href="/about" index={4} bgcolor="#B4ABD0">
         About
       </GridItem>
     </Grid>
