@@ -16,7 +16,7 @@ export default function Custom404() {
     >
       <h1>Oh no, 404!</h1>
       <Image
-        src={'/404.jpg'}
+        src="https://ego-gala-comics.s3.us-east-1.amazonaws.com/404.jpg"
         alt="404"
         sizes="100vw"
         style={{
