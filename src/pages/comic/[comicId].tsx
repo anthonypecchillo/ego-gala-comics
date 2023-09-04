@@ -1,11 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
+
+import DiaryCalendar from '../../components/DiaryCalendar';
 import { IComic } from '../../db/models/Comic';
 import { fetchComic } from '../../services/comics';
-import { useRouter } from 'next/router';
-import DiaryCalendar from '../../components/DiaryCalendar';
 
 const ComicPanel = styled.div`
   display: grid;
@@ -37,20 +39,14 @@ interface ComicViewerProps {
 const ComicViewer: React.FC<ComicViewerProps> = ({ comic }) => {
   const router = useRouter();
   const panelNumber = Number(router.query.panelNumber) || 1;
-  const currentPanel = comic.panels.find(
-    (panel) => panel.panel_number === panelNumber,
-  );
+  const currentPanel = comic.panels.find((panel) => panel.panel_number === panelNumber);
 
   return (
     <>
       <ComicPanel>
         {currentPanel && (
           <ComicImage key={currentPanel._id}>
-            <Image
-              src={currentPanel.image_url}
-              alt={`Panel ${currentPanel.panel_number}`}
-              fill
-            />
+            <Image src={currentPanel.image_url} alt={`Panel ${currentPanel.panel_number}`} fill />
           </ComicImage>
         )}
       </ComicPanel>

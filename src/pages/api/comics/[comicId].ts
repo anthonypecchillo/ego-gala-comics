@@ -1,16 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+
 import dbConnect from '../../../db';
 import Comic, { IComic } from '../../../db/models/Comic';
 
 const getComicById = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    console.log('getComicById')
+    console.log('getComicById');
     await dbConnect();
 
     const { comicId } = req.query;
-    const comic = (await Comic.findById(comicId).populate(
-      'panels',
-    )) as IComic | null;
+    const comic = (await Comic.findById(comicId).populate('panels')) as IComic | null;
 
     if (comic) {
       res.json(comic);
@@ -19,9 +18,7 @@ const getComicById = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   } catch (err) {
     console.error(err);
-    res
-      .status(500)
-      .json({ error: 'An error occurred while fetching the comic.' });
+    res.status(500).json({ error: 'An error occurred while fetching the comic.' });
   }
 };
 

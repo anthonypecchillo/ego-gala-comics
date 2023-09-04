@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Paper from '@mui/material/Paper';
+
+import ComicList from '@/components/ComicList';
 import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
+import Paper from '@mui/material/Paper';
 import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+
 import ComicForm from '../components/cms/ComicForm';
 import ComicTabBar from '../components/ComicTabBar';
-import ComicList from '@/components/ComicList';
 
 const CMS: React.FC = () => {
   const [activeCMSTab, setActiveCMSTab] = React.useState(0);
@@ -21,10 +23,7 @@ const CMS: React.FC = () => {
     setCurrentPage(1);
   };
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    page: number,
-  ) => {
+  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
 
@@ -51,10 +50,7 @@ const CMS: React.FC = () => {
           </center> */}
           <br />
           <br />
-          <ComicTabBar
-            activeTab={activeCategoryTab}
-            onTabClick={handleCategoryTabClick}
-          />
+          <ComicTabBar activeTab={activeCategoryTab} onTabClick={handleCategoryTabClick} />
           <ComicList
             category={activeCategoryTab}
             currentPage={currentPage}

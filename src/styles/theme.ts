@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-//mui.com/x/react-date-pickers/base-concepts/#typescript
+// mui.com/x/react-date-pickers/base-concepts/#typescript
 // import type {} from '@mui/x-date-pickers/themeAugmentation';
 
 function hexToRgb(hex: string) {

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import ComicTabBar from '../components/ComicTabBar';
-import ComicList from '../components/ComicList';
+
 import Button from '@mui/material/Button';
+import Hidden from '@mui/material/Hidden';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import Hidden from '@mui/material/Hidden';
-import { fetchEarliestDiaryComicId } from '../services/comics';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
+
+import ComicList from '../components/ComicList';
+import ComicTabBar from '../components/ComicTabBar';
+import { fetchEarliestDiaryComicId } from '../services/comics';
 import theme from '../styles/theme';
 
 const ComicPageGrid = styled.div`
@@ -52,10 +54,7 @@ const ComicPage: React.FC = () => {
     setCurrentPage(1);
   };
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    page: number,
-  ) => {
+  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
     setCurrentPage(page);
   };
 
@@ -78,10 +77,7 @@ const ComicPage: React.FC = () => {
           zIndex: 1100,
         }}
       >
-        <ComicTabBar
-          activeTab={activeCategoryTab}
-          onTabClick={handleTabClick}
-        />
+        <ComicTabBar activeTab={activeCategoryTab} onTabClick={handleTabClick} />
       </Paper>
       <ComicPageGrid>
         <ComicList
@@ -94,23 +90,16 @@ const ComicPage: React.FC = () => {
             Ego Gala Archive
           </Typography>
           <Typography variant="body1" paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            rutrum ligula felis, eget lobortis nisi egestas at. Pellentesque
-            suscipit convallis enim at suscipit. Proin nec sem sit amet arcu
-            consequat viverra.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum ligula felis, eget
+            lobortis nisi egestas at. Pellentesque suscipit convallis enim at suscipit. Proin nec
+            sem sit amet arcu consequat viverra.
           </Typography>
           <Typography variant="body1" paragraph>
-            Ut consectetur diam ac augue venenatis sagittis. Quisque mauris
-            diam, laoreet a quam ac, tincidunt feugiat mi. Fusce maximus non mi
-            pretium vulputate.{' '}
+            Ut consectetur diam ac augue venenatis sagittis. Quisque mauris diam, laoreet a quam ac,
+            tincidunt feugiat mi. Fusce maximus non mi pretium vulputate.{' '}
             <a href="https://example.com">Accessibility Settings</a>.
           </Typography>
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            onClick={goToEarliestDiaryComic}
-          >
+          <Button fullWidth variant="contained" color="primary" onClick={goToEarliestDiaryComic}>
             FIRST COMIC
           </Button>
         </StyledContent>

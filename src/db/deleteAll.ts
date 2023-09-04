@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+
 import Comic from './models/Comic';
 import Panel from './models/Panel';
 

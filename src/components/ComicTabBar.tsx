@@ -1,7 +1,8 @@
 import React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+
 import { useTheme, useMediaQuery, styled } from '@mui/material';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 
 interface ComicTabBarProps {
   activeTab: string;

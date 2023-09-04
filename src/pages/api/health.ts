@@ -1,5 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import mongoose from 'mongoose';
+import { NextApiRequest, NextApiResponse } from 'next';
+
 import dbConnect from '../../db';
 
 const healthCheck = async (req: NextApiRequest, res: NextApiResponse) => {

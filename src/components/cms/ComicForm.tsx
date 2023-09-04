@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import TextField from '@mui/material/TextField';
-import { TextFieldProps } from '@mui/material/TextField';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import { SelectChangeEvent } from '@mui/material/Select';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import ImageUpload from './ImageUpload';
 import Grid from '@mui/material/Grid';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+import ImageUpload from './ImageUpload';
 import { createComic } from '../../services/comics';
 
 interface ComicFormProps {

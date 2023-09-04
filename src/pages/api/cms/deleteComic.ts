@@ -1,5 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import AWS from 'aws-sdk';
+import { NextApiRequest, NextApiResponse } from 'next';
+
 import dbConnect from '../../../db';
 import Comic from '../../../db/models/Comic';
 import Panel, { IPanel } from '../../../db/models/Panel';
@@ -12,10 +13,7 @@ AWS.config.update({
 
 const s3 = new AWS.S3();
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'DELETE') {
     return res.status(405).end();
   }
@@ -23,7 +21,7 @@ export default async function handler(
   // Step 1: Retrieve the Comic Details
   await dbConnect();
 
-  const comicId = req.body.comicId;
+  const { comicId } = req.body;
   const comic = await Comic.findById(comicId).populate('panels');
 
   if (!comic) {
@@ -32,7 +30,7 @@ export default async function handler(
 
   // Step 2: Delete Images from S3 Bucket
   const panelImageUrls = comic.panels.map((panel: IPanel) => panel.image_url);
-  for (let imageUrl of panelImageUrls) {
+  for (const imageUrl of panelImageUrls) {
     const fileKey = imageUrl.split(
       `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/`,
     )[1];
@@ -44,9 +42,7 @@ export default async function handler(
     }
 
     if (!process.env.S3_BUCKET_NAME) {
-      return res
-        .status(500)
-        .json({ error: 'S3_BUCKET_NAME not set in environment.' });
+      return res.status(500).json({ error: 'S3_BUCKET_NAME not set in environment.' });
     }
 
     const deleteParams = {
@@ -63,7 +59,5 @@ export default async function handler(
   // Step 4: Delete the Comic from the Comics collection
   await Comic.deleteOne({ _id: comic._id });
 
-  return res
-    .status(200)
-    .json({ message: 'Comic and associated data deleted successfully.' });
+  return res.status(200).json({ message: 'Comic and associated data deleted successfully.' });
 }

@@ -1,5 +1,6 @@
 import AWS from 'aws-sdk';
 import type { NextApiRequest, NextApiResponse } from 'next';
+
 import { deleteFileFromS3 } from '../../../services/s3';
 
 AWS.config.update({
@@ -10,10 +11,7 @@ AWS.config.update({
 
 const s3 = new AWS.S3();
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'DELETE') {
     return res.status(405).end();
   }

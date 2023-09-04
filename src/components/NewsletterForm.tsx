@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+
 import axios from 'axios';
+import styled from 'styled-components';
 
 const FormContainer = styled.div`
   display: flex;

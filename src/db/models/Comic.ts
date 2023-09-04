@@ -1,4 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
+
 import Panel, { IPanel } from './Panel';
 
 // Don't delete this!

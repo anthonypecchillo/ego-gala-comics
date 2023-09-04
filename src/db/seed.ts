@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
 import fs from 'fs';
+import mongoose from 'mongoose';
 import path from 'path';
+
 import Comic, { IComic } from './models/Comic';
 import Panel, { IPanel } from './models/Panel';
 

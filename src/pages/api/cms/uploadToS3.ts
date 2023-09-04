@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { Buffer } from 'buffer';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import getRawBody from 'raw-body';
 
 AWS.config.update({
@@ -73,10 +73,7 @@ export const config = {
   },
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
@@ -94,32 +91,24 @@ export default async function handler(
 
     // Extracting the base64 data from the Data URL (format: "data:<MIME>;base64,<data>")
     const base64ContentArray = fileData.split(',');
-    const mimeType = base64ContentArray[0].match(
-      /[^:\s*]\w+\/[\w-+\d.]+(?=[;| ])/,
-    )[0];
+    const mimeType = base64ContentArray[0].match(/[^:\s*]\w+\/[\w-+\d.]+(?=[;| ])/)[0];
     const base64Data = base64ContentArray[1];
 
     // Convert the base64 string back to a buffer
     const imageBuffer = Buffer.from(base64Data, 'base64');
 
-    const fileURL = await uploadToS3(
-      imageBuffer,
-      mimeType,
-      category,
-      title,
-      panelNumber,
-    );
+    const fileURL = await uploadToS3(imageBuffer, mimeType, category, title, panelNumber);
     res.status(200).json({ fileURL });
   } catch (error: unknown) {
     if ((error as any).type === 'entity.too.large') {
       console.error('Request body too large:', error);
       return res.status(413).json({ error: 'Payload too large' });
-    } else if (error instanceof Error) {
+    }
+    if (error instanceof Error) {
       console.error('Error uploading to S3:', error);
       return res.status(500).json({ error: error.message });
-    } else {
-      console.error('Unexpected error:', error);
-      return res.status(500).json({ error: 'An unexpected error occurred' });
     }
+    console.error('Unexpected error:', error);
+    return res.status(500).json({ error: 'An unexpected error occurred' });
   }
 }

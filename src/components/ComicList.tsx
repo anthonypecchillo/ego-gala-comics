@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
+
+import DeleteIcon from '@mui/icons-material/Delete';
 import Avatar from '@mui/material/Avatar';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
+import Link from '@mui/material/Link';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemText from '@mui/material/ListItemText';
 import Pagination from '@mui/material/Pagination';
 import { useTheme } from '@mui/material/styles';
-import { fetchComicsByCategory, deleteComic } from '../services/comics';
+import styled from 'styled-components';
+
 import { IComic } from '../db/models/Comic';
+import { fetchComicsByCategory, deleteComic } from '../services/comics';
 
 const StyledComicList = styled.div`
   grid-area: comic-list;

@@ -1,11 +1,6 @@
 import * as React from 'react';
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-} from 'next/document';
+
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -16,8 +11,7 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            styledComponentsSheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) => styledComponentsSheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -44,8 +38,14 @@ export default class MyDocument extends Document {
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://ego-gala-comics.vercel.app/" />
           <meta property="og:title" content="Ego Gala Comics (Social Media Title)" />
-          <meta property="og:description" content="Incredibly satisfying illustrations. (Social Media Description)" />
-          <meta property="og:image" content="https://ego-gala-comics.vercel.app/_next/image?url=%2Fkristen_shull.png&w=1080&q=75" />
+          <meta
+            property="og:description"
+            content="Incredibly satisfying illustrations. (Social Media Description)"
+          />
+          <meta
+            property="og:image"
+            content="https://ego-gala-comics.vercel.app/_next/image?url=%2Fkristen_shull.png&w=1080&q=75"
+          />
           <meta property="og:image:alt" content="An image should have been here..." />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />

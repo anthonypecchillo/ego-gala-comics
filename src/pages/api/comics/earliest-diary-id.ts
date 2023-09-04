@@ -1,11 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+
 import dbConnect from '../../../db';
 import Comic, { IComic } from '../../../db/models/Comic';
 
-const getEarliestDiaryId = async (
-  req: NextApiRequest,
-  res: NextApiResponse,
-) => {
+const getEarliestDiaryId = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     await dbConnect();
 

@@ -1,10 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
+import styled from 'styled-components';
+
+import ComicNavbar from '../../../components/ComicNavBar';
 import { IComic } from '../../../db/models/Comic';
 import { fetchComic } from '../../../services/comics';
-import ComicNavbar from '../../../components/ComicNavBar';
 
 const ComicViewerContainer = styled.div`
   min-height: 65vh;
@@ -40,9 +42,7 @@ interface ComicViewerProps {
 }
 
 const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
-  const currentPanel = comic.panels.find(
-    (panel) => panel.panel_number === panelNumber,
-  );
+  const currentPanel = comic.panels.find((panel) => panel.panel_number === panelNumber);
 
   if (!currentPanel) {
     return <div>TODO: Fallback UI</div>;
@@ -57,11 +57,7 @@ const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
       />
       <ComicPanel>
         <ComicImage key={currentPanel._id}>
-          <Image
-            src={currentPanel.image_url}
-            alt={`Panel ${currentPanel?.panel_number}`}
-            fill
-          />
+          <Image src={currentPanel.image_url} alt={`Panel ${currentPanel?.panel_number}`} fill />
         </ComicImage>
       </ComicPanel>
     </ComicViewerContainer>

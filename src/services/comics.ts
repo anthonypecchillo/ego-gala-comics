@@ -63,9 +63,8 @@ export async function createComic(payload: ComicPayload) {
 
     if (response.status === 200) {
       return { success: true, data: response.data };
-    } else {
-      return { success: false, error: response.data };
     }
+    return { success: false, error: response.data };
   } catch (error: any) {
     return {
       success: false,
@@ -78,7 +77,7 @@ export async function deleteComic(comicId: string) {
   try {
     const response = await axios.delete(`/api/cms/deleteComic`, {
       data: {
-        comicId: comicId,
+        comicId,
       },
     });
     return response.data;
