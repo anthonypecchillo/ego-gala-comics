@@ -27,10 +27,20 @@
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "import"],
   "rules": {
     "@next/next/no-img-element": "off",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "React.FC": "Do not use React.FC, use arrow functions instead.",
+          "React.FunctionComponent": "Do not use React.FunctionComponent, use arrow functions instead."
+        }
+      }
+    ],
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-var-requires": "off",
+    "func-style": ["error", "expression"],
     "import/order": [
       "error",
       {
