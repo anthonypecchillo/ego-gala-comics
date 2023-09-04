@@ -63,7 +63,7 @@ const Navbar = () => {
       style={{ width: '200px' }}
     >
       <List subheader={<ListSubheader component="div">Navigation</ListSubheader>}>
-        <ListItem button>
+        <ListItem>
           <NavLink href="/">
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <HomeIcon />
@@ -71,29 +71,23 @@ const Navbar = () => {
             <ListItemText primary="Home" />
           </NavLink>
         </ListItem>
-        <ListItem button>
+        <ListItem>
           <NavLink href="/comic">
             <ListItemIcon sx={{ minWidth: '40px' }}>
-              {/* <BookIcon /> */}
               <ImportContactsIcon />
-              {/* <MenuBookIcon /> */}
-              {/* <LocalLibraryIcon /> */}
             </ListItemIcon>
             <ListItemText primary="Comics" />
           </NavLink>
         </ListItem>
-        <ListItem button>
+        <ListItem>
           <NavLink href="/illustrations">
             <ListItemIcon sx={{ minWidth: '40px' }}>
-              {/* <BrushIcon /> */}
               <PaletteIcon />
-              {/* <ImageIcon /> */}
-              {/* <WallpaperIcon /> */}
             </ListItemIcon>
             <ListItemText primary="Illustrations" />
           </NavLink>
         </ListItem>
-        <ListItem button>
+        <ListItem>
           <NavLink href="/about">
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <InfoIcon />
@@ -104,7 +98,7 @@ const Navbar = () => {
       </List>
 
       <List subheader={<ListSubheader component="div">Social Media</ListSubheader>}>
-        <ListItem button>
+        <ListItem>
           <NavLink href="https://twitter.com/ego_gala" target="_blank" rel="noopener noreferrer">
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <TwitterIcon />
@@ -112,7 +106,7 @@ const Navbar = () => {
             <ListItemText primary="Twitter" />
           </NavLink>
         </ListItem>
-        <ListItem button>
+        <ListItem>
           <NavLink
             href="https://www.instagram.com/ego_gala/"
             target="_blank"
@@ -124,7 +118,7 @@ const Navbar = () => {
             <ListItemText primary="Instagram" />
           </NavLink>
         </ListItem>
-        <ListItem button>
+        <ListItem>
           <NavLink
             href="https://www.facebook.com/k10.shull"
             target="_blank"
@@ -136,7 +130,7 @@ const Navbar = () => {
             <ListItemText primary="Facebook" />
           </NavLink>
         </ListItem>
-        <ListItem button>
+        <ListItem>
           <NavLink
             href="https://www.reddit.com/user/ego_gala/"
             target="_blank"
@@ -151,7 +145,7 @@ const Navbar = () => {
       </List>
 
       <List subheader={<ListSubheader component="div">Store</ListSubheader>}>
-        <ListItem button>
+        <ListItem>
           <NavLink href="https://egogala.storenvy.com/">
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <ShoppingCartIcon />
