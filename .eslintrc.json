@@ -21,8 +21,8 @@
     },
     "ecmaVersion": 2020,
     "sourceType": "module",
-    "tsconfigRootDir": "./tsconfig.json",
-    "project": true
+    "tsconfigRootDir": ".",
+    "project": "./tsconfig.json"
   },
   "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "import"],
   "rules": {
