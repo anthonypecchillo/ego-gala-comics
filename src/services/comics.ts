@@ -4,7 +4,7 @@ import { IComic } from '../db/models/Comic';
 
 export const fetchComic = async (comicId: string): Promise<IComic> => {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
     const response = await axios.get(`${apiUrl}/api/comics/${comicId}`);
 
     return response.data;
@@ -52,7 +52,7 @@ export const fetchEarliestDiaryComicId = async (): Promise<string> => {
 // Matches ComicFormState + PanelState in ComicForm.tsx - how can we simplify?
 interface ComicPayload {
   title: string;
-  category: 'diary' | 'fantology' | 'compendium';
+  category: 'diary' | 'fantology' | 'other works';
   description: string;
   publication_date: Date;
   panels: Array<{
