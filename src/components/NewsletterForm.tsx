@@ -63,12 +63,7 @@ const NewsletterForm: React.FC = () => {
     <FormContainer>
       <p>Sign up for our weekly newsletter:</p>
       <Form onSubmit={handleSubmit}>
-        <Input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <Button type="submit">Sign Up</Button>
       </Form>
       {loading && <p>Loading...</p>}

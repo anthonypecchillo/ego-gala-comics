@@ -69,8 +69,7 @@ const DiaryCalendar: React.FC = () => {
 
   // FIXME: event type
   const onDayClick = (value: Value, event: any) => {
-    const dateClicked =
-      value instanceof Date ? value.toISOString().split('T')[0] : null;
+    const dateClicked = value instanceof Date ? value.toISOString().split('T')[0] : null;
     if (dateClicked && datesToIds[dateClicked]) {
       router.push(`/comic/${datesToIds[dateClicked]}`);
     } else {

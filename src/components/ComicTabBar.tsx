@@ -54,10 +54,7 @@ const ComicTabBar: React.FC<ComicTabBarProps> = ({ activeTab, onTabClick }) => {
       centered={!isSmallScreen}
     >
       {tabs.map((tab) => (
-        <StyledTab
-          key={tab}
-          label={tab.charAt(0).toUpperCase() + tab.slice(1)}
-        />
+        <StyledTab key={tab} label={tab.charAt(0).toUpperCase() + tab.slice(1)} />
       ))}
     </StyledTabs>
   );

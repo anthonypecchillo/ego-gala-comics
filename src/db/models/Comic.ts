@@ -25,5 +25,4 @@ const ComicSchema: Schema = new Schema({
   panels: [{ type: Schema.Types.ObjectId, ref: 'Panel' }],
 });
 
-export default mongoose.models.Comic ||
-  mongoose.model<IComic>('Comic', ComicSchema);
+export default mongoose.models.Comic || mongoose.model<IComic>('Comic', ComicSchema);

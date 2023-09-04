@@ -49,18 +49,17 @@ const NavLink = styled.a`
 const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const toggleDrawer =
-    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
+  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' ||
+        (event as React.KeyboardEvent).key === 'Shift')
+    ) {
+      return;
+    }
 
-      setDrawerOpen(open);
-    };
+    setDrawerOpen(open);
+  };
 
   const list = (
     <div
@@ -69,9 +68,7 @@ const Navbar: React.FC = () => {
       onKeyDown={toggleDrawer(false)}
       style={{ width: '200px' }}
     >
-      <List
-        subheader={<ListSubheader component="div">Navigation</ListSubheader>}
-      >
+      <List subheader={<ListSubheader component="div">Navigation</ListSubheader>}>
         <ListItem button>
           <NavLink href="/">
             <ListItemIcon sx={{ minWidth: '40px' }}>
@@ -112,15 +109,9 @@ const Navbar: React.FC = () => {
         </ListItem>
       </List>
 
-      <List
-        subheader={<ListSubheader component="div">Social Media</ListSubheader>}
-      >
+      <List subheader={<ListSubheader component="div">Social Media</ListSubheader>}>
         <ListItem button>
-          <NavLink
-            href="https://twitter.com/ego_gala"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <NavLink href="https://twitter.com/ego_gala" target="_blank" rel="noopener noreferrer">
             <ListItemIcon sx={{ minWidth: '40px' }}>
               <TwitterIcon />
             </ListItemIcon>
@@ -250,11 +241,7 @@ const Navbar: React.FC = () => {
             </NavLink>
             <NavLink href="/about">About</NavLink>
           </div>
-          <NavLink
-            href="https://twitter.com/ego_gala"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <NavLink href="https://twitter.com/ego_gala" target="_blank" rel="noopener noreferrer">
             <IconButton
               sx={{
                 color: '#333',

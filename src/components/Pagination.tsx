@@ -7,22 +7,13 @@ interface PaginationProps {
   onPageClick: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
-  currentPage,
-  totalPages,
-  onPageClick,
-}) => {
+const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageClick }) => {
   const handleChange = (event: React.ChangeEvent<unknown>, page: number) => {
     onPageClick(page);
   };
 
   return (
-    <MuiPagination
-      count={totalPages}
-      page={currentPage}
-      onChange={handleChange}
-      color="primary"
-    />
+    <MuiPagination count={totalPages} page={currentPage} onChange={handleChange} color="primary" />
   );
 };
 

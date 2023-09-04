@@ -5,8 +5,7 @@ import Panel from './models/Panel';
 
 dotenv.config();
 
-const MONGODB_URI =
-  process.env.MONGODB_URI || 'mongodb://localhost/ego_gala_comics';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/ego_gala_comics';
 
 mongoose.connect(MONGODB_URI);
 

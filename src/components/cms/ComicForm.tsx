@@ -49,9 +49,7 @@ const ComicForm: React.FC<ComicFormProps> = () => {
     panels: [],
   });
 
-  const handleCategoryChange = (
-    event: SelectChangeEvent<'diary' | 'fantology' | 'compendium'>,
-  ) => {
+  const handleCategoryChange = (event: SelectChangeEvent<'diary' | 'fantology' | 'compendium'>) => {
     const category = event.target.value as string;
 
     if (['diary', 'fantology', 'compendium'].includes(category)) {
@@ -77,10 +75,7 @@ const ComicForm: React.FC<ComicFormProps> = () => {
 
   const handleImageUploaded = (imageUrl: string) => {
     // Find the max panel number (or 0 if no panels exist)
-    const maxPanelNumber = Math.max(
-      0,
-      ...comic.panels.map((panel) => panel.panel_number),
-    );
+    const maxPanelNumber = Math.max(0, ...comic.panels.map((panel) => panel.panel_number));
     setComic((prev) => ({
       ...prev,
       panels: [
@@ -125,11 +120,7 @@ const ComicForm: React.FC<ComicFormProps> = () => {
       return false;
     }
 
-    if (
-      !comic.panels ||
-      comic.panels.length === 0 ||
-      !comic.panels[0].image_url
-    ) {
+    if (!comic.panels || comic.panels.length === 0 || !comic.panels[0].image_url) {
       console.error('At least one panel with an image URL is required.');
       // TODO: set an error state variable here to show an error message in the UI.
       return false;

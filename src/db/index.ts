@@ -6,8 +6,7 @@ dotenv.config();
 
 console.log(Panel);
 
-const MONGODB_URI =
-  process.env.MONGODB_URI || 'mongodb://localhost/ego_gala_comics';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/ego_gala_comics';
 
 declare var global: NodeJS.Global & {
   mongoose: {

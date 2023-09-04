@@ -28,18 +28,11 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   category,
   title,
 }) => {
-  const handleImageUpload = async (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const imageUrl = await uploadFileToS3(
-      file,
-      category,
-      title,
-      panels.length + 1,
-    );
+    const imageUrl = await uploadFileToS3(file, category, title, panels.length + 1);
     onImageUploaded(imageUrl);
   };
 

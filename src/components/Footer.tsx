@@ -32,27 +32,17 @@ const Footer: React.FC = () => {
     },
     {
       name: 'Instagram',
-      icon: (
-        <InstagramIcon
-          style={{ fontSize: 32, color: theme.palette.secondary.main }}
-        />
-      ),
+      icon: <InstagramIcon style={{ fontSize: 32, color: theme.palette.secondary.main }} />,
       url: 'https://www.instagram.com/ego_gala/',
     },
     {
       name: 'Facebook',
-      icon: (
-        <FacebookIcon
-          style={{ fontSize: 32, color: theme.palette.secondary.main }}
-        />
-      ),
+      icon: <FacebookIcon style={{ fontSize: 32, color: theme.palette.secondary.main }} />,
       url: 'https://www.facebook.com/k10.shull',
     },
     {
       name: 'Reddit',
-      icon: (
-        <RedditIcon style={{ fontSize: 32, color: theme.palette.secondary.main }} />
-      ),
+      icon: <RedditIcon style={{ fontSize: 32, color: theme.palette.secondary.main }} />,
       url: 'https://www.reddit.com/user/ego_gala/',
     },
   ];
@@ -70,24 +60,20 @@ const Footer: React.FC = () => {
         }}
       >
         <Grid item container justifyContent="center">
-          <Typography
-            variant="h4"
-            gutterBottom
-            style={{ textAlign: 'center', marginBottom: 25 }}
-          >
+          <Typography variant="h4" gutterBottom style={{ textAlign: 'center', marginBottom: 25 }}>
             Follow Ego Gala
             <hr style={{ width: '75%', margin: '10px auto' }} />
           </Typography>
         </Grid>
-        <Grid
-          item
-          container
-          spacing={2}
-          justifyContent="center"
-          sx={{ marginBottom: 3 }}
-        >
+        <Grid item container spacing={2} justifyContent="center" sx={{ marginBottom: 3 }}>
           {socialLinks.map((social, index) => (
-            <Grid item container xs={isMobile ? 12 : isTablet ? 6 : 3} key={index} justifyContent="center">
+            <Grid
+              item
+              container
+              xs={isMobile ? 12 : isTablet ? 6 : 3}
+              key={index}
+              justifyContent="center"
+            >
               <Card
                 style={{
                   display: 'flex',
@@ -146,10 +132,7 @@ const Footer: React.FC = () => {
           </Typography>
         </Grid>
         <Grid item xs={6} sm={6}>
-          <Typography
-            variant={isTablet ? 'body2' : 'body1'}
-            align={isTablet ? 'center' : 'right'}
-          >
+          <Typography variant={isTablet ? 'body2' : 'body1'} align={isTablet ? 'center' : 'right'}>
             &copy; {new Date().getFullYear()} Ego Gala, All Rights Reserved
           </Typography>
         </Grid>

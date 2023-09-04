@@ -41,10 +41,7 @@ const ComicList: React.FC<ComicListProps> = ({
   const [comics, setComics] = useState<IComic[]>([]);
   const [totalPages, setTotalPages] = useState(1);
 
-  const handleDeleteComic = async (
-    event: React.MouseEvent,
-    comicId: string,
-  ) => {
+  const handleDeleteComic = async (event: React.MouseEvent, comicId: string) => {
     const comicToDelete = comics.find((comic) => comic._id === comicId);
 
     if (comicToDelete) {
@@ -60,8 +57,10 @@ const ComicList: React.FC<ComicListProps> = ({
   useEffect(() => {
     const fetchCategoryComics = async () => {
       try {
-        const { comics: categoryComics, totalPages } =
-          await fetchComicsByCategory(category, currentPage);
+        const { comics: categoryComics, totalPages } = await fetchComicsByCategory(
+          category,
+          currentPage,
+        );
         setComics(categoryComics);
         setTotalPages(totalPages);
       } catch (error) {
@@ -106,9 +105,7 @@ const ComicList: React.FC<ComicListProps> = ({
                 backgroundColor: '#fff',
                 borderBottom: `1px solid ${theme.palette.primary.main}`,
                 borderTop:
-                  comics.indexOf(comic) === 0
-                    ? `1px solid ${theme.palette.primary.main}`
-                    : 'none',
+                  comics.indexOf(comic) === 0 ? `1px solid ${theme.palette.primary.main}` : 'none',
                 '&:hover': {
                   backgroundColor: theme.palette.action.hover,
                 },
@@ -122,12 +119,7 @@ const ComicList: React.FC<ComicListProps> = ({
                   style={{ width: '80px', height: '80px', marginRight: '16px' }}
                 />
               </ListItemAvatar>
-              <Box
-                display="flex"
-                justifyContent="space-between"
-                alignItems="center"
-                width="100%"
-              >
+              <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
                 <ListItemText primary={comic.title} />
                 <ListItemText
                   secondary={new Intl.DateTimeFormat('en-US', {
@@ -138,9 +130,7 @@ const ComicList: React.FC<ComicListProps> = ({
                   sx={{ paddingRight: '16px', textAlign: 'right' }}
                 />
                 {showCMSFeatures && (
-                  <Button
-                    onClick={(event) => handleDeleteComic(event, comic._id)}
-                  >
+                  <Button onClick={(event) => handleDeleteComic(event, comic._id)}>
                     <DeleteIcon />
                   </Button>
                 )}
