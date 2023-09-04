@@ -12,11 +12,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import ImageUpload from './ImageUpload';
 import { createComic } from '../../services/comics';
 
-interface ComicFormProps {
-  initialComic?: ComicFormState;
-  // onSubmit: (comic: ComicFormState) => void;
-}
-
 interface PanelState {
   image_url: string;
   panel_number: number;
@@ -40,7 +35,7 @@ const formatDate = (date: Date): string => {
   return date.toLocaleDateString(undefined, options);
 };
 
-const ComicForm: React.FC<ComicFormProps> = () => {
+const ComicForm = () => {
   const [comic, setComic] = useState<ComicFormState>({
     title: '',
     category: 'diary',
@@ -136,6 +131,7 @@ const ComicForm: React.FC<ComicFormProps> = () => {
     if (isValidSubmission) {
       const response = await createComic(comic);
       if (response.success) {
+        // eslint-disable-next-line no-console
         console.log('SUCCESS!');
       } else {
         console.error('Error submitting comic:', response.error);

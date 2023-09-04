@@ -36,7 +36,7 @@ interface ComicViewerProps {
   comic: IComic;
 }
 
-const ComicViewer: React.FC<ComicViewerProps> = ({ comic }) => {
+const ComicViewer = ({ comic }: ComicViewerProps) => {
   const router = useRouter();
   const panelNumber = Number(router.query.panelNumber) || 1;
   const currentPanel = comic.panels.find((panel) => panel.panel_number === panelNumber);
@@ -60,7 +60,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const panelNumber = context.query.panelNumber as string;
 
   try {
-    console.log('getSSP: ', comicId, panelNumber);
     const comic = await fetchComic(comicId);
 
     if (comic.panels.length === 1 && panelNumber) {

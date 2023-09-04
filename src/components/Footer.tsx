@@ -13,10 +13,16 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const getGridColumnSize = () => {
+    if (isMobile) return 12;
+    if (isTablet) return 6;
+    return 3;
+  };
 
   const socialLinks = [
     {
@@ -67,14 +73,8 @@ const Footer: React.FC = () => {
           </Typography>
         </Grid>
         <Grid item container spacing={2} justifyContent="center" sx={{ marginBottom: 3 }}>
-          {socialLinks.map((social, index) => (
-            <Grid
-              item
-              container
-              xs={isMobile ? 12 : isTablet ? 6 : 3}
-              key={index}
-              justifyContent="center"
-            >
+          {socialLinks.map((social) => (
+            <Grid item container xs={getGridColumnSize()} key={social.name} justifyContent="center">
               <Card
                 style={{
                   display: 'flex',

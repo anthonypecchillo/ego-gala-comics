@@ -4,6 +4,7 @@ import Panel, { IPanel } from './Panel';
 
 // Don't delete this!
 // We must reference Panel so that it is registered with Mongoose
+// eslint-disable-next-line no-console
 console.log(Panel);
 
 export interface IComic extends Document {

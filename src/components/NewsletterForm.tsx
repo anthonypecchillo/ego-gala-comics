@@ -33,7 +33,7 @@ const Button = styled.button`
   }
 `;
 
-const NewsletterForm: React.FC = () => {
+const NewsletterForm = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');

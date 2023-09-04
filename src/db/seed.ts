@@ -16,7 +16,9 @@ const seedDataPath = path.join(__dirname, 'seedData.json');
 const seedDataRaw = fs.readFileSync(seedDataPath, 'utf-8');
 const seedData = JSON.parse(seedDataRaw);
 
-async function seedComics() {
+const seedComics = async () => {
+  // Order of operations matters here, so we've intentionally avoided concurrency here.
+  /* eslint-disable no-restricted-syntax, no-await-in-loop */
   for (const comicData of seedData) {
     const comic: IComic = new Comic({
       title: comicData.title,
@@ -37,14 +39,16 @@ async function seedComics() {
       await panel.save();
       comic.panels.push(panel._id);
     }
+    /* eslint-disable no-restricted-syntax, no-await-in-loop */
 
     // Save the Comic instance with the associated Panel instances
     await comic.save();
   }
-}
+};
 
 seedComics()
   .then(() => {
+    // eslint-disable-next-line no-console
     console.log('Database seeding completed.');
     return mongoose.disconnect();
   })

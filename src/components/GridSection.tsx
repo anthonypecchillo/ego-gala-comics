@@ -41,7 +41,7 @@ const GridItem = styled(Link)<{ bgcolor: string; index: number }>`
   }
 `;
 
-const GridSection: React.FC = () => {
+const GridSection = () => {
   return (
     <Grid>
       <GridItem href="/comic" index={1} bgcolor="#B4ABD0">

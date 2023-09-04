@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import ComicList from '@/components/ComicList';
 import Box from '@mui/material/Box';
@@ -9,7 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import ComicForm from '../components/cms/ComicForm';
 import ComicTabBar from '../components/ComicTabBar';
 
-const CMS: React.FC = () => {
+const CMS = () => {
   const [activeCMSTab, setActiveCMSTab] = React.useState(0);
   const [activeCategoryTab, setActiveCategoryTab] = useState('diary');
   const [currentPage, setCurrentPage] = useState(1);

@@ -18,18 +18,18 @@ const sanitizeTitleForS3 = (title: string): string => {
   return sanitizedTitle;
 };
 
-function getFileExtensionFromMimeType(mimeType: string): string {
+const getFileExtensionFromMimeType = (mimeType: string): string => {
   const mimeToExtensionMap: { [key: string]: string } = {
     'image/jpeg': 'jpg',
     'image/png': 'png',
     'image/gif': 'gif',
     'image/webp': 'webp',
     'image/tiff': 'tif',
-    // we add more MIME types as needed
+    // Add more MIME types as needed, but this should be good for now!
   };
 
   return mimeToExtensionMap[mimeType] || 'png'; // default to 'png' if MIME type is not found
-}
+};
 
 const generateS3Key = (
   category: string,
@@ -89,17 +89,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const { fileData, category, title, panelNumber } = bodyParsed;
 
-    // Extracting the base64 data from the Data URL (format: "data:<MIME>;base64,<data>")
     const base64ContentArray = fileData.split(',');
     const mimeType = base64ContentArray[0].match(/[^:\s*]\w+\/[\w-+\d.]+(?=[;| ])/)[0];
     const base64Data = base64ContentArray[1];
 
-    // Convert the base64 string back to a buffer
     const imageBuffer = Buffer.from(base64Data, 'base64');
 
     const fileURL = await uploadToS3(imageBuffer, mimeType, category, title, panelNumber);
-    res.status(200).json({ fileURL });
+    return res.status(200).json({ fileURL });
   } catch (error: unknown) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if ((error as any).type === 'entity.too.large') {
       console.error('Request body too large:', error);
       return res.status(413).json({ error: 'Payload too large' });

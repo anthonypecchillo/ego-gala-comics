@@ -3,13 +3,13 @@ import { createTheme } from '@mui/material/styles';
 // mui.com/x/react-date-pickers/base-concepts/#typescript
 // import type {} from '@mui/x-date-pickers/themeAugmentation';
 
-function hexToRgb(hex: string) {
+const hexToRgb = (hex: string) => {
   const bigint = parseInt(hex.slice(1), 16);
   const r = (bigint >> 16) & 255;
   const g = (bigint >> 8) & 255;
   const b = bigint & 255;
   return `${r},${g},${b}`;
-}
+};
 
 const customColors = {
   black: '#000000',

@@ -43,7 +43,7 @@ const StyledContent = styled.div`
   grid-area: content;
 `;
 
-const ComicPage: React.FC = () => {
+const ComicPage = () => {
   const router = useRouter();
   const [activeCategoryTab, setActiveCategoryTab] = useState('diary');
   const [currentPage, setCurrentPage] = useState(1);

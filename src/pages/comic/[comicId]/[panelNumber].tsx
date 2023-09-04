@@ -41,7 +41,7 @@ interface ComicViewerProps {
   panelNumber: number;
 }
 
-const ComicViewer: React.FC<ComicViewerProps> = ({ comic, panelNumber }) => {
+const ComicViewer = ({ comic, panelNumber }: ComicViewerProps) => {
   const currentPanel = comic.panels.find((panel) => panel.panel_number === panelNumber);
 
   if (!currentPanel) {

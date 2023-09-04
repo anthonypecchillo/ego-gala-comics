@@ -30,19 +30,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   // Step 2: Delete Images from S3 Bucket
   const panelImageUrls = comic.panels.map((panel: IPanel) => panel.image_url);
-  for (const imageUrl of panelImageUrls) {
+
+  const deletePromises = panelImageUrls.map(async (imageUrl: string) => {
     const fileKey = imageUrl.split(
       `https://${process.env.S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/`,
     )[1];
 
     if (!fileKey) {
-      return res.status(400).json({
-        error: 'Failed to extract the file key from the provided image URL.',
-      });
+      throw new Error('Failed to extract the file key from the provided image URL.');
     }
 
     if (!process.env.S3_BUCKET_NAME) {
-      return res.status(500).json({ error: 'S3_BUCKET_NAME not set in environment.' });
+      throw new Error('S3_BUCKET_NAME not set in environment.');
     }
 
     const deleteParams = {
@@ -50,7 +49,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       Key: fileKey,
     };
 
-    await s3.deleteObject(deleteParams).promise();
+    return s3.deleteObject(deleteParams).promise();
+  });
+
+  try {
+    await Promise.all(deletePromises);
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ error: error.message });
+    }
+    return res.status(500).json({ error: 'An unexpected error occurred' });
   }
 
   // Step 3: Delete the Comic's Panels from the Panels collection

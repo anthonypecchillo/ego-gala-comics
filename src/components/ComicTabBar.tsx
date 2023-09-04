@@ -38,7 +38,7 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   },
 }));
 
-const ComicTabBar: React.FC<ComicTabBarProps> = ({ activeTab, onTabClick }) => {
+const ComicTabBar = ({ activeTab, onTabClick }: ComicTabBarProps) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -48,7 +48,7 @@ const ComicTabBar: React.FC<ComicTabBarProps> = ({ activeTab, onTabClick }) => {
   return (
     <StyledTabs
       value={activeTabIndex}
-      onChange={(event: React.ChangeEvent<{}>, newValue: number) => {
+      onChange={(event: React.ChangeEvent<unknown>, newValue: number) => {
         onTabClick(tabs[newValue]);
       }}
       variant={isSmallScreen ? 'fullWidth' : undefined}

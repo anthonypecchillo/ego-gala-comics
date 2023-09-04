@@ -22,7 +22,7 @@ const HeroContainer = styled.div`
   height: 35vh;
 `;
 
-const Hero: React.FC = () => {
+const Hero = () => {
   return <HeroContainer />;
 };
 

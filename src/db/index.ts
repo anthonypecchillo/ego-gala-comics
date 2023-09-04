@@ -5,6 +5,9 @@ import Panel from './models/Panel';
 
 dotenv.config();
 
+// Don't delete this!
+// We must reference Panel so that it is registered with Mongoose
+// eslint-disable-next-line no-console
 console.log(Panel);
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/ego_gala_comics';
@@ -19,11 +22,11 @@ declare let global: NodeJS.Global & {
 let cached = global.mongoose;
 
 if (!cached) {
+  // eslint-disable-next-line no-multi-assign
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-async function dbConnect() {
-  console.log(MONGODB_URI);
+const dbConnect = async () => {
   if (cached.conn) {
     return cached.conn;
   }
@@ -34,6 +37,6 @@ async function dbConnect() {
 
   cached.conn = await cached.promise;
   return cached.conn;
-}
+};
 
 export default dbConnect;

@@ -51,8 +51,8 @@ const StyledCalendar = styled(Calendar)`
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-const DiaryCalendar: React.FC = () => {
-  const [date, setDate] = useState<Value>(new Date());
+const DiaryCalendar = () => {
+  const [selectedDate, setSelectedDate] = useState<Value>(new Date());
   const [datesToIds, setDatesToIds] = useState<{ [date: string]: string }>({});
   const router = useRouter();
 
@@ -64,11 +64,10 @@ const DiaryCalendar: React.FC = () => {
   }, []);
 
   const onDateChange = (date: Value) => {
-    setDate(date);
+    setSelectedDate(date);
   };
 
-  // FIXME: event type
-  const onDayClick = (value: Value, event: any) => {
+  const onDayClick = (value: Value) => {
     const dateClicked = value instanceof Date ? value.toISOString().split('T')[0] : null;
     if (dateClicked && datesToIds[dateClicked]) {
       router.push(`/comic/${datesToIds[dateClicked]}`);
@@ -77,9 +76,9 @@ const DiaryCalendar: React.FC = () => {
     }
   };
 
-  const tileDisabled = ({ date, view }: { date: Date; view: string }) => {
+  const tileDisabled = ({ date: tileDate, view }: { date: Date; view: string }) => {
     // Disable the date if it's not in the datesToIds map
-    const dateString = date.toISOString().split('T')[0];
+    const dateString = tileDate.toISOString().split('T')[0];
     return view === 'month' && !datesToIds[dateString];
   };
 
@@ -97,7 +96,7 @@ const DiaryCalendar: React.FC = () => {
           onChange={onDateChange}
           onClickDay={onDayClick}
           tileDisabled={tileDisabled}
-          value={date}
+          value={selectedDate}
           // showWeekNumbers
         />
       </InnerContainer>

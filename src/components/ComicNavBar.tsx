@@ -23,7 +23,7 @@ interface ComicNavBarProps {
   maxPanelNumber: number;
 }
 
-const ComicNavBar: React.FC<ComicNavBarProps> = ({ comicId, panelNumber, maxPanelNumber }) => {
+const ComicNavBar = ({ comicId, panelNumber, maxPanelNumber }: ComicNavBarProps) => {
   const router = useRouter();
 
   // Prefetch the neighboring pages

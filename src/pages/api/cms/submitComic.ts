@@ -13,13 +13,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const { title, category, description, publication_date, panels } = req.body;
 
-  console.log(JSON.stringify(req.body, null, 2));
-  console.log(title);
-  console.log(category);
-  console.log(description);
-  console.log(publication_date);
-  console.log(JSON.stringify(panels, null, 2));
-
   try {
     // Create and save comic document
     const comic = new Comic({
@@ -31,21 +24,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await comic.save();
 
     // Create, save, and link panel documents
-    for (const panelData of panels) {
+    interface PanelData {
+      image_url: string;
+      panel_number: number;
+    }
+
+    const panelPromises = panels.map(async (panelData: PanelData) => {
       const panel = new Panel({
         comic_id: comic._id,
         ...panelData,
       });
       await panel.save();
-      comic.panels.push(panel._id);
-    }
+      return panel._id;
+    });
+
+    const panelIds = await Promise.all(panelPromises);
+    comic.panels.push(...panelIds);
 
     // Update comic document with panels
     await comic.save();
 
-    res.status(200).json({ message: 'Comic and Panels successfully saved!' });
+    return res.status(200).json({ message: 'Comic and Panels successfully saved!' });
   } catch (error) {
     console.error('Error saving comic or panels:', error);
-    res.status(500).json({ error: 'An error occurred while saving the comic or panels' });
+    return res.status(500).json({ error: 'An error occurred while saving the comic or panels' });
   }
 }

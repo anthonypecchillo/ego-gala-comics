@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Paper from '@mui/material/Paper';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,7 +25,6 @@ export default function Custom404() {
           width: '100%',
           height: 'auto',
           maxWidth: '600px',
-          border: '0px solid black',
         }}
         width={5412}
         height={7517}

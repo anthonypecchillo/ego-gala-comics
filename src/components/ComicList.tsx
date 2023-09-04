@@ -33,12 +33,12 @@ interface ComicListProps {
   showCMSFeatures?: boolean;
 }
 
-const ComicList: React.FC<ComicListProps> = ({
+const ComicList = ({
   category,
   currentPage,
   onPageChange,
-  showCMSFeatures,
-}) => {
+  showCMSFeatures = false,
+}: ComicListProps) => {
   const theme = useTheme();
   const [comics, setComics] = useState<IComic[]>([]);
   const [totalPages, setTotalPages] = useState(1);
@@ -56,15 +56,18 @@ const ComicList: React.FC<ComicListProps> = ({
     }
   };
 
+  const getComicURL = (comic: IComic) => {
+    if (showCMSFeatures) return undefined;
+    if (comic.panels.length > 1) return `/comic/${comic._id}/001`;
+    return `/comic/${comic._id}`;
+  };
+
   useEffect(() => {
     const fetchCategoryComics = async () => {
       try {
-        const { comics: categoryComics, totalPages } = await fetchComicsByCategory(
-          category,
-          currentPage,
-        );
-        setComics(categoryComics);
-        setTotalPages(totalPages);
+        const response = await fetchComicsByCategory(category, currentPage);
+        setComics(response.comics);
+        setTotalPages(response.totalPages);
       } catch (error) {
         console.error('Error fetching category-specific comics:', error);
       }
@@ -88,17 +91,7 @@ const ComicList: React.FC<ComicListProps> = ({
 
       <List>
         {comics.map((comic) => (
-          <Link
-            href={
-              showCMSFeatures
-                ? undefined
-                : comic.panels.length > 1
-                ? `/comic/${comic._id}/001`
-                : `/comic/${comic._id}`
-            }
-            key={comic._id}
-            underline="none"
-          >
+          <Link href={getComicURL(comic)} key={comic._id} underline="none">
             <ListItem
               button
               disableGutters

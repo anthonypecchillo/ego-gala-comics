@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
-const Illustrations: React.FC = () => {
+const Illustrations = () => {
   const isMobile = useMediaQuery('(max-width: 600px)');
   return (
     <Paper elevation={3} sx={{ p: 2, my: 2, mx: 'auto', maxWidth: 'md' }}>

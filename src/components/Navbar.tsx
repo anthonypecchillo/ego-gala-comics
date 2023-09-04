@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 
-import BookIcon from '@mui/icons-material/Book';
-import BrushIcon from '@mui/icons-material/Brush';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import HomeIcon from '@mui/icons-material/Home';
-import ImageIcon from '@mui/icons-material/Image';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import InfoIcon from '@mui/icons-material/Info';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import MenuIcon from '@mui/icons-material/Menu';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
 import PaletteIcon from '@mui/icons-material/Palette';
 import RedditIcon from '@mui/icons-material/Reddit';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import WallpaperIcon from '@mui/icons-material/Wallpaper';
 import AppBar from '@mui/material/AppBar';
 import Drawer from '@mui/material/Drawer';
 import Hidden from '@mui/material/Hidden';
@@ -28,7 +21,6 @@ import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Link from 'next/link';
 import styled from 'styled-components';
 
 import theme from '../styles/theme';
@@ -48,7 +40,7 @@ const NavLink = styled.a`
   }
 `;
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {

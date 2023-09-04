@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
@@ -10,7 +11,7 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/ego_gala_com
 
 mongoose.connect(MONGODB_URI);
 
-async function deleteAllRecords() {
+const deleteAllRecords = async () => {
   try {
     await Panel.deleteMany({});
     console.log('All Panel records deleted.');
@@ -23,6 +24,6 @@ async function deleteAllRecords() {
   } finally {
     await mongoose.disconnect();
   }
-}
+};
 
 deleteAllRecords();

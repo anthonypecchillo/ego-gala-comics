@@ -8,7 +8,7 @@ interface PaginationProps {
   onPageClick: (page: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageClick }) => {
+const Pagination = ({ currentPage, totalPages, onPageClick }: PaginationProps) => {
   const handleChange = (event: React.ChangeEvent<unknown>, page: number) => {
     onPageClick(page);
   };

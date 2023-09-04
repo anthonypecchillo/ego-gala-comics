@@ -5,7 +5,6 @@ import Comic, { IComic } from '../../../db/models/Comic';
 
 const getComicById = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    console.log('getComicById');
     await dbConnect();
 
     const { comicId } = req.query;
