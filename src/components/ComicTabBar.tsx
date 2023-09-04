@@ -10,7 +10,7 @@ interface ComicTabBarProps {
 }
 
 const StyledTabs = styled(Tabs)(({ theme }) => ({
-  backgroundColor: '#fff',
+  backgroundColor: theme.palette.common.white,
 
   '& .MuiTabs-indicator': {
     backgroundColor: theme.palette.primary.main,
@@ -29,7 +29,7 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   },
   '&.Mui-selected': {
     backgroundColor: theme.palette.primary.main,
-    color: '#fff',
+    color: theme.palette.common.white,
   },
   [theme.breakpoints.down('sm')]: {
     // Small screen styles

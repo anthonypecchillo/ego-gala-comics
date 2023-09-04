@@ -78,9 +78,7 @@ const Footer = () => {
               <Card
                 style={{
                   display: 'flex',
-                  // backgroundColor: theme.palette.secondary.main,
-                  // backgroundColor: '#f7f6fa',
-                  backgroundColor: '#e8e6f1',
+                  backgroundColor: theme.palette.primary.light,
                   width: 215,
                 }}
               >
@@ -92,7 +90,7 @@ const Footer = () => {
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'start',
-                    color: '#222',
+                    color: theme.palette.common.black,
                     '&:hover': {
                       backgroundColor: theme.palette.action.hover,
                     },

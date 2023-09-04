@@ -97,7 +97,7 @@ const ComicList = ({
               disableGutters
               sx={{
                 padding: 0,
-                backgroundColor: '#fff',
+                backgroundColor: theme.palette.common.white,
                 borderBottom: `1px solid ${theme.palette.primary.main}`,
                 borderTop:
                   comics.indexOf(comic) === 0 ? `1px solid ${theme.palette.primary.main}` : 'none',

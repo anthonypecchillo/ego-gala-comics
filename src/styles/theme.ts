@@ -14,8 +14,9 @@ const hexToRgb = (hex: string) => {
 const customColors = {
   black: '#000000',
   white: '#ffffff',
+  lightestPurple: '#f7f6fa',
+  lightPurple: '#e8e6f1',
   purple: '#4b3f72',
-  lightPurple: '#6a5d7b',
   darkPurple: '#1f2041',
   alabaster: '#f3f5ec',
   beige: '#e0e5d0',
@@ -104,7 +105,7 @@ const theme = createTheme({
     divider: `rgba(${rgbBlack}, 0.12)`,
     background: {
       paper: customColors.white,
-      default: '#f7f6fa',
+      default: customColors.lightestPurple,
     },
     action: {
       active: `rgba(${rgbBlack}, 0.54)`,

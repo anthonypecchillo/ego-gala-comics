@@ -10,6 +10,7 @@ import PaletteIcon from '@mui/icons-material/Palette';
 import RedditIcon from '@mui/icons-material/Reddit';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { useTheme } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Drawer from '@mui/material/Drawer';
 import Hidden from '@mui/material/Hidden';
@@ -23,15 +24,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
 
-import theme from '../styles/theme';
-
 const NavLink = styled.a`
   color: #333;
   text-decoration: none;
   align-items: center;
   @media (min-width: 900px) {
     &:hover {
-      color: ${theme.palette.info.main};
+      color: #bdf700;
     }
   }
   @media (max-width: 899px) {
@@ -41,6 +40,7 @@ const NavLink = styled.a`
 `;
 
 const Navbar = () => {
+  const theme = useTheme();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -162,7 +162,7 @@ const Navbar = () => {
     <AppBar
       position="sticky"
       sx={{
-        backgroundColor: '#fff',
+        backgroundColor: theme.palette.common.white,
         boxShadow: '0 2px 4px rgba(1, 1, 1, 0.4)',
       }}
     >
@@ -172,7 +172,7 @@ const Navbar = () => {
           sx={{
             fontSize: '24px',
             fontWeight: 'bold',
-            color: '#333',
+            color: theme.palette.common.black,
             marginRight: {
               md: '20px',
               xs: '0',
@@ -194,10 +194,10 @@ const Navbar = () => {
         <Hidden mdUp>
           <IconButton
             sx={{
-              color: '#333',
+              color: theme.palette.common.black,
               '&:hover': {
                 color: theme.palette.info.main,
-                backgroundColor: '#fff',
+                backgroundColor: theme.palette.common.white,
               },
             }}
             aria-label="open drawer"
@@ -232,11 +232,11 @@ const Navbar = () => {
           <NavLink href="https://twitter.com/ego_gala" target="_blank" rel="noopener noreferrer">
             <IconButton
               sx={{
-                color: '#333',
+                color: theme.palette.common.black,
                 '@media (min-width: 900px)': {
                   '&:hover': {
                     color: theme.palette.info.main,
-                    backgroundColor: '#fff',
+                    backgroundColor: theme.palette.common.white,
                   },
                 },
               }}
@@ -251,11 +251,11 @@ const Navbar = () => {
           >
             <IconButton
               sx={{
-                color: '#333',
+                color: theme.palette.common.black,
                 '@media (min-width: 900px)': {
                   '&:hover': {
                     color: theme.palette.info.main,
-                    backgroundColor: '#fff',
+                    backgroundColor: theme.palette.common.white,
                   },
                 },
               }}
@@ -270,11 +270,11 @@ const Navbar = () => {
           >
             <IconButton
               sx={{
-                color: '#333',
+                color: theme.palette.common.black,
                 '@media (min-width: 900px)': {
                   '&:hover': {
                     color: theme.palette.info.main,
-                    backgroundColor: '#fff',
+                    backgroundColor: theme.palette.common.white,
                   },
                 },
               }}
@@ -289,11 +289,11 @@ const Navbar = () => {
           >
             <IconButton
               sx={{
-                color: '#333',
+                color: theme.palette.common.black,
                 '@media (min-width: 900px)': {
                   '&:hover': {
                     color: theme.palette.info.main,
-                    backgroundColor: '#fff',
+                    backgroundColor: theme.palette.common.white,
                   },
                 },
               }}
