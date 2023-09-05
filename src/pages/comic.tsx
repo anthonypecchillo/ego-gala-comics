@@ -35,7 +35,7 @@ const ComicPageGrid = styled.div`
   }
 
   @media (max-width: 480px) {
-    // Add your styles for mobile view
+    // Add styles for mobile view
   }
 `;
 

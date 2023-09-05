@@ -43,6 +43,12 @@ const ComicList = ({
   const [comics, setComics] = useState<IComic[]>([]);
   const [totalPages, setTotalPages] = useState(1);
 
+  const getComicURL = (comic: IComic) => {
+    if (showCMSFeatures) return undefined;
+    if (comic.panels.length > 1) return `/comic/${comic._id}/001`;
+    return `/comic/${comic._id}`;
+  };
+
   const handleDeleteComic = async (event: React.MouseEvent, comicId: string) => {
     const comicToDelete = comics.find((comic) => comic._id === comicId);
 
@@ -54,12 +60,6 @@ const ComicList = ({
       const updatedComics = comics.filter((comic) => comic._id !== comicId);
       setComics(updatedComics);
     }
-  };
-
-  const getComicURL = (comic: IComic) => {
-    if (showCMSFeatures) return undefined;
-    if (comic.panels.length > 1) return `/comic/${comic._id}/001`;
-    return `/comic/${comic._id}`;
   };
 
   useEffect(() => {
