@@ -42,7 +42,7 @@ const ComicTabBar = ({ activeTab, onTabClick }: ComicTabBarProps) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const tabs = ['diary', 'fantology', 'compendium'];
+  const tabs = ['diary', 'fantology', 'other works'];
   const activeTabIndex = tabs.indexOf(activeTab);
 
   return (

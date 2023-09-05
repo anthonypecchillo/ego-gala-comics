@@ -19,7 +19,7 @@ interface ImageUploadProps {
   onImageUploaded: (imageUrl: string) => void;
   onPanelDeleted: (imageUrl: string) => void;
   panels: PanelState[];
-  category: 'diary' | 'fantology' | 'compendium';
+  category: 'diary' | 'fantology' | 'other works';
   title: string;
 }
 

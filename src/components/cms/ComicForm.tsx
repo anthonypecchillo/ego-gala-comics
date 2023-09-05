@@ -19,7 +19,7 @@ interface PanelState {
 
 interface ComicFormState {
   title: string;
-  category: 'diary' | 'fantology' | 'compendium';
+  category: 'diary' | 'fantology' | 'other works';
   description: string;
   publication_date: Date;
   panels: PanelState[];
@@ -44,13 +44,15 @@ const ComicForm = () => {
     panels: [],
   });
 
-  const handleCategoryChange = (event: SelectChangeEvent<'diary' | 'fantology' | 'compendium'>) => {
+  const handleCategoryChange = (
+    event: SelectChangeEvent<'diary' | 'fantology' | 'other works'>,
+  ) => {
     const category = event.target.value as string;
 
-    if (['diary', 'fantology', 'compendium'].includes(category)) {
+    if (['diary', 'fantology', 'other works'].includes(category)) {
       setComic((prev) => ({
         ...prev,
-        category: category as 'diary' | 'fantology' | 'compendium',
+        category: category as 'diary' | 'fantology' | 'other works',
       }));
     } else {
       console.error('Invalid category value:', category);
@@ -165,7 +167,7 @@ const ComicForm = () => {
             >
               <MenuItem value="diary">Diary</MenuItem>
               <MenuItem value="fantology">Fantology</MenuItem>
-              <MenuItem value="compendium">Compendium</MenuItem>
+              <MenuItem value="other works">other works</MenuItem>
             </Select>
           </FormControl>
         </Grid>
