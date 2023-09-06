@@ -14,23 +14,25 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 
 interface IconProps {
   iconName: string;
+  fontSize?: string;
 }
 
-const IconMap: Record<string, JSX.Element> = {
-  Menu: <MenuIcon />,
-  Home: <HomeIcon />,
-  Comic: <ImportContactsIcon />,
-  Illustrations: <PaletteIcon />,
-  About: <InfoIcon />,
-  Twitter: <TwitterIcon />,
-  Instagram: <InstagramIcon />,
-  Facebook: <FacebookIcon />,
-  Reddit: <RedditIcon />,
-  Shop: <ShoppingCartIcon />,
+const IconMap: Record<string, React.ElementType> = {
+  Menu: MenuIcon,
+  Home: HomeIcon,
+  Comic: ImportContactsIcon,
+  Illustrations: PaletteIcon,
+  About: InfoIcon,
+  Twitter: TwitterIcon,
+  Instagram: InstagramIcon,
+  Facebook: FacebookIcon,
+  Reddit: RedditIcon,
+  Shop: ShoppingCartIcon,
 };
 
-const Icon = ({ iconName }: IconProps) => {
-  return IconMap[iconName] || <ErrorOutlineIcon />;
+const Icon = ({ iconName, fontSize }: IconProps) => {
+  const IconComponent = IconMap[iconName] || ErrorOutlineIcon;
+  return <IconComponent sx={{ fontSize }} />;
 };
 
 export default Icon;
