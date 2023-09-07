@@ -79,6 +79,8 @@ const ComicPage = () => {
       >
         <ComicTabBar activeTab={activeCategoryTab} onTabClick={handleTabClick} />
       </Paper>
+      <br />
+      <br />
       <ComicPageGrid>
         <ComicList
           category={activeCategoryTab}

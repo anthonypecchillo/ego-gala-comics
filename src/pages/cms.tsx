@@ -28,7 +28,7 @@ const CMS = () => {
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 2, my: 5, mx: 'auto', maxWidth: 'sm' }}>
+    <Paper elevation={3} sx={{ p: 2, my: 12, mx: 'auto', maxWidth: 'sm' }}>
       <Tabs value={activeCMSTab} onChange={handleCMSTabClick}>
         <Tab label="Create" />
         <Tab label="Delete" />

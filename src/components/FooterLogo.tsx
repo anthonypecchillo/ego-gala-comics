@@ -5,12 +5,12 @@ import Typography from '@mui/material/Typography';
 
 import { FOOTER } from '../constants';
 
-const FooterCopyright = () => (
-  <Grid item xs={4} sm={4}>
+const FooterLogo = () => (
+  <Grid item xs={6} sm={4}>
     <Typography variant="h4" align="left">
       {FOOTER.LOGO_TEXT}
     </Typography>
   </Grid>
 );
 
-export default FooterCopyright;
+export default FooterLogo;

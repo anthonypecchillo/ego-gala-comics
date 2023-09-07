@@ -25,11 +25,11 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   minWidth: 120, // Set a fixed minimum width
   textAlign: 'center',
   '&:hover': {
-    color: theme.palette.primary.light,
+    color: theme.palette.primary.dark,
   },
   '&.Mui-selected': {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.common.white,
+    backgroundColor: theme.palette.primary.dark,
+    color: theme.palette.secondary.light,
   },
   [theme.breakpoints.down('sm')]: {
     flex: '1', // Ensure full width on small screens

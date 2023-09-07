@@ -19,33 +19,37 @@ interface DrawerContentProps {
 const DrawerContent = ({ onClose }: DrawerContentProps) => {
   const theme = useTheme();
 
-  const linkStyles = {
-    textDecoration: 'none',
-    color: '#333',
-    display: 'flex',
-    alignItems: 'center',
-    '&:hover': {
-      '& .MuiListItemIcon-root': {
-        color: theme.palette.info.main,
-      },
-      '& .MuiListItemText-root': {
-        color: theme.palette.info.main,
-      },
-    },
-  };
-
   const boxStyles = {
     width: '200px',
   };
 
+  const linkStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    color: theme.palette.primary.contrastText,
+    paddingTop: '12px',
+    textDecoration: 'none',
+    '&:hover': {
+      '& .MuiListItemIcon-root': {
+        color: theme.palette.secondary.main,
+        transition: `color ${theme.transitions.duration.standard}ms ${theme.transitions.easing.easeInOut}`,
+      },
+      '& .MuiListItemText-root': {
+        color: theme.palette.secondary.main,
+        transition: `color ${theme.transitions.duration.standard}ms ${theme.transitions.easing.easeInOut}`,
+      },
+    },
+  };
+
   const iconStyles = {
+    color: theme.palette.primary.contrastText,
     minWidth: '40px',
   };
 
   const linkCategories = [
     { title: 'Navigation', links: NAVBAR.LINKS.NAVIGATION },
-    { title: 'Social Media', links: NAVBAR.LINKS.SOCIAL },
     { title: 'Store', links: NAVBAR.LINKS.STORE },
+    { title: 'Social Media', links: NAVBAR.LINKS.SOCIAL },
   ];
 
   return (
@@ -53,7 +57,19 @@ const DrawerContent = ({ onClose }: DrawerContentProps) => {
       {linkCategories.map((category) => (
         <List
           key={category.title}
-          subheader={<ListSubheader component="div">{category.title}</ListSubheader>}
+          subheader={
+            <ListSubheader
+              component="div"
+              sx={{
+                backgroundColor: theme.palette.primary.dark,
+                // color: theme.palette.primary.contrastText,
+                color: theme.palette.secondary.light,
+                fontSize: 'medium',
+              }}
+            >
+              {category.title}
+            </ListSubheader>
+          }
         >
           {category.links.map(({ href, iconName, text }) => (
             <ListItem key={href} component={Link} href={href} sx={linkStyles}>

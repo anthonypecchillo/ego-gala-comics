@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useTheme } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
@@ -9,14 +9,49 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import DrawerContent from './DrawerContent';
 import Icon from './Icon';
 import { NAVBAR } from '../constants';
 
 const Navbar = () => {
+  const router = useRouter();
   const theme = useTheme();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollOpacity, setScrollOpacity] = useState(0);
+
+  const isHome = router.pathname === '/';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Only apply the effect on the home page
+      if (!isHome) {
+        return;
+      }
+
+      // Check if the page is scrolled
+      const offset = window.scrollY;
+      const maxOffset = 64; // Height of scrollable area
+      const calculatedOpacity = Math.min(offset / maxOffset, 1);
+      setScrollOpacity(calculatedOpacity);
+
+      if (offset > 64) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Attach the event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isHome]);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
@@ -30,25 +65,32 @@ const Navbar = () => {
   };
 
   const appBarStyles = {
-    backgroundColor: theme.palette.common.white,
-    boxShadow: '0 2px 4px rgba(1, 1, 1, 0.4)',
+    // backgroundColor: theme.palette.primary.dark,
+    // boxShadow: 'none',
+    // backgroundColor: 'transparent',
+    // backgroundColor: `rgba(${theme.palette.primary.dark}, ${scrollOpacity})`,
+    backgroundColor: !isHome ? theme.palette.primary.dark : `rgba(25, 46, 70, ${scrollOpacity})`,
+    boxShadow: !isScrolled && 'none', // Conditionally render the box shadow
+    marginBottom: 0,
+    position: 'fixed',
   };
 
   const logoStyles = {
     fontSize: '24px',
     fontWeight: 'bold',
-    color: theme.palette.common.black,
+    color: theme.palette.secondary.light,
     marginRight: { md: '20px', xs: '0' },
     textAlign: { md: 'left', xs: 'left' },
     flexGrow: { md: '0', xs: '1' },
   };
 
   const iconButtonStyles = {
-    color: theme.palette.common.black,
+    color: theme.palette.secondary.light,
     marginRight: '10px',
     '&:hover': {
-      color: theme.palette.info.main,
-      backgroundColor: theme.palette.common.white,
+      // color: theme.palette.info.main,
+      color: theme.palette.secondary.main,
+      backgroundColor: 'none',
     },
   };
 
@@ -63,11 +105,12 @@ const Navbar = () => {
   };
 
   const navLinkTextStyles = {
-    color: '#333',
+    color: theme.palette.secondary.light,
     marginRight: '12px',
     cursor: 'pointer',
     '&:hover': {
-      color: theme.palette.info.main,
+      // color: theme.palette.info.main,
+      color: theme.palette.secondary.main,
     },
   };
 
@@ -108,7 +151,16 @@ const Navbar = () => {
           ))}
         </Hidden>
       </Toolbar>
-      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        sx={{
+          '.MuiDrawer-paper': {
+            backgroundColor: theme.palette.primary.light,
+          },
+        }}
+      >
         <DrawerContent onClose={toggleDrawer(false)} />
       </Drawer>
     </AppBar>

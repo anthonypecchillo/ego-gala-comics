@@ -11,7 +11,7 @@ const FooterCopyright = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Grid item xs={8} sm={8}>
+    <Grid item xs={6} sm={8}>
       <Typography variant={isMobile ? 'body2' : 'body1'} align="right">
         {!isMobile && FOOTER.COPYRIGHT_TEXT}
 
