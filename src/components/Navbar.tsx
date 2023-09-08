@@ -51,7 +51,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isHome]);
+  }, [isHome, isScrolled]);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
@@ -65,12 +65,7 @@ const Navbar = () => {
   };
 
   const appBarStyles = {
-    // backgroundColor: theme.palette.primary.dark,
-    // boxShadow: 'none',
-    // backgroundColor: 'transparent',
-    // backgroundColor: `rgba(${theme.palette.primary.dark}, ${scrollOpacity})`,
-    backgroundColor: !isHome ? theme.palette.primary.dark : `rgba(25, 46, 70, ${scrollOpacity})`,
-    boxShadow: !isScrolled && 'none', // Conditionally render the box shadow
+    backgroundColor: isHome ? `rgba(25, 46, 70, ${scrollOpacity})` : theme.palette.primary.dark,
     marginBottom: 0,
     position: 'fixed',
   };
@@ -117,7 +112,7 @@ const Navbar = () => {
   const navAndStoreLinks = [...NAVBAR.LINKS.NAVIGATION, ...NAVBAR.LINKS.STORE];
 
   return (
-    <AppBar position="sticky" sx={appBarStyles}>
+    <AppBar elevation={isHome && !isScrolled ? 0 : 4} position="sticky" sx={appBarStyles}>
       <Toolbar>
         <Typography variant="h6" sx={logoStyles}>
           {NAVBAR.LOGO_TEXT}
