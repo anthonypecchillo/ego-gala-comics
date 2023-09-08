@@ -4,10 +4,14 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
-import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import Link from 'next/link';
+
+import aboutImage from '../../public/about.jpg';
+import comicsImage from '../../public/comics2.jpg';
+import illustrationsImage from '../../public/illustrations.jpg';
 
 const GridSection = () => {
   const theme = useTheme();
@@ -16,10 +20,41 @@ const GridSection = () => {
   const imageSize = isMobile ? '90vw' : '28vw';
 
   const gridItems = [
-    { href: '/comic', label: 'Comics', image: 'comics2.jpg' },
-    { href: '/illustrations', label: 'Illustrations', image: 'illustrations.jpg' },
-    { href: '/about', label: 'About', image: 'about.jpg' },
+    { href: '/comic', label: 'Comics', image: comicsImage },
+    { href: '/illustrations', label: 'Illustrations', image: illustrationsImage },
+    { href: '/about', label: 'About', image: aboutImage },
   ];
+
+  const gridItemStyles = {
+    display: 'flex',
+    justifyContent: 'center',
+    padding: '16px 0px',
+  };
+
+  const cardStyles = {
+    width: imageSize,
+    position: 'relative',
+    background: 'transparent',
+  };
+
+  const cardActionAreaStyles = {
+    height: imageSize,
+    backgroundSize: 'cover',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
+  const cardBoxOverlayStyles = {
+    position: 'absolute',
+    bottom: '6%',
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.78)',
+    color: theme.palette.secondary.main,
+    padding: '8px',
+    textAlign: 'center',
+  };
 
   return (
     <Box
@@ -35,51 +70,15 @@ const GridSection = () => {
       // }}
     >
       <br />
-      <Grid container justifyContent="center">
+      <Grid container>
         {gridItems.map((item) => (
-          <Grid
-            item
-            xs={12}
-            sm={4}
-            key={item.href}
-            sx={{ padding: '16px 0px', display: 'flex', justifyContent: 'center' }}
-          >
+          <Grid item xs={12} sm={4} key={item.href} sx={gridItemStyles}>
             <Link href={item.href} passHref>
-              <Card elevation={0} sx={{ width: imageSize, position: 'relative' }}>
-                <CardActionArea
-                  sx={{
-                    backgroundImage: `url(${item.image})`,
-                    height: imageSize,
-                    backgroundSize: 'cover',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    '&:hover': {
-                      // backgroundColor: theme.palette.action.hover,
-                      // transition: `${theme.transitions.duration.standard}ms ${theme.transitions.easing.easeInOut}`,
-                    },
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    height={imageSize}
-                    image={item.image}
-                    title={item.label}
-                  />
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      bottom: '6%',
-                      left: 0,
-                      right: 0,
-                      backgroundColor: 'rgba(0, 0, 0, 0.78)',
-                      padding: '8px',
-                      textAlign: 'center',
-                    }}
-                  >
-                    <Typography variant="h6" color={theme.palette.secondary.main}>
-                      {item.label}
-                    </Typography>
+              <Card sx={cardStyles}>
+                <CardActionArea sx={cardActionAreaStyles}>
+                  <Image alt={item.label} fill sizes={imageSize} src={item.image} />
+                  <Box sx={cardBoxOverlayStyles}>
+                    <Typography variant="h6">{item.label}</Typography>
                   </Box>
                 </CardActionArea>
               </Card>
@@ -88,66 +87,8 @@ const GridSection = () => {
         ))}
       </Grid>
       <br />
-      <br />
     </Box>
   );
 };
 
 export default GridSection;
-
-// import React from 'react';
-
-// import { useMediaQuery, useTheme } from '@mui/material';
-// import Box from '@mui/material/Box';
-// import Card from '@mui/material/Card';
-// import CardActionArea from '@mui/material/CardActionArea';
-// import Grid from '@mui/material/Grid';
-// import Link from 'next/link';
-
-// const GridSection = () => {
-//   const theme = useTheme();
-//   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
-//   const imageSize = isMobile ? '90vw' : '28vw';
-
-//   const gridItems = [
-//     { href: '/comic', label: 'Comics', image: 'comics2.jpg' },
-//     { href: '/illustrations', label: 'Illustrations', image: 'illustrations.jpg' },
-//     { href: '/about', label: 'About', image: 'about.jpg' },
-//   ];
-
-//   return (
-//     <Box p={2} mb={2}>
-//       <Grid container justifyContent="center">
-//         {gridItems.map((item) => (
-//           <Grid
-//             item
-//             xs={12}
-//             sm={4}
-//             key={item.href}
-//             sx={{ padding: '16px 0px', display: 'flex', justifyContent: 'center' }}
-//           >
-//             <Link href={item.href} passHref>
-//               <Card elevation={0} sx={{ width: imageSize }}>
-//                 <CardActionArea
-//                   sx={{
-//                     backgroundImage: `url(${item.image})`,
-//                     height: imageSize,
-//                     backgroundSize: 'cover',
-//                     display: 'flex',
-//                     justifyContent: 'center',
-//                     alignItems: 'center',
-//                   }}
-//                 >
-//                   {item.label}
-//                 </CardActionArea>
-//               </Card>
-//             </Link>
-//           </Grid>
-//         ))}
-//       </Grid>
-//     </Box>
-//   );
-// };
-
-// export default GridSection;
