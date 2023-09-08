@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeroContainer = styled.div`
-  background-image: url('hero2.jpeg');
+  background-image: url('hero3.jpg');
   // background-image: url('hero.png');
   // background-color: #b4abd0;
   // background: radial-gradient(
