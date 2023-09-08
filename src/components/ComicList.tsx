@@ -116,6 +116,13 @@ const ComicList = ({
               </ListItemAvatar>
               <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
                 <ListItemText primary={comic.title} />
+
+                {category !== 'diary' && (
+                  <center>
+                    <ListItemText primary={comic.description} />
+                  </center>
+                )}
+
                 <ListItemText
                   secondary={new Intl.DateTimeFormat('en-US', {
                     year: 'numeric',
