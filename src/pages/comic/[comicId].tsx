@@ -55,13 +55,14 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
               <Grid item container py="5px" justifyContent="space-between">
                 <Grid item>
                   <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
-                    {comic.category === 'diary' ? 'Diary Comic' : comic.title}
+                    {/* {comic.category === 'diary' ? 'Diary Comic' : comic.title} */}
+                    K. Shull
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
+                  {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
                     K.Shull
-                  </Typography>
+                  </Typography> */}
                 </Grid>
               </Grid>
 
@@ -89,13 +90,13 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
               {/* Third Row */}
               <Grid item container justifyContent="space-between">
                 <Grid item>
-                  <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
+                  {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
                     {new Intl.DateTimeFormat('en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
                     }).format(new Date(comic.publication_date))}
-                  </Typography>
+                  </Typography> */}
                 </Grid>
                 <Grid item>
                   <Box>
