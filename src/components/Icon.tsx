@@ -1,11 +1,13 @@
 import React from 'react';
 
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import HomeIcon from '@mui/icons-material/Home';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import InfoIcon from '@mui/icons-material/Info';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import PaletteIcon from '@mui/icons-material/Palette';
 import RedditIcon from '@mui/icons-material/Reddit';
@@ -28,6 +30,8 @@ const IconMap: Record<string, React.ElementType> = {
   Facebook: FacebookIcon,
   Reddit: RedditIcon,
   Shop: ShoppingCartIcon,
+  Mail: MailIcon,
+  Copy: ContentCopyIcon,
 };
 
 const Icon = ({ iconName, fontSize }: IconProps) => {

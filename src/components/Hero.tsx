@@ -25,6 +25,7 @@ const HeroContainer = styled.div`
 `;
 
 const Hero = () => {
+  // TODO: Use the priority prop on an <Image> tag here
   return <HeroContainer />;
 };
 

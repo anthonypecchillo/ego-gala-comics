@@ -24,11 +24,14 @@ const InnerContainer = styled.div`
   align-items: stretch;
   padding-top: 1em;
   margin: 0 auto;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2);
 `;
 
 const StyledCalendar = styled(Calendar)`
-  margin: 10px;
+  border: 10px solid #31496e;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
+  width: 100%;
 
   .react-calendar__tile {
     color: black;
@@ -86,7 +89,7 @@ const DiaryCalendar = () => {
     <OuterContainer>
       <InnerContainer>
         <StyledCalendar
-          // TODO: activeStartDate={new Date(2020, 0, 1)}
+          activeStartDate={new Date(2023, 0, 1)}
           // TODO: locale="en-US"
           // TODO: maxDate={new Date()}
           // TODO: minDate={new Date(2020, 0, 1)}
