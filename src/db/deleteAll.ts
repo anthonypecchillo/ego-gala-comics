@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
 import Comic from './models/Comic';
+import Illustration from './models/Illustration';
 import Panel from './models/Panel';
 
 dotenv.config();
@@ -18,6 +19,9 @@ const deleteAllRecords = async () => {
 
     await Comic.deleteMany({});
     console.log('All Comic records deleted.');
+
+    await Illustration.deleteMany({});
+    console.log('All Illustration records deleted.');
   } catch (error) {
     console.error('Error deleting records:', error);
     process.exit(1);
