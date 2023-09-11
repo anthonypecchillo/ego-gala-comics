@@ -2,12 +2,12 @@ import axios from 'axios';
 
 import { IIllustration } from '../db/models/Illustration';
 
-export const fetchIllustrations = async (): Promise<IIllustration[]> => {
+export const fetchAllIllustrations = async (): Promise<IIllustration[]> => {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
     const response = await axios.get(`${apiUrl}/api/illustrations`);
 
-    return response.data;
+    return response.data.illustrations;
   } catch (error) {
     console.error('Error fetching illustrations:', error);
     throw error;

@@ -1,88 +1,167 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { useMediaQuery } from '@mui/material';
+import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
+import Icon from '../components/Icon';
+import { IIllustration } from '../db/models/Illustration';
+import { fetchAllIllustrations } from '../services/illustrations';
+
 const Illustrations = () => {
+  const theme = useTheme();
+  const [illustrations, setIllustrations] = useState<IIllustration[]>([]);
   const isMobile = useMediaQuery('(max-width: 600px)');
+
+  const iconButtonStyles = {
+    color: theme.palette.secondary.light,
+    // marginRight: '10px',
+    '&:hover': {
+      // color: theme.palette.info.main,
+      color: theme.palette.secondary.main,
+      backgroundColor: 'none',
+    },
+  };
+
+  useEffect(() => {
+    const fetchIllustrations = async () => {
+      try {
+        const response = await fetchAllIllustrations();
+        setIllustrations(response);
+      } catch (error) {
+        console.error('Error fetching illustrations:', error);
+      }
+    };
+
+    fetchIllustrations();
+  }, []);
+
   return (
-    <Box px={2}>
-      <Paper elevation={3} sx={{ p: 2, my: 12, mx: 'auto', maxWidth: 'md' }}>
-        <Container maxWidth="md">
-          <Box mt={4} mb={6} display="flex" flexDirection="column" alignItems="center">
-            <Image
-              src="/kristen_shull.png"
-              alt="Kristen Shull's Artwork"
-              width={isMobile ? 300 : 480}
-              height={isMobile ? 146.25 : 234}
-            />
-            <br />
-            <br />
-            <Typography variant="h4" gutterBottom>
-              Kristen Shull
-            </Typography>
-            <Typography variant="subtitle1" align="center">
-              Comic Artist & Educator in Burlington, Vermont
-            </Typography>
-          </Box>
-
-          <Typography variant="body1" paragraph>
-            Kristen Shull is a comic artist and educator residing in Burlington, Vermont. She is a
-            graduate of the Center for Cartoon Studies masters program class of 2020. Since then,
-            she has been teaching Sequential Art at Champlain College since 2021. Her comics are
-            also featured bi-monthly in the state-wide free newspaper, Seven Days.
+    <Grid container my={12} justifyContent="center" alignItems="center" direction="column">
+      <Grid item xs={12}>
+        <Container
+          maxWidth="sm"
+          sx={{
+            width: isMobile ? '95vw' : '90vw',
+            backgroundColor: 'white',
+            marginTop: '20px',
+            padding: '20px 0px 20px 0px',
+            boxShadow: theme.shadows[3],
+          }}
+        >
+          <Typography variant="h3" color={theme.palette.secondary.contrastText} textAlign="center">
+            Illustrations
           </Typography>
 
-          <Typography variant="h6" gutterBottom>
-            Self-Published Works
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Her self-published works include Ego Gala, a four-paneled diary comic kept daily for
-            three years that have been compiled into three books (2019, 2020, and 2021).
+          <br />
+
+          <Typography
+            variant="body1"
+            color={theme.palette.secondary.contrastText}
+            textAlign="center"
+          >
+            Below you will find an assortment of illustrations I have created that are not bound to
+            any particular comic collection.
           </Typography>
 
-          <Typography variant="h6" gutterBottom>
-            Co-editor of Fantology
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Kristen is also the co-editor of Fantology with friend and fellow CCS alum, Emily Zea.
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Fantology is a fantasy comic anthology featuring an average of 16 artists per issue with
-            all fantasy comics set in the same world.
-          </Typography>
-          <Typography variant="body1" paragraph>
-            Fantology boasts three self-published issues, Issue One: Origins, Issue Two: Flora and
-            Fauna, and Issue Three: Treasure.
-          </Typography>
+          <br />
 
-          <Divider />
-
-          <Box mt={4} mb={4}>
-            <Typography variant="h6" gutterBottom>
-              Connect with Kristen
-            </Typography>
-            <Typography variant="body1">
-              Follow Kristen&apos;s comics on{' '}
-              <Link href="https://instagram.com/ego_gala" target="_blank" rel="noopener noreferrer">
-                Instagram
-              </Link>
-              .
-            </Typography>
-            <Typography variant="body1">
-              For professional inquiries, email{' '}
-              <Link href="mailto:k10.shull@gmail.com">k10.shull@gmail.com</Link>.
-            </Typography>
-          </Box>
+          <Typography
+            variant="body1"
+            color={theme.palette.secondary.contrastText}
+            textAlign="center"
+          >
+            I hope you enjoy them!
+          </Typography>
         </Container>
-      </Paper>
-    </Box>
+      </Grid>
+
+      {illustrations.map((illustration) => (
+        <Grid item xs={12} key={illustration.url}>
+          <Container
+            maxWidth="md"
+            sx={{
+              width: isMobile ? '95vw' : '90vw',
+              backgroundColor: theme.palette.primary.light,
+              marginTop: '20px',
+              padding: '20px 0px 20px 0px',
+              boxShadow: theme.shadows[3],
+            }}
+          >
+            <Grid container px="10px">
+              {/* First Row */}
+              <Grid item container py="5px" justifyContent="space-between">
+                <Grid item>
+                  <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
+                    {/* {comic.category === 'diary' ? 'Diary Comic' : comic.title} */}
+                    K. Shull
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
+                    K.Shull
+                  </Typography> */}
+                </Grid>
+              </Grid>
+
+              {/* Second Row */}
+              <Grid item xs={12} justifyContent="center" alignItems="center">
+                <Box sx={{ width: '100%' }}>
+                  <Image
+                    src={illustration.url}
+                    alt={illustration.url}
+                    width={illustration.width}
+                    height={illustration.height}
+                    style={{
+                      backgroundColor: 'white',
+                      boxShadow: theme.shadows[3],
+                      width: '100%',
+                      height: 'auto',
+                      padding: '2vw',
+                      border: `10px solid ${theme.palette.primary.main}`,
+                      // border: '5px solid white',
+                    }}
+                  />
+                </Box>
+              </Grid>
+
+              {/* Third Row */}
+              <Grid item container justifyContent="space-between">
+                <Grid item>
+                  {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
+                    {new Intl.DateTimeFormat('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    }).format(new Date(comic.publication_date))}
+                  </Typography> */}
+                </Grid>
+                <Grid item>
+                  <Box>
+                    <IconButton sx={iconButtonStyles} component="span">
+                      <Icon iconName="Twitter" />
+                    </IconButton>
+                    <IconButton sx={iconButtonStyles} component="span">
+                      <Icon iconName="Facebook" />
+                    </IconButton>
+                    <IconButton sx={iconButtonStyles} component="span">
+                      <Icon iconName="Mail" />
+                    </IconButton>
+                    <IconButton sx={iconButtonStyles} component="span">
+                      <Icon iconName="Copy" />
+                    </IconButton>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Container>
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 
