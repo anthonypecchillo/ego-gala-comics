@@ -72,10 +72,7 @@ export const createComic = async (payload: ComicPayload) => {
   } catch (error: unknown) {
     const errorMessage =
       (error as { response?: { data?: string } }).response?.data || 'An error occurred';
-    return {
-      success: false,
-      error: errorMessage,
-    };
+    return { success: false, error: errorMessage };
   }
 };
 
