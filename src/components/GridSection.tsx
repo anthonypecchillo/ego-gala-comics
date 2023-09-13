@@ -76,7 +76,7 @@ const GridSection = () => {
             <Link href={item.href} passHref>
               <Card sx={cardStyles}>
                 <CardActionArea sx={cardActionAreaStyles}>
-                  <Image alt={item.label} fill sizes={imageSize} src={item.image} />
+                  <Image alt={item.label} fill sizes={imageSize} src={item.image} quality={100} />
                   <Box sx={cardBoxOverlayStyles}>
                     <Typography variant="h6">{item.label}</Typography>
                   </Box>
