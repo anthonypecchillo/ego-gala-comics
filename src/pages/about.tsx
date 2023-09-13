@@ -12,8 +12,8 @@ import Image from 'next/image';
 const About = () => {
   const isMobile = useMediaQuery('(max-width: 600px)');
   return (
-    <Box px={2}>
-      <Paper elevation={3} sx={{ p: 2, my: 12, mx: 'auto', maxWidth: 'md' }}>
+    <Box my={12} px={2}>
+      <Paper elevation={3} sx={{ p: 2, mx: 'auto', maxWidth: 'md' }}>
         <Container maxWidth="md">
           <Box mt={4} mb={6} display="flex" flexDirection="column" alignItems="center">
             <Image

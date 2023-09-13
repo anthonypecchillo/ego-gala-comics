@@ -37,103 +37,101 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
   };
 
   return (
-    <Grid container justifyContent="center" my={12}>
-      <Grid item xs={12}>
-        {currentPanel && (
-          <Container
-            maxWidth="md"
-            sx={{
-              width: isMobile ? '95vw' : '90vw',
-              backgroundColor: theme.palette.primary.light,
-              marginTop: '20px',
-              padding: '20px 0px 20px 0px',
-              boxShadow: theme.shadows[3],
-            }}
-          >
-            <Grid container px="10px" direction="column">
-              {/* First Row */}
-              <Grid item container py="5px" justifyContent="space-between">
-                <Grid item>
-                  <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
-                    {/* {comic.category === 'diary' ? 'Diary Comic' : comic.title} */}
-                    K. Shull
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
+    <Box my={12}>
+      {currentPanel && (
+        <Container
+          maxWidth="md"
+          sx={{
+            width: isMobile ? '95vw' : '90vw',
+            backgroundColor: theme.palette.primary.light,
+            marginTop: '20px',
+            padding: '20px 0px 20px 0px',
+            boxShadow: theme.shadows[3],
+          }}
+        >
+          <Grid container px="10px">
+            {/* First Row */}
+            <Grid item container py="5px" justifyContent="space-between">
+              <Grid item>
+                <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
+                  {/* {comic.category === 'diary' ? 'Diary Comic' : comic.title} */}
+                  K. Shull
+                </Typography>
+              </Grid>
+              <Grid item>
+                {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
                     K.Shull
                   </Typography> */}
-                </Grid>
               </Grid>
+            </Grid>
 
-              {/* Second Row */}
-              <Grid item container justifyContent="center" alignItems="center">
-                <Box sx={{ width: '100%' }}>
-                  <Image
-                    src={currentPanel.image_url}
-                    alt={`Panel ${currentPanel.panel_number}`}
-                    width={640}
-                    height={551}
-                    style={{
-                      backgroundColor: 'white',
-                      boxShadow: theme.shadows[3],
-                      width: '100%',
-                      height: 'auto',
-                      padding: '2vw',
-                      border: `10px solid ${theme.palette.primary.main}`,
-                      // border: '5px solid white',
-                    }}
-                  />
-                </Box>
-              </Grid>
+            {/* Second Row */}
+            <Grid item container justifyContent="center" alignItems="center">
+              <Box sx={{ width: '100%' }}>
+                <Image
+                  src={currentPanel.image_url}
+                  alt={`Panel ${currentPanel.panel_number}`}
+                  quality={100}
+                  width={640}
+                  height={551}
+                  style={{
+                    backgroundColor: 'white',
+                    boxShadow: theme.shadows[3],
+                    width: '100%',
+                    height: 'auto',
+                    padding: '2vw',
+                    border: `10px solid ${theme.palette.primary.main}`,
+                    // border: '5px solid white',
+                  }}
+                />
+              </Box>
+            </Grid>
 
-              {/* Third Row */}
-              <Grid item container justifyContent="space-between">
-                <Grid item>
-                  {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
+            {/* Third Row */}
+            <Grid item container justifyContent="space-between">
+              <Grid item>
+                {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
                     {new Intl.DateTimeFormat('en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
                     }).format(new Date(comic.publication_date))}
                   </Typography> */}
-                </Grid>
-                <Grid item>
-                  <Box>
-                    <IconButton sx={iconButtonStyles} component="span">
-                      <Icon iconName="Twitter" />
-                    </IconButton>
-                    <IconButton sx={iconButtonStyles} component="span">
-                      <Icon iconName="Facebook" />
-                    </IconButton>
-                    <IconButton sx={iconButtonStyles} component="span">
-                      <Icon iconName="Mail" />
-                    </IconButton>
-                    <IconButton sx={iconButtonStyles} component="span">
-                      <Icon iconName="Copy" />
-                    </IconButton>
-                  </Box>
-                </Grid>
+              </Grid>
+              <Grid item>
+                <Box>
+                  <IconButton sx={iconButtonStyles} component="span">
+                    <Icon iconName="Twitter" />
+                  </IconButton>
+                  <IconButton sx={iconButtonStyles} component="span">
+                    <Icon iconName="Facebook" />
+                  </IconButton>
+                  <IconButton sx={iconButtonStyles} component="span">
+                    <Icon iconName="Mail" />
+                  </IconButton>
+                  <IconButton sx={iconButtonStyles} component="span">
+                    <Icon iconName="Copy" />
+                  </IconButton>
+                </Box>
               </Grid>
             </Grid>
-          </Container>
-        )}
-      </Grid>
-      <Grid item xs={12}>
-        <Container
-          maxWidth="xs"
-          sx={{
-            width: isMobile ? '95vw' : '90vw',
-            backgroundColor: theme.palette.primary.light,
-            marginTop: '20px',
-            padding: '10px 0px 20px 0px',
-            boxShadow: theme.shadows[3],
-          }}
-        >
-          <DiaryCalendar />
+          </Grid>
         </Container>
-      </Grid>
-    </Grid>
+      )}
+
+      <Container
+        maxWidth="xs"
+        sx={{
+          width: isMobile ? '95vw' : '90vw',
+          backgroundColor: theme.palette.primary.light,
+          marginTop: '20px',
+          padding: '10px 0px 20px 0px',
+          boxShadow: theme.shadows[3],
+        }}
+      >
+        <DiaryCalendar />
+      </Container>
+    </Box>
   );
 };
 
