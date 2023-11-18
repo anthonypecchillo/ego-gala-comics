@@ -16,6 +16,12 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'ego-gala-comics.s3.amazonaws.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'static.vecteezy.com',
         port: '',
         pathname: '/**',
