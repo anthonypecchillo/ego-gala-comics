@@ -12,7 +12,8 @@ AWS.config.update({
 const s3 = new AWS.S3();
 
 const sanitizeTitleForS3 = (title: string): string => {
-  const lowerCaseTitle = title.toLowerCase();
+  const trimmedTitle = title.trim();
+  const lowerCaseTitle = trimmedTitle.toLowerCase();
   const hyphenatedTitle = lowerCaseTitle.replace(/\s+/g, '-');
   const sanitizedTitle = hyphenatedTitle.replace(/[^a-z0-9-_]/g, '');
   return sanitizedTitle;
