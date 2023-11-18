@@ -26,13 +26,11 @@ interface ComicFormState {
 }
 
 const formatDate = (date: Date): string => {
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
+  const year = date.getFullYear();
+  const month = date.toLocaleString('default', { month: 'long' }).toLowerCase();
+  const day = date.getDate().toString().padStart(2, '0');
 
-  return date.toLocaleDateString(undefined, options);
+  return `${year}-${month}-${day}`;
 };
 
 const ComicForm = () => {
