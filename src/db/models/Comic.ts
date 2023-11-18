@@ -12,6 +12,7 @@ export interface IComic extends Document {
   category: string;
   description: string;
   publication_date: Date;
+  thumbnail_url?: string;
   panels: IPanel[];
 }
 
@@ -24,6 +25,7 @@ const ComicSchema: Schema = new Schema({
   },
   description: { type: String, required: false },
   publication_date: { type: Date, required: true },
+  thumbnail_url: { type: String, required: true },
   panels: [{ type: Schema.Types.ObjectId, ref: 'Panel' }],
 });
 
