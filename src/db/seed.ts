@@ -30,6 +30,7 @@ const seedComics = async () => {
       category: comicData.category,
       description: comicData.description,
       publication_date: new Date(comicData.publication_date),
+      thumbnail_url: comicData.thumbnail_url,
       panels: [] as IPanel[],
     });
 
