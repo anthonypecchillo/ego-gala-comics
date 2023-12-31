@@ -1,3 +1,4 @@
+import { assert } from 'console';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import dbConnect from '../../../db';
@@ -7,24 +8,27 @@ const getComics = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     await dbConnect();
 
-    const { category, page, limit } = req.query;
+    const { category, page = '1', limit = '10' } = req.query;
+
+    // Ensure that the query parameters are of the correct type
+    assert(typeof category === 'string', 'Category must be a string');
+    assert(typeof page === 'string', 'Page must be a string');
+    assert(typeof limit === 'string', 'Limit must be a string');
+
     const query = category ? { category } : {};
+    const sortBy = category === 'diary' ? 'publication_date' : '-publication_date';
 
-    let comics: IComic[];
-    let totalPages = 1;
+    const skip = (Number(page) - 1) * Number(limit);
 
-    if (page && limit) {
-      const skip = (Number(page) - 1) * Number(limit);
-      comics = (await Comic.find(query)
-        .populate('panels')
-        .skip(skip)
-        .limit(Number(limit))) as IComic[];
+    const comicsQuery = Comic.find(query)
+      .populate('panels')
+      .sort(sortBy)
+      .skip(skip)
+      .limit(Number(limit));
 
-      const count = await Comic.countDocuments(query);
-      totalPages = Math.ceil(count / Number(limit));
-    } else {
-      comics = await Comic.find(query).populate('panels');
-    }
+    const comics = (await comicsQuery) as IComic[];
+    const count = await Comic.countDocuments(query);
+    const totalPages = Math.ceil(count / Number(limit));
 
     res.json({ comics, totalPages });
   } catch (err) {
