@@ -2,20 +2,6 @@ import React, { useEffect } from 'react';
 
 import Pagination from '@mui/material/Pagination';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
-
-const NavWrapper = styled.nav`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding-top: 64px;
-  // background-color: ${({ theme }) => theme.colors.background};
-
-  @media (max-width: 600px) {
-    padding-top: 56px;
-  }
-`;
 
 interface ComicNavBarProps {
   comicId: string;
@@ -47,19 +33,22 @@ const ComicNavBar = ({ comicId, panelNumber, maxPanelNumber }: ComicNavBarProps)
   };
 
   return (
-    <NavWrapper>
-      <Pagination
-        count={maxPanelNumber}
-        page={panelNumber}
-        onChange={handlePageChange}
-        variant="outlined"
-        shape="rounded"
-        siblingCount={0}
-        boundaryCount={1}
-        showFirstButton
-        showLastButton
-      />
-    </NavWrapper>
+    <Pagination
+      count={maxPanelNumber}
+      page={panelNumber}
+      onChange={handlePageChange}
+      color="secondary"
+      // variant="outlined"
+      siblingCount={0}
+      boundaryCount={2}
+      showFirstButton
+      showLastButton
+      sx={{
+        ul: {
+          justifyContent: 'center',
+        },
+      }}
+    />
   );
 };
 
