@@ -16,7 +16,7 @@ const getComics = async (req: NextApiRequest, res: NextApiResponse) => {
     assert(typeof limit === 'string', 'Limit must be a string');
 
     const query = category ? { category } : {};
-    const sortBy = category === 'diary' ? 'publication_date' : '-publication_date';
+    const sortBy = category === 'other works' ? '-publication_date' : 'publication_date';
 
     const skip = (Number(page) - 1) * Number(limit);
 
