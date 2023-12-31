@@ -114,9 +114,11 @@ const Navbar = () => {
   return (
     <AppBar elevation={isHome && !isScrolled ? 0 : 4} position="sticky" sx={appBarStyles}>
       <Toolbar>
-        <Typography variant="h6" sx={logoStyles}>
-          {NAVBAR.LOGO_TEXT}
-        </Typography>
+        <Link href="/" style={navLinkStyles} passHref>
+          <Typography variant="h6" sx={logoStyles}>
+            {NAVBAR.LOGO_TEXT}
+          </Typography>
+        </Link>
         <Hidden mdUp>
           <IconButton
             sx={iconButtonStyles}
