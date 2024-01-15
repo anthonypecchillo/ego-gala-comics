@@ -17,7 +17,7 @@ const About = () => {
         <Container maxWidth="md">
           <Box mt={4} mb={6} display="flex" flexDirection="column" alignItems="center">
             <Image
-              src="/kristen_shull.png"
+              src="/about_me.jpg"
               alt="Kristen Shull's Artwork"
               width={isMobile ? 300 : 480}
               height={isMobile ? 146.25 : 234}
@@ -33,10 +33,16 @@ const About = () => {
           </Box>
 
           <Typography variant="body1" paragraph>
-            Kristen Shull is a comic artist and educator residing in Burlington, Vermont. She is a
-            graduate of the Center for Cartoon Studies masters program class of 2020. Since then,
-            she has been teaching Sequential Art at Champlain College since 2021. Her comics are
-            also featured bi-monthly in the state-wide free newspaper, Seven Days.
+            Kristen Shull is a comic artist and educator residing in Burlington, Vermont.
+          </Typography>
+          <Typography variant="body1" paragraph>
+            She is a graduate of the Center for Cartoon Studies masters program class of 2020.
+          </Typography>
+          <Typography variant="body1" paragraph>
+            Since then, she has been teaching Sequential Art at Champlain College since 2021.
+          </Typography>
+          <Typography variant="body1" paragraph>
+            Her comics are also featured bi-monthly in the state-wide free newspaper, Seven Days.
           </Typography>
 
           <Typography variant="h6" gutterBottom>
