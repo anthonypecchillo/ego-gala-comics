@@ -109,11 +109,17 @@ const Navbar = () => {
     },
   };
 
+  const toolbarStyles = {
+    display: 'flex',
+    justifyContent: 'space-between', // This will push the logo and the menu icon to opposite ends
+    // padding: '0 16px', // Adjust the padding as needed
+  };
+
   const navAndStoreLinks = [...NAVBAR.LINKS.NAVIGATION, ...NAVBAR.LINKS.STORE];
 
   return (
     <AppBar elevation={isHome && !isScrolled ? 0 : 4} position="sticky" sx={appBarStyles}>
-      <Toolbar>
+      <Toolbar sx={toolbarStyles}>
         <Link href="/" style={navLinkStyles} passHref>
           <Typography variant="h6" sx={logoStyles}>
             {NAVBAR.LOGO_TEXT}
@@ -123,7 +129,7 @@ const Navbar = () => {
           <IconButton
             sx={iconButtonStyles}
             aria-label="open drawer"
-            edge="start"
+            edge="end"
             onClick={toggleDrawer(true)}
           >
             <Icon iconName="Menu" />
