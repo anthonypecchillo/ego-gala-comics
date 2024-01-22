@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
 import Button from '@mui/material/Button';
-import Hidden from '@mui/material/Hidden';
+// import Hidden from '@mui/material/Hidden';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 /* eslint-disable-next-line import/no-extraneous-dependencies */
@@ -21,14 +21,11 @@ const CONTENT = {
     title: 'Ego Gala Archive',
     subtitle: 'Daily diary comics',
     body: [
-      {
-        id: uuidv4(),
-        text: 'On January 1, 2019, I decided to make a diary comic every day for a whole year. The structure remained consistent every day: four panels drawn in black-and-white, illustrating the events that transpired the day before. Once I finished a full year of diary comics, I continued the practice for another year. And then another.',
-      },
-      {
-        id: uuidv4(),
-        text: 'It was a transformative three years and I created comics that covered a vast variety of subject matters: getting my masters degree from the Center for Cartoon Studies, self-publishing two issues of Fantology, working in the service industry during the pandemic, falling in love, and mourning the loss of two friends. Eventually, I gave up the daily practice and moved to making autobiographical comics whenever I felt like it, this time with color.',
-      },
+      'On January 1, 2019, I decided to make a diary comic every day for a whole year.',
+      'The structure remained consistent every day: four panels drawn in black-and-white, illustrating the events that transpired the day before.',
+      'Once I finished a full year of diary comics, I continued the practice for another year. And then another.',
+      'It was a transformative three years. I created comics that covered a vast variety of subject matters: getting my masters degree from the Center for Cartoon Studies, self-publishing two issues of Fantology, working in the service industry during the pandemic, falling in love, and mourning the loss of two friends.',
+      'Eventually, I gave up the daily practice and moved to making autobiographical comics whenever I felt like it, this time with color.',
     ],
     buttonText: 'FIRST COMIC',
   },
@@ -36,26 +33,13 @@ const CONTENT = {
     title: 'Fantology',
     subtitle: 'A fantasy comic anthology',
     body: [
-      {
-        id: uuidv4(),
-        text: 'In the summer of 2019, between my two years at the Center for Cartoon Studies, I came up with an idea to stay busy making comics with friend and fellow classmate Emily Zea. The idea was to create a fantasy comic anthology (so dubbed Fantology) featuring fantasy comics from a variety of artists all set in the same world. I considered it to be an experiment in collaborative world building. With each comic an artist contributes to our anthology, the reader will learn more about the world they are set in, populating it with fantastical plots, magic, gods, monsters, creatures, histories, and lore.',
-      },
-      {
-        id: uuidv4(),
-        text: 'But really what I wanted was a book to showcase my own fantasy comics.',
-      },
-      {
-        id: uuidv4(),
-        text: 'Featured here are my contributions to the first three issues of Fantology: “Thirsty” (from Issue One: Origins), “Scales” (from Issue Two: Flora and Fauna), and “Chance and Gamble” (from Issue Three: Treasure).',
-      },
-      {
-        id: uuidv4(),
-        text: 'If you have further inquiries (or would like to contribute!), reach out to fantologyinfo@gmail.com',
-      },
-      {
-        id: uuidv4(),
-        text: 'To purchase a copy of Fantology, please visit our shop by clicking the button below.',
-      },
+      'In the summer of 2019, between my two years at the Center for Cartoon Studies, I came up with an idea to stay busy making comics with friend and fellow classmate, Emily Zea.',
+      'The idea was to create a fantasy comic anthology (so dubbed Fantology) featuring fantasy comics from a variety of artists all set in the same world.',
+      'I considered it to be an experiment in collaborative world building. With each comic an artist contributes to our anthology, the reader will learn more about the world they are set in, populating it with fantastical plots, magic, gods, monsters, creatures, histories, and lore.',
+      'But really what I wanted was a book to showcase my own fantasy comics.',
+      'Featured here are my contributions to the first three issues of Fantology: “Thirsty” (from Issue One: Origins), “Scales” (from Issue Two: Flora and Fauna), and “Chance and Gamble” (from Issue Three: Treasure).',
+      'If you have further inquiries (or would like to contribute!), reach out to fantologyinfo@gmail.com',
+      'To purchase a copy of Fantology, please visit our shop by clicking the button below.',
     ],
     buttonText: 'PURCHASE FANTOLOGY', // TODO: Link to https://fantologycomic.storenvy.com/
   },
@@ -63,14 +47,8 @@ const CONTENT = {
     title: 'Other Works',
     subtitle: "Zines n' things",
     body: [
-      {
-        id: uuidv4(),
-        text: "Here's a spot for all the comics I've made that don't fit into either Ego Gala or Fantology.",
-      },
-      {
-        id: uuidv4(),
-        text: 'These have been made into zines, finished in collaboration with other publications, or posted just-for-fun on my Instagram.',
-      },
+      "Here's a spot for all the comics I've made that don't fit into either Ego Gala or Fantology.",
+      'These have been made into zines, finished in collaboration with other publications, or posted just-for-fun on my Instagram.',
     ],
     buttonText: 'WHAT TEXT? WHERE DO I GO?',
   },
@@ -161,8 +139,8 @@ const ComicPage = () => {
           </Typography>
 
           {CONTENT[activeCategoryTab as ContentType].body.map((paragraph) => (
-            <Typography key={paragraph.id} variant="body1" paragraph>
-              {paragraph.text}
+            <Typography key={uuidv4()} variant="body1" paragraph>
+              {paragraph}
             </Typography>
           ))}
 
@@ -171,7 +149,7 @@ const ComicPage = () => {
           </Button>
         </StyledContent>
 
-        <Hidden smDown>
+        {/* <Hidden smDown>
           <Image
             alt="Fun image"
             src="/fun_image.png"
@@ -186,7 +164,7 @@ const ComicPage = () => {
               position: 'relative',
             }}
           />
-        </Hidden>
+        </Hidden> */}
       </ComicPageGrid>
     </>
   );
