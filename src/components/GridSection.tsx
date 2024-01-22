@@ -11,7 +11,7 @@ import Link from 'next/link';
 
 import aboutImage from '../../public/about.jpg';
 import comicsImage from '../../public/comics2.jpg';
-import illustrationsImage from '../../public/illustrations.jpg';
+import illustrationsImage from '../../public/illustrations_3.jpg';
 
 const GridSection = () => {
   const theme = useTheme();
