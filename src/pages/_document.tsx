@@ -39,10 +39,7 @@ export default class MyDocument extends Document {
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://ego-gala-comics.vercel.app/" />
           <meta property="og:title" content="Ego Gala Comics" />
-          <meta
-            property="og:description"
-            content="Incredibly satisfying illustrations. (Social Media Description)"
-          />
+          <meta property="og:description" content="Incredibly satisfying illustrations." />
           <meta
             property="og:image"
             content="https://ego-gala-comics.s3.amazonaws.com/public/about_me.jpg"
