@@ -9,47 +9,47 @@ import Typography from '@mui/material/Typography';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 import ComicNavbar from '../../../components/ComicNavBar';
 import Icon from '../../../components/Icon';
 import { IComic } from '../../../db/models/Comic';
 import { fetchComic } from '../../../services/comics';
 
-const ComicViewerContainer = styled.div`
-  min-height: 65vh;
-  margin-bottom: 60px;
-`;
+// const ComicViewerContainer = styled.div`
+//   min-height: 65vh;
+//   margin-bottom: 60px;
+// `;
 
-const ComicPanel = styled.div`
-  display: grid;
-  grid-template-columns: minmax(90vw, 600px);
-  justify-content: center;
-  padding-top: 40px;
-`;
+// const ComicPanel = styled.div`
+//   display: grid;
+//   grid-template-columns: minmax(90vw, 600px);
+//   justify-content: center;
+//   padding-top: 40px;
+// `;
 
-const ComicImage = styled.div`
-  position: relative;
-  width: 100%;
-  padding-bottom: 66.67%; // 66.67% for aspect ratio 3:2
+// const ComicImage = styled.div`
+//   position: relative;
+//   width: 100%;
+//   padding-bottom: 66.67%; // 66.67% for aspect ratio 3:2
 
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    max-height: 600px;
-    object-fit: contain;
-  }
-`;
+//   img {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     max-height: 600px;
+//     object-fit: contain;
+//   }
+// `;
 
 interface ComicViewerProps {
   comic: IComic;
-  panelNumber: number;
+  // panelNumber: number;
 }
 
-const ComicViewer = ({ comic /*panelNumber*/ }: ComicViewerProps) => {
+const ComicViewer = ({ comic }: ComicViewerProps) => {
   const theme = useTheme();
   const isMobile = theme.breakpoints.down('sm');
   const router = useRouter();
