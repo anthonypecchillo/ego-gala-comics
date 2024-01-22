@@ -34,6 +34,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head title="Ego Gala Comics">
           <meta name="description" content="Incredibly satisfying illustrations." />
+          <link rel="icon" href="/enhanced_favicon.ico" />
 
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://ego-gala-comics.vercel.app/" />
@@ -44,7 +45,7 @@ export default class MyDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://ego-gala-comics.vercel.app/_next/image?url=%2Fkristen_shull.png&w=1080&q=75"
+            content="https://ego-gala-comics.s3.amazonaws.com/public/about_me.jpg"
           />
           <meta property="og:image:alt" content="An image should have been here..." />
           <meta property="og:image:width" content="1200" />
