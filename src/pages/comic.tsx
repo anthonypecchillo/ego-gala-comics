@@ -8,11 +8,73 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+/* eslint-disable-next-line import/no-extraneous-dependencies */
+import { v4 as uuidv4 } from 'uuid';
 
 import ComicList from '../components/ComicList';
 import ComicTabBar from '../components/ComicTabBar';
 import { fetchEarliestDiaryComicId } from '../services/comics';
 import theme from '../styles/theme';
+
+const CONTENT = {
+  diary: {
+    title: 'Ego Gala Archive',
+    subtitle: 'Daily diary comics',
+    body: [
+      {
+        id: uuidv4(),
+        text: 'On January 1, 2019, I decided to make a diary comic every day for a whole year. The structure remained consistent every day: four panels drawn in black-and-white, illustrating the events that transpired the day before. Once I finished a full year of diary comics, I continued the practice for another year. And then another.',
+      },
+      {
+        id: uuidv4(),
+        text: 'It was a transformative three years and I created comics that covered a vast variety of subject matters: getting my masters degree from the Center for Cartoon Studies, self-publishing two issues of Fantology, working in the service industry during the pandemic, falling in love, and mourning the loss of two friends. Eventually, I gave up the daily practice and moved to making autobiographical comics whenever I felt like it, this time with color.',
+      },
+    ],
+    buttonText: 'FIRST COMIC',
+  },
+  fantology: {
+    title: 'Fantology',
+    subtitle: 'A fantasy comic anthology',
+    body: [
+      {
+        id: uuidv4(),
+        text: 'In the summer of 2019, between my two years at the Center for Cartoon Studies, I came up with an idea to stay busy making comics with friend and fellow classmate Emily Zea. The idea was to create a fantasy comic anthology (so dubbed Fantology) featuring fantasy comics from a variety of artists all set in the same world. I considered it to be an experiment in collaborative world building. With each comic an artist contributes to our anthology, the reader will learn more about the world they are set in, populating it with fantastical plots, magic, gods, monsters, creatures, histories, and lore.',
+      },
+      {
+        id: uuidv4(),
+        text: 'But really what I wanted was a book to showcase my own fantasy comics.',
+      },
+      {
+        id: uuidv4(),
+        text: 'Featured here are my contributions to the first three issues of Fantology: “Thirsty” (from Issue One: Origins), “Scales” (from Issue Two: Flora and Fauna), and “Chance and Gamble” (from Issue Three: Treasure).',
+      },
+      {
+        id: uuidv4(),
+        text: 'If you have further inquiries (or would like to contribute!), reach out to fantologyinfo@gmail.com',
+      },
+      {
+        id: uuidv4(),
+        text: 'To purchase a copy of Fantology, please visit our shop by clicking the button below.',
+      },
+    ],
+    buttonText: 'PURCHASE FANTOLOGY', // TODO: Link to https://fantologycomic.storenvy.com/
+  },
+  'other works': {
+    title: 'Other Works',
+    subtitle: "Zines n' things",
+    body: [
+      {
+        id: uuidv4(),
+        text: "Here's a spot for all the comics I've made that don't fit into either Ego Gala or Fantology.",
+      },
+      {
+        id: uuidv4(),
+        text: 'These have been made into zines, finished in collaboration with other publications, or posted just-for-fun on my Instagram.',
+      },
+    ],
+    buttonText: 'WHAT TEXT? WHERE DO I GO?',
+  },
+};
 
 const ComicPageGrid = styled.div`
   display: grid;
@@ -42,6 +104,8 @@ const ComicPageGrid = styled.div`
 const StyledContent = styled.div`
   grid-area: content;
 `;
+
+type ContentType = 'diary' | 'fantology' | 'other works';
 
 const ComicPage = () => {
   const router = useRouter();
@@ -89,20 +153,21 @@ const ComicPage = () => {
         />
         <StyledContent>
           <Typography variant="h4" gutterBottom>
-            Ego Gala Archive
+            {CONTENT[activeCategoryTab as ContentType].title}
           </Typography>
-          <Typography variant="body1" paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum ligula felis, eget
-            lobortis nisi egestas at. Pellentesque suscipit convallis enim at suscipit. Proin nec
-            sem sit amet arcu consequat viverra.
+
+          <Typography variant="h5" gutterBottom>
+            {CONTENT[activeCategoryTab as ContentType].subtitle}
           </Typography>
-          <Typography variant="body1" paragraph>
-            Ut consectetur diam ac augue venenatis sagittis. Quisque mauris diam, laoreet a quam ac,
-            tincidunt feugiat mi. Fusce maximus non mi pretium vulputate.{' '}
-            <a href="https://example.com">Accessibility Settings</a>.
-          </Typography>
+
+          {CONTENT[activeCategoryTab as ContentType].body.map((paragraph) => (
+            <Typography key={paragraph.id} variant="body1" paragraph>
+              {paragraph.text}
+            </Typography>
+          ))}
+
           <Button fullWidth variant="contained" color="primary" onClick={goToEarliestDiaryComic}>
-            FIRST COMIC
+            {CONTENT[activeCategoryTab as ContentType].buttonText}
           </Button>
         </StyledContent>
 
