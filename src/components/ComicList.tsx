@@ -16,6 +16,8 @@ import styled from 'styled-components';
 import { IComic } from '../db/models/Comic';
 import { fetchComicsByCategory, deleteComic } from '../services/comics';
 
+const COMICS_PER_PAGE = 10;
+
 const StyledComicList = styled.div`
   grid-area: comic-list;
 `;
@@ -90,7 +92,7 @@ const ComicList = ({
       </PaginationWrapper>
 
       <List>
-        {comics.map((comic) => (
+        {comics.map((comic, index) => (
           <Link href={getComicURL(comic)} key={comic._id} underline="none">
             <ListItem
               button
@@ -107,12 +109,30 @@ const ComicList = ({
               }}
             >
               <ListItemAvatar>
-                <Avatar
-                  variant="square"
-                  src={comic.panels[0].image_url}
-                  alt={comic.title}
-                  style={{ width: '80px', height: '80px', marginRight: '16px' }}
-                />
+                {category === 'diary' ? (
+                  <Box
+                    sx={{
+                      width: '80px',
+                      height: '80px',
+                      marginRight: '16px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      backgroundColor: theme.palette.primary.main,
+                      color: theme.palette.common.white,
+                      fontSize: '1.5rem',
+                    }}
+                  >
+                    #{(currentPage - 1) * COMICS_PER_PAGE + index + 1}
+                  </Box>
+                ) : (
+                  <Avatar
+                    variant="square"
+                    src={comic.panels[0].image_url}
+                    alt={comic.title}
+                    style={{ width: '80px', height: '80px', marginRight: '16px' }}
+                  />
+                )}
               </ListItemAvatar>
               <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
                 <ListItemText primary={comic.title} />
