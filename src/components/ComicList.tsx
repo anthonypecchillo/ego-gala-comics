@@ -134,14 +134,21 @@ const ComicList = ({
                   />
                 )}
               </ListItemAvatar>
-              <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
-                <ListItemText primary={comic.title} />
+              <Box display="flex" alignItems="center" width="100%">
+                <ListItemText
+                  primary={
+                    category === 'diary'
+                      ? `Diary Comic #${(currentPage - 1) * COMICS_PER_PAGE + index + 1}`
+                      : comic.title
+                  }
+                  sx={{ textAlign: 'left' }}
+                />
 
-                {category !== 'diary' && (
+                {/* {category !== 'diary' && (
                   <center>
                     <ListItemText primary={comic.description} />
                   </center>
-                )}
+                )} */}
 
                 <ListItemText
                   secondary={new Intl.DateTimeFormat('en-US', {
