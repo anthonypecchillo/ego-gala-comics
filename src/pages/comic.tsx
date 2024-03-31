@@ -2,15 +2,11 @@ import React, { useState } from 'react';
 
 import DiaryCalendar from '@/components/DiaryCalendar';
 import Button from '@mui/material/Button';
-// import Hidden from '@mui/material/Hidden';
-import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-// import Image from 'next/image';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
-/* eslint-disable-next-line import/no-extraneous-dependencies */
 import { v4 as uuidv4 } from 'uuid';
 
 import ComicList from '../components/ComicList';
