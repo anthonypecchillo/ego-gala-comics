@@ -147,7 +147,7 @@ const ComicPage = () => {
           </Button>
         </StyledContent>
 
-        <DiaryCalendar />
+        {activeCategoryTab === 'diary' ? <DiaryCalendar /> : undefined}
       </ComicPageGrid>
     </>
   );
