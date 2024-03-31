@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
+import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import Icon from '../components/Icon';
 import { IIllustration } from '../db/models/Illustration';
@@ -14,17 +16,86 @@ import { fetchAllIllustrations } from '../services/illustrations';
 
 const Illustrations = () => {
   const theme = useTheme();
-  const [illustrations, setIllustrations] = useState<IIllustration[]>([]);
   const isMobile = useMediaQuery('(max-width: 600px)');
+  const [illustrations, setIllustrations] = useState<IIllustration[]>([]);
+  const router = useRouter();
+  const { query } = router;
+  const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<IIllustration | null>(null);
+
+  const handleOpen = useCallback(
+    (illustration: IIllustration) => {
+      setSelectedImage(illustration);
+      setOpen(true);
+      router.push(
+        {
+          pathname: '/illustrations',
+          query: { id: illustration._id },
+        },
+        undefined,
+        { shallow: true },
+      );
+    },
+    [router],
+  );
+
+  const handleClose = () => {
+    setOpen(false);
+    router.push(
+      {
+        pathname: '/illustrations',
+        query: {},
+      },
+      undefined,
+      { shallow: true },
+    );
+  };
 
   const iconButtonStyles = {
     color: theme.palette.secondary.light,
-    // marginRight: '10px',
     '&:hover': {
-      // color: theme.palette.info.main,
       color: theme.palette.secondary.main,
       backgroundColor: 'none',
     },
+  };
+
+  const shareOnSocialMedia = (platform: 'twitter' | 'facebook') => {
+    const currentUrl = window.location.href; // Get the current URL
+    const text = encodeURIComponent('Check out this illustration from Kristen Shull!');
+
+    let shareUrl = '';
+    switch (platform) {
+      case 'twitter':
+        shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(currentUrl)}`;
+        break;
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+        break;
+      default:
+        break;
+    }
+
+    if (shareUrl) {
+      window.open(shareUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const shareViaEmail = () => {
+    const currentUrl = window.location.href;
+    const subject = 'Check out this illustration';
+    const body = `I found this illustration interesting: ${currentUrl}`;
+    const mailto = `mailto:?subject=${subject}&body=${body}`;
+    window.location.href = mailto;
+  };
+
+  const copyImageUrlToClipboard = async () => {
+    const currentUrl = window.location.href; // Get the current URL
+    try {
+      await navigator.clipboard.writeText(currentUrl);
+      alert('URL copied to clipboard!');
+    } catch (error) {
+      console.error('Failed to copy:', error);
+    }
   };
 
   useEffect(() => {
@@ -40,15 +111,24 @@ const Illustrations = () => {
     fetchIllustrations();
   }, []);
 
+  // Open modal if query params exist
+  useEffect(() => {
+    if (query.id && illustrations.length > 0) {
+      const illustrationToOpen = illustrations.find((ill) => ill._id === query.id);
+      if (illustrationToOpen) {
+        handleOpen(illustrationToOpen);
+      }
+    }
+  }, [query.id, illustrations, handleOpen]);
+
   return (
     <Box my={12}>
-      {/* Sub-Component: IllustrationsHeader */}
       <Container
         maxWidth="sm"
         sx={{
           width: isMobile ? '95vw' : '90vw',
           backgroundColor: 'white',
-          marginTop: '20px',
+          marginY: '20px',
           padding: '20px 0px 20px 0px',
           boxShadow: theme.shadows[3],
         }}
@@ -67,92 +147,169 @@ const Illustrations = () => {
         </Typography>
       </Container>
 
-      {/* Sub-Component: IllustrationsList */}
-      <Grid container justifyContent="center" alignItems="center" direction="column">
+      <Grid container spacing={4} justifyContent="center" sx={{ px: isMobile ? 1 : 2 }}>
         {illustrations.map((illustration) => (
-          // Sub-Sub-Component: IllustrationsListItem
-          <Grid item xs={12} key={illustration.url}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            key={illustration.url}
+            onClick={() => handleOpen(illustration)}
+          >
             <Container
               maxWidth="md"
               sx={{
-                width: isMobile ? '95vw' : '90vw',
+                width: '100%',
                 backgroundColor: theme.palette.primary.light,
                 marginTop: '20px',
-                padding: '20px 0px 20px 0px',
+                padding: '20px',
                 boxShadow: theme.shadows[3],
+                '&:hover': {
+                  cursor: 'pointer',
+                },
               }}
             >
-              <Grid container px="10px">
-                {/* First Row */}
-                <Grid item container py="5px" justifyContent="space-between">
-                  <Grid item>
-                    <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
-                      {/* {comic.category === 'diary' ? 'Diary Comic' : comic.title} */}
-                      K. Shull
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                    {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
-              K.Shull
-            </Typography> */}
-                  </Grid>
-                </Grid>
-
-                {/* Second Row */}
-                <Grid item xs={12} justifyContent="center" alignItems="center">
-                  <Box sx={{ width: '100%' }}>
-                    <Image
-                      src={illustration.url}
-                      alt={illustration.url}
-                      quality={100}
-                      width={illustration.width}
-                      height={illustration.height}
-                      style={{
-                        backgroundColor: 'white',
-                        boxShadow: theme.shadows[3],
-                        width: '100%',
-                        height: 'auto',
-                        padding: '20px',
-                        border: `10px solid ${theme.palette.primary.main}`,
-                      }}
-                    />
-                  </Box>
-                </Grid>
-
-                {/* Third Row */}
-                <Grid item container justifyContent="space-between">
-                  <Grid item>
-                    {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
-              {new Intl.DateTimeFormat('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              }).format(new Date(comic.publication_date))}
-            </Typography> */}
-                  </Grid>
-                  <Grid item>
-                    {/* Sub-Component: SocialShareLinkList */}
-                    <Box>
-                      <IconButton sx={iconButtonStyles} component="span">
-                        <Icon iconName="Twitter" />
-                      </IconButton>
-                      <IconButton sx={iconButtonStyles} component="span">
-                        <Icon iconName="Facebook" />
-                      </IconButton>
-                      <IconButton sx={iconButtonStyles} component="span">
-                        <Icon iconName="Mail" />
-                      </IconButton>
-                      <IconButton sx={iconButtonStyles} component="span">
-                        <Icon iconName="Copy" />
-                      </IconButton>
-                    </Box>
-                  </Grid>
-                </Grid>
-              </Grid>
+              <Box sx={{ mb: 1 }}>
+                <Image
+                  src={illustration.url}
+                  alt="Illustration"
+                  quality={100}
+                  width={illustration.width}
+                  height={illustration.height}
+                  layout="responsive"
+                  style={{
+                    backgroundColor: 'white',
+                    boxShadow: theme.shadows[3],
+                    width: '100%',
+                    height: '100%',
+                    padding: '20px',
+                    border: `10px solid ${theme.palette.primary.main}`,
+                  }}
+                />
+              </Box>
+              {/* Icons and Links */}
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <IconButton
+                  sx={iconButtonStyles}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    shareOnSocialMedia('twitter');
+                  }}
+                >
+                  <Icon iconName="Twitter" />
+                </IconButton>
+                <IconButton
+                  sx={iconButtonStyles}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    shareOnSocialMedia('facebook');
+                  }}
+                >
+                  <Icon iconName="Facebook" />
+                </IconButton>
+                <IconButton
+                  sx={iconButtonStyles}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    shareViaEmail();
+                  }}
+                >
+                  <Icon iconName="Mail" />
+                </IconButton>
+                <IconButton
+                  sx={iconButtonStyles}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    copyImageUrlToClipboard();
+                  }}
+                >
+                  <Icon iconName="Copy" />
+                </IconButton>
+              </Box>
             </Container>
           </Grid>
         ))}
       </Grid>
+
+      {/* Modal for Selected Image */}
+      <Modal open={open} onClose={handleClose} disableAutoFocus>
+        <Container
+          maxWidth="md"
+          sx={{
+            position: 'absolute',
+            top: '50vh',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: isMobile ? '90vw' : '60vw',
+            backgroundColor: theme.palette.primary.light,
+            padding: '20px',
+            boxShadow: theme.shadows[3],
+          }}
+        >
+          {selectedImage && (
+            <>
+              <Box>
+                <Image
+                  src={selectedImage.url}
+                  alt="Illustration"
+                  quality={100}
+                  width={selectedImage.width}
+                  height={selectedImage.height}
+                  layout="responsive"
+                  style={{
+                    backgroundColor: 'white',
+                    boxShadow: theme.shadows[3],
+                    width: '100%',
+                    height: '100%',
+                    padding: '20px',
+                    border: `10px solid ${theme.palette.primary.main}`,
+                  }}
+                />
+              </Box>
+              {/* Repeated Icons and Links for Modal */}
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+                <IconButton
+                  sx={iconButtonStyles}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    shareOnSocialMedia('twitter');
+                  }}
+                >
+                  <Icon iconName="Twitter" />
+                </IconButton>
+                <IconButton
+                  sx={iconButtonStyles}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    shareOnSocialMedia('facebook');
+                  }}
+                >
+                  <Icon iconName="Facebook" />
+                </IconButton>
+                <IconButton
+                  sx={iconButtonStyles}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    shareViaEmail();
+                  }}
+                >
+                  <Icon iconName="Mail" />
+                </IconButton>
+                <IconButton
+                  sx={iconButtonStyles}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    copyImageUrlToClipboard();
+                  }}
+                >
+                  <Icon iconName="Copy" />
+                </IconButton>
+              </Box>
+            </>
+          )}
+        </Container>
+      </Modal>
     </Box>
   );
 };
