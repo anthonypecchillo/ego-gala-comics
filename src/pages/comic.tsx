@@ -151,35 +151,7 @@ const ComicPage = () => {
           </Button>
         </StyledContent>
 
-        <Container
-          maxWidth="xs"
-          sx={{
-            width: isMobile ? '95vw' : '90vw',
-            backgroundColor: theme.palette.primary.light,
-            marginTop: '20px',
-            padding: '10px 0px 20px 0px',
-            boxShadow: theme.shadows[3],
-          }}
-        >
-          <DiaryCalendar />
-        </Container>
-
-        {/* <Hidden smDown>
-          <Image
-            alt="Fun image"
-            src="/fun_image.png"
-            width={284}
-            height={393}
-            layout="responsive"
-            style={{
-              margin: '0 auto',
-              paddingBottom: 70,
-              width: '100%',
-              maxWidth: 325,
-              position: 'relative',
-            }}
-          />
-        </Hidden> */}
+        <DiaryCalendar />
       </ComicPageGrid>
     </>
   );
