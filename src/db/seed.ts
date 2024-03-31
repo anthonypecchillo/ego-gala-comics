@@ -21,6 +21,13 @@ const seedIllustrationDataPath = path.join(__dirname, 'seedIllustrationData.json
 const seedIllustrationDataRaw = fs.readFileSync(seedIllustrationDataPath, 'utf-8');
 const seedIllustrationData = JSON.parse(seedIllustrationDataRaw);
 
+const deleteExistingData = async () => {
+  // Delete existing records to prevent duplication
+  await Comic.deleteMany({});
+  await Panel.deleteMany({});
+  await Illustration.deleteMany({});
+};
+
 const seedComics = async () => {
   // Order of operations matters here, so we've intentionally avoided concurrency here.
   /* eslint-disable no-restricted-syntax, no-await-in-loop */
@@ -45,7 +52,6 @@ const seedComics = async () => {
       await panel.save();
       comic.panels.push(panel._id);
     }
-    /* eslint-disable no-restricted-syntax, no-await-in-loop */
 
     // Save the Comic instance with the associated Panel instances
     await comic.save();
@@ -68,6 +74,7 @@ const seedIllustrations = async () => {
 };
 
 const seedDatabase = async () => {
+  await deleteExistingData();
   await seedComics();
   await seedIllustrations();
   // eslint-disable-next-line no-console
@@ -79,14 +86,3 @@ seedDatabase().catch((error) => {
   console.error('Error seeding database:', error);
   process.exit(1);
 });
-
-// seedComics()
-//   .then(() => {
-//     // eslint-disable-next-line no-console
-//     console.log('Database seeding completed.');
-//     return mongoose.disconnect();
-//   })
-//   .catch((error) => {
-//     console.error('Error seeding database:', error);
-//     process.exit(1);
-//   });
