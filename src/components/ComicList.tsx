@@ -86,6 +86,8 @@ const ComicList = ({
           page={currentPage}
           onChange={onPageChange}
           color="primary"
+          siblingCount={0}
+          boundaryCount={1}
           showFirstButton
           showLastButton
         />
@@ -175,6 +177,8 @@ const ComicList = ({
           page={currentPage}
           onChange={onPageChange}
           color="primary"
+          siblingCount={0}
+          boundaryCount={1}
           showFirstButton
           showLastButton
         />
