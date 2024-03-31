@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useMediaQuery } from '@mui/material';
 import styled from 'styled-components';
+
+import theme from '../styles/theme';
 
 const HeroContainer = styled.div`
   background-size: cover;
@@ -24,9 +27,20 @@ const HeroContainer = styled.div`
   }
 `;
 
+const Temp32PxTallBarWhileIWaitForKristenUpdatedBanners = styled.div`
+  height: 32px;
+  background-color: ${theme.palette.primary.dark};
+`;
+
 const Hero = () => {
   // TODO: Use the priority prop on an <Image> tag here
-  return <HeroContainer />;
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  return (
+    <>
+      {isMobile ? <Temp32PxTallBarWhileIWaitForKristenUpdatedBanners /> : undefined}
+      <HeroContainer />
+    </>
+  );
 };
 
 export default Hero;
