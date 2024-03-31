@@ -10,7 +10,6 @@ import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import DiaryCalendar from '../../components/DiaryCalendar';
 import Icon from '../../components/Icon';
 import { IComic } from '../../db/models/Comic';
 import { fetchComic } from '../../services/comics';
@@ -118,19 +117,6 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
           </Grid>
         </Container>
       )}
-
-      <Container
-        maxWidth="xs"
-        sx={{
-          width: isMobile ? '95vw' : '90vw',
-          backgroundColor: theme.palette.primary.light,
-          marginTop: '20px',
-          padding: '10px 0px 20px 0px',
-          boxShadow: theme.shadows[3],
-        }}
-      >
-        <DiaryCalendar />
-      </Container>
     </Box>
   );
 };

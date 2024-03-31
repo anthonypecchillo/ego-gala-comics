@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
+import DiaryCalendar from '@/components/DiaryCalendar';
 import Button from '@mui/material/Button';
 // import Hidden from '@mui/material/Hidden';
+import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -148,6 +150,19 @@ const ComicPage = () => {
             {CONTENT[activeCategoryTab as ContentType].buttonText}
           </Button>
         </StyledContent>
+
+        <Container
+          maxWidth="xs"
+          sx={{
+            width: isMobile ? '95vw' : '90vw',
+            backgroundColor: theme.palette.primary.light,
+            marginTop: '20px',
+            padding: '10px 0px 20px 0px',
+            boxShadow: theme.shadows[3],
+          }}
+        >
+          <DiaryCalendar />
+        </Container>
 
         {/* <Hidden smDown>
           <Image

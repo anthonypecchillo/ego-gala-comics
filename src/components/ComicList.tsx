@@ -128,7 +128,7 @@ const ComicList = ({
                 ) : (
                   <Avatar
                     variant="square"
-                    src={comic.panels[0].image_url}
+                    src={comic.thumbnail_url}
                     alt={comic.title}
                     style={{ width: '80px', height: '80px', marginRight: '16px' }}
                   />
