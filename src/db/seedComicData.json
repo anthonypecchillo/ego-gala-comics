@@ -15005,17 +15005,17 @@
         "transcription": ""
       },
       {
-        "panel_number": 12,
+        "panel_number": 13,
         "image_url": "https://ego-gala-comics.s3.amazonaws.com/fantology/scales/scales-013.webp",
         "transcription": ""
       },
       {
-        "panel_number": 12,
+        "panel_number": 14,
         "image_url": "https://ego-gala-comics.s3.amazonaws.com/fantology/scales/scales-014.webp",
         "transcription": ""
       },
       {
-        "panel_number": 12,
+        "panel_number": 15,
         "image_url": "https://ego-gala-comics.s3.amazonaws.com/fantology/scales/scales-015.webp",
         "transcription": ""
       }
@@ -15196,7 +15196,7 @@
     "category": "other works",
     "description": "Sorcerers vs. Wizards: my first toe dipped into fantasy.",
     "publication_date": "2018-11-26T12:00:00.000Z",
-    "thumbnail_url": "https://ego-gala-comics.s3.amazonaws.com/other-works/bones-vs-tomes/Bones_Vs_Tomes.webp",
+    "thumbnail_url": "https://ego-gala-comics.s3.amazonaws.com/other-works/bones-vs-tomes/Bones_Vs_Tomes_Thumb.webp",
     "panels": [
       {
         "panel_number": 1,
@@ -15837,36 +15837,6 @@
       {
         "panel_number": 30,
         "image_url": "https://ego-gala-comics.s3.amazonaws.com/other-works/hell-bait/hell-bait-030.webp",
-        "transcription": ""
-      },
-      {
-        "panel_number": 31,
-        "image_url": "https://ego-gala-comics.s3.amazonaws.com/other-works/hell-bait/hell-bait-031.webp",
-        "transcription": ""
-      },
-      {
-        "panel_number": 32,
-        "image_url": "https://ego-gala-comics.s3.amazonaws.com/other-works/hell-bait/hell-bait-032.webp",
-        "transcription": ""
-      },
-      {
-        "panel_number": 33,
-        "image_url": "https://ego-gala-comics.s3.amazonaws.com/other-works/hell-bait/hell-bait-033.webp",
-        "transcription": ""
-      },
-      {
-        "panel_number": 34,
-        "image_url": "https://ego-gala-comics.s3.amazonaws.com/other-works/hell-bait/hell-bait-034.webp",
-        "transcription": ""
-      },
-      {
-        "panel_number": 35,
-        "image_url": "https://ego-gala-comics.s3.amazonaws.com/other-works/hell-bait/hell-bait-035.webp",
-        "transcription": ""
-      },
-      {
-        "panel_number": 36,
-        "image_url": "https://ego-gala-comics.s3.amazonaws.com/other-works/hell-bait/hell-bait-036.webp",
         "transcription": ""
       }
     ]
