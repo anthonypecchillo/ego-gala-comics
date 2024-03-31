@@ -89,13 +89,13 @@ const DiaryCalendar = () => {
     <OuterContainer>
       <InnerContainer>
         <StyledCalendar
-          activeStartDate={new Date(2023, 0, 1)}
-          // TODO: locale="en-US"
-          // TODO: maxDate={new Date()}
-          // TODO: minDate={new Date(2020, 0, 1)}
+          activeStartDate={new Date(2019, 0, 1)}
+          locale="en-US"
+          maxDate={new Date()}
+          minDate={new Date(2019, 0, 1)}
           // TODO: tileClassName={tileClassName}
           // TODO: tileContent={tileContent}
-          calendarType="US"
+          calendarType="gregory"
           onChange={onDateChange}
           onClickDay={onDayClick}
           tileDisabled={tileDisabled}
