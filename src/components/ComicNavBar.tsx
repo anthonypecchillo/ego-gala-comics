@@ -39,8 +39,8 @@ const ComicNavBar = ({ comicId, panelNumber, maxPanelNumber }: ComicNavBarProps)
       onChange={handlePageChange}
       color="secondary"
       // variant="outlined"
-      siblingCount={0}
-      boundaryCount={2}
+      siblingCount={1}
+      boundaryCount={0}
       showFirstButton
       showLastButton
       sx={{
