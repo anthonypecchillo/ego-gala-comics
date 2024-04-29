@@ -4,8 +4,8 @@ import { IIllustration } from '../db/models/Illustration';
 
 export const fetchAllIllustrations = async (): Promise<IIllustration[]> => {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-    const response = await axios.get(`${apiUrl}/api/illustrations`);
+    // const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+    const response = await axios.get(`/api/illustrations`);
 
     return response.data.illustrations;
   } catch (error) {
