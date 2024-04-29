@@ -137,12 +137,16 @@ const ComicList = ({
                 )}
               </ListItemAvatar>
               <Box display="flex" alignItems="center" width="100%">
-                <ListItemText
+                {/* <ListItemText
                   primary={
                     category === 'diary'
                       ? `Diary Comic #${(currentPage - 1) * COMICS_PER_PAGE + index + 1}`
                       : comic.title
                   }
+                  sx={{ textAlign: 'left' }}
+                /> */}
+                <ListItemText
+                  primary={category !== 'diary' ? comic.title : null}
                   sx={{ textAlign: 'left' }}
                 />
 

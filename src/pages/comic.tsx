@@ -48,7 +48,7 @@ const CONTENT = {
       "Here's a spot for all the comics I've made that don't fit into either Ego Gala or Fantology.",
       'These have been made into zines, finished in collaboration with other publications, or posted just-for-fun on my Instagram.',
     ],
-    buttonText: 'WHAT TEXT? WHERE DO I GO?',
+    buttonText: 'YOU SHOULD NEVER SEE ME!',
   },
 };
 
@@ -149,7 +149,7 @@ const ComicPage = () => {
           ) : null}
         </StyledContent>
 
-        {activeCategoryTab === 'diary' ? <DiaryCalendar /> : undefined}
+        {activeCategoryTab === 'diary' ? <DiaryCalendar /> : null}
       </ComicPageGrid>
     </>
   );
