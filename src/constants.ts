@@ -1,5 +1,5 @@
 export const COMMON = {
-  LOGO_TEXT: 'Kristen Shull',
+  LOGO_TEXT: 'K. Shull',
   SOCIAL_LINKS: [
     { href: 'https://twitter.com/ego_gala', text: 'Twitter', iconName: 'Twitter' },
     { href: 'https://www.instagram.com/ego_gala/', text: 'Instagram', iconName: 'Instagram' },
@@ -12,7 +12,7 @@ export const NAVBAR = {
   LOGO_TEXT: COMMON.LOGO_TEXT,
   LINKS: {
     NAVIGATION: [
-      { href: '/', text: 'Home', iconName: 'Home' },
+      // { href: '/', text: 'Home', iconName: 'Home' },
       { href: '/comic', text: 'Comics', iconName: 'Comic' },
       { href: '/illustrations', text: 'Illustrations', iconName: 'Illustrations' },
       { href: '/about', text: 'About', iconName: 'About' },
