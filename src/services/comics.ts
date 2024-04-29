@@ -40,12 +40,42 @@ export const fetchComicsByCategory = async (
   }
 };
 
+export const fetchPreviousDiaryComicId = async (comicId: string): Promise<string> => {
+  try {
+    const response = await axios.get(`/api/comics/${comicId}/prev`);
+    return response.data.id;
+  } catch (error) {
+    console.error('Error fetching previous diary comic ID:', error);
+    throw error;
+  }
+};
+
+export const fetchNextDiaryComicId = async (comicId: string): Promise<string> => {
+  try {
+    const response = await axios.get(`/api/comics/${comicId}/next`);
+    return response.data.id;
+  } catch (error) {
+    console.error('Error fetching previous diary comic ID:', error);
+    throw error;
+  }
+};
+
 export const fetchEarliestDiaryComicId = async (): Promise<string> => {
   try {
     const response = await axios.get(`/api/comics/earliest-diary-id`);
     return response.data.id;
   } catch (error) {
     console.error('Error fetching earliest diary comic ID:', error);
+    throw error;
+  }
+};
+
+export const fetchLatestDiaryComicId = async (): Promise<string> => {
+  try {
+    const response = await axios.get(`/api/comics/latest-diary-id`);
+    return response.data.id;
+  } catch (error) {
+    console.error('Error fetching latest diary comic ID:', error);
     throw error;
   }
 };

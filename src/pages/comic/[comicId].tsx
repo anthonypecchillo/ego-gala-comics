@@ -13,7 +13,13 @@ import { useRouter } from 'next/router';
 
 // import Icon from '../../components/Icon';
 import { IComic } from '../../db/models/Comic';
-import { fetchComic } from '../../services/comics';
+import {
+  fetchComic,
+  fetchEarliestDiaryComicId,
+  fetchLatestDiaryComicId,
+  fetchNextDiaryComicId,
+  fetchPreviousDiaryComicId,
+} from '../../services/comics';
 
 interface ComicViewerProps {
   comic: IComic;
@@ -35,6 +41,42 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
   //     backgroundColor: 'none',
   //   },
   // };
+  const goToPrevComic = async () => {
+    try {
+      const id = await fetchPreviousDiaryComicId(comic._id);
+      router.push(`/comic/${id}`);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const goToNextComic = async () => {
+    try {
+      // Fetch the next comic based on the current comic's publication date
+      const id = await fetchNextDiaryComicId(comic._id);
+      router.push(`/comic/${id}`);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const goToEarliestDiaryComic = async () => {
+    try {
+      const id = await fetchEarliestDiaryComicId();
+      router.push(`/comic/${id}`);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const goToLatestDiaryComic = async () => {
+    try {
+      const id = await fetchLatestDiaryComicId();
+      router.push(`/comic/${id}`);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   return (
     <Box my={12}>
@@ -51,17 +93,25 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
         >
           <Grid container px="10px">
             {/* First Row */}
-            <Grid item container py="5px" justifyContent="space-between">
-              <Grid item>
-                <Button variant="contained" color="secondary">
-                  Prev
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button variant="contained" color="secondary">
-                  Next
-                </Button>
-              </Grid>
+            <Grid item container pb="15px" justifyContent="space-between">
+              {comic.category === 'diary' ? (
+                <>
+                  <Grid item>
+                    {comic.title !== 'January 1, 2019' ? (
+                      <Button variant="contained" color="secondary" onClick={goToPrevComic}>
+                        Prev
+                      </Button>
+                    ) : null}
+                  </Grid>
+                  <Grid item>
+                    {comic.title !== 'November 27, 2021' ? (
+                      <Button variant="contained" color="secondary" onClick={goToNextComic}>
+                        Next
+                      </Button>
+                    ) : null}
+                  </Grid>
+                </>
+              ) : null}
             </Grid>
 
             {/* Second Row */}
@@ -87,6 +137,84 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
             </Grid>
 
             {/* Third Row */}
+            <Grid item container pt="15px" justifyContent="center" gap="2%">
+              {comic.category === 'diary' ? (
+                <>
+                  <Grid item sx={{ width: '49%' }}>
+                    <Button
+                      fullWidth
+                      color="secondary"
+                      variant="contained"
+                      onClick={goToEarliestDiaryComic}
+                    >
+                      First Comic
+                    </Button>
+                  </Grid>
+                  <Grid item sx={{ width: '49%' }}>
+                    <Button
+                      fullWidth
+                      color="secondary"
+                      variant="contained"
+                      onClick={goToLatestDiaryComic}
+                    >
+                      Last Comic
+                    </Button>
+                  </Grid>
+                </>
+              ) : null}
+            </Grid>
+
+            {/* <Grid item container pt="15px" justifyContent="center" gap="1%">
+              {comic.category === 'diary' ? (
+                <>
+                  <Grid item sx={{ width: '24%' }}>
+                    <Button
+                      fullWidth
+                      color="secondary"
+                      variant="contained"
+                      onClick={goToEarliestDiaryComic}
+                    >
+                      First Comic
+                    </Button>
+                  </Grid>
+                  <Grid item sx={{ width: '24%' }}>
+                    {comic.title !== 'January 1, 2019' ? (
+                      <Button
+                        fullWidth
+                        color="secondary"
+                        variant="contained"
+                        onClick={goToPrevComic}
+                      >
+                        Prev Comic
+                      </Button>
+                    ) : null}
+                  </Grid>
+                  <Grid item sx={{ width: '24%' }}>
+                    {comic.title !== 'November 27, 2021' ? (
+                      <Button
+                        fullWidth
+                        color="secondary"
+                        variant="contained"
+                        onClick={goToNextComic}
+                      >
+                        Next Comic
+                      </Button>
+                    ) : null}
+                  </Grid>
+                  <Grid item sx={{ width: '24%' }}>
+                    <Button
+                      fullWidth
+                      color="secondary"
+                      variant="contained"
+                      onClick={goToLatestDiaryComic}
+                    >
+                      Last Comic
+                    </Button>
+                  </Grid>
+                </>
+              ) : null}
+            </Grid> */}
+
             {/* <Grid item container justifyContent="space-between">
               <Grid item> */}
             {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
