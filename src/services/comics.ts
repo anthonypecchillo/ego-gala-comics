@@ -16,6 +16,7 @@ export const fetchComic = async (comicId: string): Promise<IComic> => {
 
 interface FetchComicsResponse {
   comics: IComic[];
+  totalComics: number;
   totalPages: number;
 }
 

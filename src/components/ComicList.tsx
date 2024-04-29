@@ -15,6 +15,7 @@ import styled from 'styled-components';
 
 import { IComic } from '../db/models/Comic';
 import { fetchComicsByCategory, deleteComic } from '../services/comics';
+import { Typography } from '@mui/material';
 
 const COMICS_PER_PAGE = 10;
 
@@ -43,6 +44,7 @@ const ComicList = ({
 }: ComicListProps) => {
   const theme = useTheme();
   const [comics, setComics] = useState<IComic[]>([]);
+  const [totalComics, setTotalComics] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
 
   const getComicURL = (comic: IComic) => {
@@ -70,6 +72,9 @@ const ComicList = ({
         const response = await fetchComicsByCategory(category, currentPage);
         setComics(response.comics);
         setTotalPages(response.totalPages);
+        if (category === 'diary') {
+          setTotalComics(response.totalComics);
+        }
       } catch (error) {
         console.error('Error fetching category-specific comics:', error);
       }
@@ -122,10 +127,11 @@ const ComicList = ({
                       alignItems: 'center',
                       backgroundColor: theme.palette.primary.main,
                       color: theme.palette.common.white,
-                      fontSize: '1.5rem',
+                      fontSize: '1.3rem',
                     }}
                   >
-                    #{(currentPage - 1) * COMICS_PER_PAGE + index + 1}
+                    #{totalComics - ((currentPage - 1) * COMICS_PER_PAGE + index)}
+                    {/* #{(currentPage - 1) * COMICS_PER_PAGE + index + 1} */}
                   </Box>
                 ) : (
                   <Avatar

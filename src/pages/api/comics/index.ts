@@ -16,7 +16,7 @@ const getComics = async (req: NextApiRequest, res: NextApiResponse) => {
     assert(typeof limit === 'string', 'Limit must be a string');
 
     const query = category ? { category } : {};
-    const sortBy = category === 'other works' ? '-publication_date' : 'publication_date';
+    const sortBy = category === 'fantology' ? 'publication_date' : '-publication_date';
 
     const skip = (Number(page) - 1) * Number(limit);
 
@@ -27,10 +27,10 @@ const getComics = async (req: NextApiRequest, res: NextApiResponse) => {
       .limit(Number(limit));
 
     const comics = (await comicsQuery) as IComic[];
-    const count = await Comic.countDocuments(query);
-    const totalPages = Math.ceil(count / Number(limit));
+    const totalComics = await Comic.countDocuments(query);
+    const totalPages = Math.ceil(totalComics / Number(limit));
 
-    res.json({ comics, totalPages });
+    res.json({ comics, totalComics, totalPages });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'An error occurred while fetching comics.' });
