@@ -4,13 +4,11 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import Icon from '../components/Icon';
 import { IIllustration } from '../db/models/Illustration';
 import { fetchAllIllustrations } from '../services/illustrations';
 
@@ -49,53 +47,6 @@ const Illustrations = () => {
       undefined,
       { shallow: true },
     );
-  };
-
-  const iconButtonStyles = {
-    color: theme.palette.secondary.light,
-    '&:hover': {
-      color: theme.palette.secondary.main,
-      backgroundColor: 'none',
-    },
-  };
-
-  const shareOnSocialMedia = (platform: 'twitter' | 'facebook') => {
-    const currentUrl = window.location.href; // Get the current URL
-    const text = encodeURIComponent('Check out this illustration from Kristen Shull!');
-
-    let shareUrl = '';
-    switch (platform) {
-      case 'twitter':
-        shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(currentUrl)}`;
-        break;
-      case 'facebook':
-        shareUrl = `https://www.facebook.com/sharer.php?u=${encodeURIComponent(currentUrl)}`;
-        break;
-      default:
-        break;
-    }
-
-    if (shareUrl) {
-      window.open(shareUrl, '_blank', 'noopener,noreferrer');
-    }
-  };
-
-  const shareViaEmail = () => {
-    const currentUrl = window.location.href;
-    const subject = 'Check out this illustration';
-    const body = `I found this illustration interesting: ${currentUrl}`;
-    const mailto = `mailto:?subject=${subject}&body=${body}`;
-    window.location.href = mailto;
-  };
-
-  const copyImageUrlToClipboard = async () => {
-    const currentUrl = window.location.href; // Get the current URL
-    try {
-      await navigator.clipboard.writeText(currentUrl);
-      alert('URL copied to clipboard!');
-    } catch (error) {
-      console.error('Failed to copy:', error);
-    }
   };
 
   useEffect(() => {
@@ -170,7 +121,7 @@ const Illustrations = () => {
                 },
               }}
             >
-              <Box sx={{ mb: 1 }}>
+              <Box>
                 <Image
                   src={illustration.url}
                   alt="Illustration"
@@ -188,45 +139,6 @@ const Illustrations = () => {
                   }}
                 />
               </Box>
-              {/* Icons and Links */}
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <IconButton
-                  sx={iconButtonStyles}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    shareOnSocialMedia('twitter');
-                  }}
-                >
-                  <Icon iconName="Twitter" />
-                </IconButton>
-                <IconButton
-                  sx={iconButtonStyles}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    shareOnSocialMedia('facebook');
-                  }}
-                >
-                  <Icon iconName="Facebook" />
-                </IconButton>
-                <IconButton
-                  sx={iconButtonStyles}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    shareViaEmail();
-                  }}
-                >
-                  <Icon iconName="Mail" />
-                </IconButton>
-                <IconButton
-                  sx={iconButtonStyles}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    copyImageUrlToClipboard();
-                  }}
-                >
-                  <Icon iconName="Copy" />
-                </IconButton>
-              </Box>
             </Container>
           </Grid>
         ))}
@@ -241,72 +153,31 @@ const Illustrations = () => {
             top: '50vh',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: isMobile ? '90vw' : '60vw',
+            width: isMobile ? '90vw' : '40vw',
             backgroundColor: theme.palette.primary.light,
             padding: '20px',
             boxShadow: theme.shadows[3],
           }}
         >
           {selectedImage && (
-            <>
-              <Box>
-                <Image
-                  src={selectedImage.url}
-                  alt="Illustration"
-                  quality={100}
-                  width={selectedImage.width}
-                  height={selectedImage.height}
-                  layout="responsive"
-                  style={{
-                    backgroundColor: 'white',
-                    boxShadow: theme.shadows[3],
-                    width: '100%',
-                    height: '100%',
-                    padding: '20px',
-                    border: `10px solid ${theme.palette.primary.main}`,
-                  }}
-                />
-              </Box>
-              {/* Repeated Icons and Links for Modal */}
-              <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
-                <IconButton
-                  sx={iconButtonStyles}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    shareOnSocialMedia('twitter');
-                  }}
-                >
-                  <Icon iconName="Twitter" />
-                </IconButton>
-                <IconButton
-                  sx={iconButtonStyles}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    shareOnSocialMedia('facebook');
-                  }}
-                >
-                  <Icon iconName="Facebook" />
-                </IconButton>
-                <IconButton
-                  sx={iconButtonStyles}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    shareViaEmail();
-                  }}
-                >
-                  <Icon iconName="Mail" />
-                </IconButton>
-                <IconButton
-                  sx={iconButtonStyles}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    copyImageUrlToClipboard();
-                  }}
-                >
-                  <Icon iconName="Copy" />
-                </IconButton>
-              </Box>
-            </>
+            <Box>
+              <Image
+                src={selectedImage.url}
+                alt="Illustration"
+                quality={100}
+                width={selectedImage.width}
+                height={selectedImage.height}
+                layout="responsive"
+                style={{
+                  backgroundColor: 'white',
+                  boxShadow: theme.shadows[3],
+                  width: '100%',
+                  height: '100%',
+                  padding: '20px',
+                  border: `10px solid ${theme.palette.primary.main}`,
+                }}
+              />
+            </Box>
           )}
         </Container>
       </Modal>

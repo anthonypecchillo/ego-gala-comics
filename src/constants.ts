@@ -1,5 +1,5 @@
 export const COMMON = {
-  LOGO_TEXT: 'Ego Gala',
+  LOGO_TEXT: 'Kristen Shull',
   SOCIAL_LINKS: [
     { href: 'https://twitter.com/ego_gala', text: 'Twitter', iconName: 'Twitter' },
     { href: 'https://www.instagram.com/ego_gala/', text: 'Instagram', iconName: 'Instagram' },

@@ -2,15 +2,16 @@ import React from 'react';
 
 import { useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+// import IconButton from '@mui/material/IconButton';
+// import Typography from '@mui/material/Typography';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import Icon from '../../components/Icon';
+// import Icon from '../../components/Icon';
 import { IComic } from '../../db/models/Comic';
 import { fetchComic } from '../../services/comics';
 
@@ -25,15 +26,15 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
   const panelNumber = Number(router.query.panelNumber) || 1;
   const currentPanel = comic.panels.find((panel) => panel.panel_number === panelNumber);
 
-  const iconButtonStyles = {
-    color: theme.palette.secondary.light,
-    // marginRight: '10px',
-    '&:hover': {
-      // color: theme.palette.info.main,
-      color: theme.palette.secondary.main,
-      backgroundColor: 'none',
-    },
-  };
+  // const iconButtonStyles = {
+  //   color: theme.palette.secondary.light,
+  //   // marginRight: '10px',
+  //   '&:hover': {
+  //     // color: theme.palette.info.main,
+  //     color: theme.palette.secondary.main,
+  //     backgroundColor: 'none',
+  //   },
+  // };
 
   return (
     <Box my={12}>
@@ -52,15 +53,14 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
             {/* First Row */}
             <Grid item container py="5px" justifyContent="space-between">
               <Grid item>
-                <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
-                  {/* {comic.category === 'diary' ? 'Diary Comic' : comic.title} */}
-                  K. Shull
-                </Typography>
+                <Button variant="contained" color="secondary">
+                  Prev
+                </Button>
               </Grid>
               <Grid item>
-                {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
-                    K.Shull
-                  </Typography> */}
+                <Button variant="contained" color="secondary">
+                  Next
+                </Button>
               </Grid>
             </Grid>
 
@@ -87,16 +87,16 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
             </Grid>
 
             {/* Third Row */}
-            <Grid item container justifyContent="space-between">
-              <Grid item>
-                {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
+            {/* <Grid item container justifyContent="space-between">
+              <Grid item> */}
+            {/* <Typography variant="h6" px="10px" color={theme.palette.secondary.light}>
                     {new Intl.DateTimeFormat('en-US', {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
                     }).format(new Date(comic.publication_date))}
                   </Typography> */}
-              </Grid>
+            {/* </Grid>
               <Grid item>
                 <Box>
                   <IconButton sx={iconButtonStyles} component="span">
@@ -113,7 +113,7 @@ const ComicViewer = ({ comic }: ComicViewerProps) => {
                   </IconButton>
                 </Box>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       )}
