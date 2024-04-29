@@ -142,9 +142,11 @@ const ComicPage = () => {
             </Typography>
           ))}
 
-          <Button fullWidth variant="contained" color="primary" onClick={goToEarliestDiaryComic}>
-            {CONTENT[activeCategoryTab as ContentType].buttonText}
-          </Button>
+          {['diary', 'fantology'].includes(activeCategoryTab) ? (
+            <Button fullWidth variant="contained" color="primary" onClick={goToEarliestDiaryComic}>
+              {CONTENT[activeCategoryTab as ContentType].buttonText}
+            </Button>
+          ) : null}
         </StyledContent>
 
         {activeCategoryTab === 'diary' ? <DiaryCalendar /> : undefined}
