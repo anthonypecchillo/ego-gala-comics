@@ -15,7 +15,6 @@ import styled from 'styled-components';
 
 import { IComic } from '../db/models/Comic';
 import { fetchComicsByCategory, deleteComic } from '../services/comics';
-import { Typography } from '@mui/material';
 
 const COMICS_PER_PAGE = 10;
 
