@@ -34,6 +34,7 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     flex: '1', // Ensure full width on small screens
     minWidth: 'unset', // Remove fixed minimum width on small screens
+    fontSize: '0.8rem',
   },
 }));
 

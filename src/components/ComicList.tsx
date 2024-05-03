@@ -151,7 +151,8 @@ const ComicList = ({
                   sx={{ textAlign: 'left' }}
                 /> */}
                 <ListItemText
-                  primary={category !== 'diary' ? comic.title : null}
+                  // primary={category !== 'diary' ? comic.title : null}
+                  primary={comic.title}
                   sx={{ textAlign: 'left' }}
                 />
 
@@ -162,11 +163,15 @@ const ComicList = ({
                 )} */}
 
                 <ListItemText
-                  secondary={new Intl.DateTimeFormat('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  }).format(new Date(comic.publication_date))}
+                  secondary={
+                    category !== 'diary'
+                      ? new Intl.DateTimeFormat('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        }).format(new Date(comic.publication_date))
+                      : null
+                  }
                   sx={{ paddingRight: '16px', textAlign: 'right' }}
                 />
                 {showCMSFeatures && (
