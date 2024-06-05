@@ -148,14 +148,14 @@ const ComicPage = () => {
             </Typography>
           ))}
 
-          {['diary', 'fantology'].includes(activeCategoryTab) ? (
+          {['ego gala', 'fantology'].includes(activeCategoryTab) ? (
             <Button fullWidth variant="contained" color="primary" onClick={goToEarliestDiaryComic}>
               {CONTENT[activeCategoryTab as ContentType].buttonText}
             </Button>
           ) : null}
         </StyledContent>
 
-        {activeCategoryTab === 'diary' ? <DiaryCalendar /> : null}
+        {activeCategoryTab === 'ego gala' ? <DiaryCalendar /> : null}
       </ComicPageGrid>
     </>
   );
